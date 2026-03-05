@@ -146,10 +146,22 @@ anatomical_translation = np.array([-abs(flex) * 0.15, 0, 0])
 - [x] **LEARNING_ROADMAP更新** — Phase 1〜3完了チェック、Phase 4進行中に更新
 - [x] **EXPERIMENTS.md更新** — EXP-001b追加（Bland-Altman framing）
 - [x] **Grad-CAM XAI実装** — `main.py` v2.2.0: `GradCAM`クラス + `/api/gradcam` エンドポイント追加。`generate_gradcam_demo.py` 新規作成。`gradcam_output/` に8枚の画像生成済み（All/TPA/Flexion/Rotation × オーバーレイ+比較）
+- [x] **テスト45本** — `tests/` に3ファイル作成。角度計算ユニットテスト・API統合・YOLOスモークテスト。全パス。
+- [x] **Docker化** — `dicom-viewer-prototype-api/Dockerfile` + `dicom-viewer-prototype/Dockerfile` + `docker-compose.yml`
+- [x] **GitHub Actions CI/CD** — `.github/workflows/test.yml`（push/PR時にpytest自動実行）
+- [x] **git初期化・初回コミット** — 134ファイル、11598行
+- [x] **README.md刷新** — 英語・GitHub映えするポートフォリオ向けREADMEに書き直し
+- [x] **Qiita記事草稿** — `qiita_draft.md` 作成（投稿前に確認・修正してから投稿）
+- [x] **validate_real_ct.py** — 実CTデータが来たら即実行できる検証パイプライン（DRR生成→YOLO推論→HTMLレポート）
+- [x] **benchmark_inference.py** — 推論速度ベンチマーク。実測値：YOLOv8 174ms/枚(5.7FPS)、古典CV 7ms/枚(137FPS) ※Intel Mac CPU
 
 ## 次にやること（優先順位順）
 
-1. **Mac mini M4 Pro 到着後**
+1. **GitHubにpush・公開**（README の `YOUR_USERNAME` を実際のユーザー名に変更してから）
+2. **Qiita投稿**（`qiita_draft.md` を確認・修正して投稿）
+3. **フリーCTで実験** — TCIA/OAI で膝CT入手 → `validate_real_ct.py --ct /path/to/dicom` 一発で完了
+
+4. **Mac mini M4 Pro 到着後**
    - Apple MPS GPU での推論速度確認
    - Python 3.11 + 最新ライブラリで仮想環境を再構築（競合解消）
    - ファントムCTデータでの精度検証（EXP-002）
