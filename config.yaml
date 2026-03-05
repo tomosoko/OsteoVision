@@ -1,0 +1,59 @@
+# OsteoVision 中央設定ファイル
+# ここを変えるだけでシステム全体の動作を調整できる
+
+# ── モデルパス ────────────────────────────────────────────
+model:
+  yolo_pose: "best.pt"
+  resnet_xai: "knee_angle_predictor_best.pth"
+
+# ── 訓練設定（Colab用） ───────────────────────────────────
+training:
+  epochs: 50
+  imgsz: 512
+  batch: 16
+  model_base: "yolov8n-pose.pt"
+  project_name: "osteovision_pose_model"
+
+# ── OsteoSynth データ生成設定 ─────────────────────────────
+synthesis:
+  image_count: 720
+  vol_size: 128
+  img_size: [512, 512]
+  views: ["LAT", "AP"]
+  tilt_range:    [-20, 20]   # 度
+  rotation_range: [-30, 30]  # 度
+  flexion_range:  [0, 90]    # 度
+  torsion_range:  [-15, 15]  # 度
+
+# ── 臨床角度基準値 ────────────────────────────────────────
+clinical:
+  # 回旋（ポジショニング品質）
+  rotation:
+    good_threshold: 5       # ±5°以内 → 良好
+    warning_threshold: 15   # ±5〜15° → 警告・修正指示
+    # ±15°超 → 再撮影推奨
+
+  # TPA 正常値（犬）
+  tpa:
+    normal_min_large: 18    # 大型犬 正常下限
+    normal_max_large: 25    # 大型犬 正常上限
+    surgery_threshold_large: 30  # TPLO手術検討ライン
+    normal_min_small: 20    # 小型犬 正常下限
+    normal_max_small: 28    # 小型犬 正常上限
+    surgery_threshold_small: 35
+
+  # 屈曲角（TPA計測時の適正値）
+  flexion:
+    tpa_measurement_max: 5  # TPA計測時は完全伸展（0〜5°）
+
+# ── APIサーバー設定 ───────────────────────────────────────
+api:
+  host: "0.0.0.0"
+  port: 8000
+  cors_origins:
+    - "http://localhost:3000"
+
+# ── 開発環境 ─────────────────────────────────────────────
+environment:
+  current: "intel_mac_2019"   # intel_mac_2019 / mac_mini_m4 / colab
+  device_priority: ["mps", "cuda", "cpu"]  # Mac mini M4到着後はmpsが使える

@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+venv/
+.venv/
+*.egg-info/
+
+# モデルファイル（大容量 → Git LFSか除外）
+*.pt
+*.pth
+*.onnx
+*.weights
+
+# データセット（大容量）
+yolo_dataset/images/
+yolo_dataset/labels/
+dataset_out/
+runs/
+
+# GIF・動画（生成物）
+*.gif
+*.mp4
+*.avi
+
+# ログ
+*.log
+api.log
+
+# 環境・秘密情報
+.env
+*.env
+secrets.yaml
+
+# macOS
+.DS_Store
+.AppleDouble
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Jupyter
+.ipynb_checkpoints/
+*.nbconvert/
+
+# Node.js
+node_modules/
+.next/
+out/
+
+# 一時ファイル
+tmp/
+temp/
+*.tmp

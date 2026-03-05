@@ -1,0 +1,44 @@
+version: "3.9"
+
+# OsteoVision — docker-compose
+# 起動: docker-compose up
+# 停止: docker-compose down
+
+services:
+  # ── FastAPI バックエンド ─────────────────────────────────────────────
+  api:
+    build:
+      context: ./dicom-viewer-prototype-api
+      dockerfile: Dockerfile
+    container_name: osteovision-api
+    ports:
+      - "8000:8000"
+    environment:
+      - CORS_ORIGINS=http://localhost:3000
+    volumes:
+      # モデルファイルをホストからマウント（コンテナに含めない場合）
+      - ./dicom-viewer-prototype-api/best.pt:/app/best.pt:ro
+      - ./dicom-viewer-prototype-api/knee_angle_predictor_best.pth:/app/knee_angle_predictor_best.pth:ro
+    healthcheck:
+      test: ["CMD", "python3", "-c",
+             "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    restart: unless-stopped
+
+  # ── Next.js フロントエンド ───────────────────────────────────────────
+  frontend:
+    build:
+      context: ./dicom-viewer-prototype
+      dockerfile: Dockerfile
+    container_name: osteovision-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://api:8000
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped

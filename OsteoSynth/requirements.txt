@@ -1,0 +1,6 @@
+numpy
+scipy
+pydicom
+opencv-python-headless
+pillow
+tqdm

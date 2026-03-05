@@ -1,0 +1,3242 @@
+[
+    {
+        "ap_image": "drr_bone_AP_t-5_r-30_f0_tor-10.png",
+        "lat_image": "drr_bone_LAT_t-5_r-30_f0_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r-30_f0_tor0.png",
+        "lat_image": "drr_bone_LAT_t-5_r-30_f0_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r-30_f0_tor10.png",
+        "lat_image": "drr_bone_LAT_t-5_r-30_f0_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r-30_f15_tor-10.png",
+        "lat_image": "drr_bone_LAT_t-5_r-30_f15_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r-30_f15_tor0.png",
+        "lat_image": "drr_bone_LAT_t-5_r-30_f15_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r-30_f15_tor10.png",
+        "lat_image": "drr_bone_LAT_t-5_r-30_f15_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r-30_f30_tor-10.png",
+        "lat_image": "drr_bone_LAT_t-5_r-30_f30_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r-30_f30_tor0.png",
+        "lat_image": "drr_bone_LAT_t-5_r-30_f30_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r-30_f30_tor10.png",
+        "lat_image": "drr_bone_LAT_t-5_r-30_f30_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r-30_f45_tor-10.png",
+        "lat_image": "drr_bone_LAT_t-5_r-30_f45_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r-30_f45_tor0.png",
+        "lat_image": "drr_bone_LAT_t-5_r-30_f45_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r-30_f45_tor10.png",
+        "lat_image": "drr_bone_LAT_t-5_r-30_f45_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r-15_f0_tor-10.png",
+        "lat_image": "drr_bone_LAT_t-5_r-15_f0_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r-15_f0_tor0.png",
+        "lat_image": "drr_bone_LAT_t-5_r-15_f0_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r-15_f0_tor10.png",
+        "lat_image": "drr_bone_LAT_t-5_r-15_f0_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r-15_f15_tor-10.png",
+        "lat_image": "drr_bone_LAT_t-5_r-15_f15_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r-15_f15_tor0.png",
+        "lat_image": "drr_bone_LAT_t-5_r-15_f15_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r-15_f15_tor10.png",
+        "lat_image": "drr_bone_LAT_t-5_r-15_f15_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r-15_f30_tor-10.png",
+        "lat_image": "drr_bone_LAT_t-5_r-15_f30_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r-15_f30_tor0.png",
+        "lat_image": "drr_bone_LAT_t-5_r-15_f30_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r-15_f30_tor10.png",
+        "lat_image": "drr_bone_LAT_t-5_r-15_f30_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r-15_f45_tor-10.png",
+        "lat_image": "drr_bone_LAT_t-5_r-15_f45_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r-15_f45_tor0.png",
+        "lat_image": "drr_bone_LAT_t-5_r-15_f45_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r-15_f45_tor10.png",
+        "lat_image": "drr_bone_LAT_t-5_r-15_f45_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r0_f0_tor-10.png",
+        "lat_image": "drr_bone_LAT_t-5_r0_f0_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r0_f0_tor0.png",
+        "lat_image": "drr_bone_LAT_t-5_r0_f0_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r0_f0_tor10.png",
+        "lat_image": "drr_bone_LAT_t-5_r0_f0_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r0_f15_tor-10.png",
+        "lat_image": "drr_bone_LAT_t-5_r0_f15_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r0_f15_tor0.png",
+        "lat_image": "drr_bone_LAT_t-5_r0_f15_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r0_f15_tor10.png",
+        "lat_image": "drr_bone_LAT_t-5_r0_f15_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r0_f30_tor-10.png",
+        "lat_image": "drr_bone_LAT_t-5_r0_f30_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r0_f30_tor0.png",
+        "lat_image": "drr_bone_LAT_t-5_r0_f30_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r0_f30_tor10.png",
+        "lat_image": "drr_bone_LAT_t-5_r0_f30_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r0_f45_tor-10.png",
+        "lat_image": "drr_bone_LAT_t-5_r0_f45_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r0_f45_tor0.png",
+        "lat_image": "drr_bone_LAT_t-5_r0_f45_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r0_f45_tor10.png",
+        "lat_image": "drr_bone_LAT_t-5_r0_f45_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r15_f0_tor-10.png",
+        "lat_image": "drr_bone_LAT_t-5_r15_f0_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r15_f0_tor0.png",
+        "lat_image": "drr_bone_LAT_t-5_r15_f0_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r15_f0_tor10.png",
+        "lat_image": "drr_bone_LAT_t-5_r15_f0_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r15_f15_tor-10.png",
+        "lat_image": "drr_bone_LAT_t-5_r15_f15_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r15_f15_tor0.png",
+        "lat_image": "drr_bone_LAT_t-5_r15_f15_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r15_f15_tor10.png",
+        "lat_image": "drr_bone_LAT_t-5_r15_f15_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r15_f30_tor-10.png",
+        "lat_image": "drr_bone_LAT_t-5_r15_f30_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r15_f30_tor0.png",
+        "lat_image": "drr_bone_LAT_t-5_r15_f30_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r15_f30_tor10.png",
+        "lat_image": "drr_bone_LAT_t-5_r15_f30_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r15_f45_tor-10.png",
+        "lat_image": "drr_bone_LAT_t-5_r15_f45_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r15_f45_tor0.png",
+        "lat_image": "drr_bone_LAT_t-5_r15_f45_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r15_f45_tor10.png",
+        "lat_image": "drr_bone_LAT_t-5_r15_f45_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r30_f0_tor-10.png",
+        "lat_image": "drr_bone_LAT_t-5_r30_f0_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r30_f0_tor0.png",
+        "lat_image": "drr_bone_LAT_t-5_r30_f0_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r30_f0_tor10.png",
+        "lat_image": "drr_bone_LAT_t-5_r30_f0_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r30_f15_tor-10.png",
+        "lat_image": "drr_bone_LAT_t-5_r30_f15_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r30_f15_tor0.png",
+        "lat_image": "drr_bone_LAT_t-5_r30_f15_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r30_f15_tor10.png",
+        "lat_image": "drr_bone_LAT_t-5_r30_f15_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r30_f30_tor-10.png",
+        "lat_image": "drr_bone_LAT_t-5_r30_f30_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r30_f30_tor0.png",
+        "lat_image": "drr_bone_LAT_t-5_r30_f30_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r30_f30_tor10.png",
+        "lat_image": "drr_bone_LAT_t-5_r30_f30_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r30_f45_tor-10.png",
+        "lat_image": "drr_bone_LAT_t-5_r30_f45_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r30_f45_tor0.png",
+        "lat_image": "drr_bone_LAT_t-5_r30_f45_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t-5_r30_f45_tor10.png",
+        "lat_image": "drr_bone_LAT_t-5_r30_f45_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r-30_f0_tor-10.png",
+        "lat_image": "drr_bone_LAT_t0_r-30_f0_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r-30_f0_tor0.png",
+        "lat_image": "drr_bone_LAT_t0_r-30_f0_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r-30_f0_tor10.png",
+        "lat_image": "drr_bone_LAT_t0_r-30_f0_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r-30_f15_tor-10.png",
+        "lat_image": "drr_bone_LAT_t0_r-30_f15_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r-30_f15_tor0.png",
+        "lat_image": "drr_bone_LAT_t0_r-30_f15_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r-30_f15_tor10.png",
+        "lat_image": "drr_bone_LAT_t0_r-30_f15_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r-30_f30_tor-10.png",
+        "lat_image": "drr_bone_LAT_t0_r-30_f30_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r-30_f30_tor0.png",
+        "lat_image": "drr_bone_LAT_t0_r-30_f30_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r-30_f30_tor10.png",
+        "lat_image": "drr_bone_LAT_t0_r-30_f30_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r-30_f45_tor-10.png",
+        "lat_image": "drr_bone_LAT_t0_r-30_f45_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r-30_f45_tor0.png",
+        "lat_image": "drr_bone_LAT_t0_r-30_f45_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r-30_f45_tor10.png",
+        "lat_image": "drr_bone_LAT_t0_r-30_f45_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r-15_f0_tor-10.png",
+        "lat_image": "drr_bone_LAT_t0_r-15_f0_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r-15_f0_tor0.png",
+        "lat_image": "drr_bone_LAT_t0_r-15_f0_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r-15_f0_tor10.png",
+        "lat_image": "drr_bone_LAT_t0_r-15_f0_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r-15_f15_tor-10.png",
+        "lat_image": "drr_bone_LAT_t0_r-15_f15_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r-15_f15_tor0.png",
+        "lat_image": "drr_bone_LAT_t0_r-15_f15_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r-15_f15_tor10.png",
+        "lat_image": "drr_bone_LAT_t0_r-15_f15_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r-15_f30_tor-10.png",
+        "lat_image": "drr_bone_LAT_t0_r-15_f30_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r-15_f30_tor0.png",
+        "lat_image": "drr_bone_LAT_t0_r-15_f30_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r-15_f30_tor10.png",
+        "lat_image": "drr_bone_LAT_t0_r-15_f30_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r-15_f45_tor-10.png",
+        "lat_image": "drr_bone_LAT_t0_r-15_f45_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r-15_f45_tor0.png",
+        "lat_image": "drr_bone_LAT_t0_r-15_f45_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r-15_f45_tor10.png",
+        "lat_image": "drr_bone_LAT_t0_r-15_f45_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r0_f0_tor-10.png",
+        "lat_image": "drr_bone_LAT_t0_r0_f0_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r0_f0_tor0.png",
+        "lat_image": "drr_bone_LAT_t0_r0_f0_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r0_f0_tor10.png",
+        "lat_image": "drr_bone_LAT_t0_r0_f0_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r0_f15_tor-10.png",
+        "lat_image": "drr_bone_LAT_t0_r0_f15_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r0_f15_tor0.png",
+        "lat_image": "drr_bone_LAT_t0_r0_f15_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r0_f15_tor10.png",
+        "lat_image": "drr_bone_LAT_t0_r0_f15_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r0_f30_tor-10.png",
+        "lat_image": "drr_bone_LAT_t0_r0_f30_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r0_f30_tor0.png",
+        "lat_image": "drr_bone_LAT_t0_r0_f30_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r0_f30_tor10.png",
+        "lat_image": "drr_bone_LAT_t0_r0_f30_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r0_f45_tor-10.png",
+        "lat_image": "drr_bone_LAT_t0_r0_f45_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r0_f45_tor0.png",
+        "lat_image": "drr_bone_LAT_t0_r0_f45_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r0_f45_tor10.png",
+        "lat_image": "drr_bone_LAT_t0_r0_f45_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r15_f0_tor-10.png",
+        "lat_image": "drr_bone_LAT_t0_r15_f0_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r15_f0_tor0.png",
+        "lat_image": "drr_bone_LAT_t0_r15_f0_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r15_f0_tor10.png",
+        "lat_image": "drr_bone_LAT_t0_r15_f0_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r15_f15_tor-10.png",
+        "lat_image": "drr_bone_LAT_t0_r15_f15_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r15_f15_tor0.png",
+        "lat_image": "drr_bone_LAT_t0_r15_f15_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r15_f15_tor10.png",
+        "lat_image": "drr_bone_LAT_t0_r15_f15_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r15_f30_tor-10.png",
+        "lat_image": "drr_bone_LAT_t0_r15_f30_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r15_f30_tor0.png",
+        "lat_image": "drr_bone_LAT_t0_r15_f30_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r15_f30_tor10.png",
+        "lat_image": "drr_bone_LAT_t0_r15_f30_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r15_f45_tor-10.png",
+        "lat_image": "drr_bone_LAT_t0_r15_f45_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r15_f45_tor0.png",
+        "lat_image": "drr_bone_LAT_t0_r15_f45_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r15_f45_tor10.png",
+        "lat_image": "drr_bone_LAT_t0_r15_f45_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r30_f0_tor-10.png",
+        "lat_image": "drr_bone_LAT_t0_r30_f0_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r30_f0_tor0.png",
+        "lat_image": "drr_bone_LAT_t0_r30_f0_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r30_f0_tor10.png",
+        "lat_image": "drr_bone_LAT_t0_r30_f0_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r30_f15_tor-10.png",
+        "lat_image": "drr_bone_LAT_t0_r30_f15_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r30_f15_tor0.png",
+        "lat_image": "drr_bone_LAT_t0_r30_f15_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r30_f15_tor10.png",
+        "lat_image": "drr_bone_LAT_t0_r30_f15_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r30_f30_tor-10.png",
+        "lat_image": "drr_bone_LAT_t0_r30_f30_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r30_f30_tor0.png",
+        "lat_image": "drr_bone_LAT_t0_r30_f30_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r30_f30_tor10.png",
+        "lat_image": "drr_bone_LAT_t0_r30_f30_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r30_f45_tor-10.png",
+        "lat_image": "drr_bone_LAT_t0_r30_f45_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r30_f45_tor0.png",
+        "lat_image": "drr_bone_LAT_t0_r30_f45_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t0_r30_f45_tor10.png",
+        "lat_image": "drr_bone_LAT_t0_r30_f45_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r-30_f0_tor-10.png",
+        "lat_image": "drr_bone_LAT_t5_r-30_f0_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r-30_f0_tor0.png",
+        "lat_image": "drr_bone_LAT_t5_r-30_f0_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r-30_f0_tor10.png",
+        "lat_image": "drr_bone_LAT_t5_r-30_f0_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r-30_f15_tor-10.png",
+        "lat_image": "drr_bone_LAT_t5_r-30_f15_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r-30_f15_tor0.png",
+        "lat_image": "drr_bone_LAT_t5_r-30_f15_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r-30_f15_tor10.png",
+        "lat_image": "drr_bone_LAT_t5_r-30_f15_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r-30_f30_tor-10.png",
+        "lat_image": "drr_bone_LAT_t5_r-30_f30_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r-30_f30_tor0.png",
+        "lat_image": "drr_bone_LAT_t5_r-30_f30_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r-30_f30_tor10.png",
+        "lat_image": "drr_bone_LAT_t5_r-30_f30_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r-30_f45_tor-10.png",
+        "lat_image": "drr_bone_LAT_t5_r-30_f45_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r-30_f45_tor0.png",
+        "lat_image": "drr_bone_LAT_t5_r-30_f45_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r-30_f45_tor10.png",
+        "lat_image": "drr_bone_LAT_t5_r-30_f45_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r-15_f0_tor-10.png",
+        "lat_image": "drr_bone_LAT_t5_r-15_f0_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r-15_f0_tor0.png",
+        "lat_image": "drr_bone_LAT_t5_r-15_f0_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r-15_f0_tor10.png",
+        "lat_image": "drr_bone_LAT_t5_r-15_f0_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r-15_f15_tor-10.png",
+        "lat_image": "drr_bone_LAT_t5_r-15_f15_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r-15_f15_tor0.png",
+        "lat_image": "drr_bone_LAT_t5_r-15_f15_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r-15_f15_tor10.png",
+        "lat_image": "drr_bone_LAT_t5_r-15_f15_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r-15_f30_tor-10.png",
+        "lat_image": "drr_bone_LAT_t5_r-15_f30_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r-15_f30_tor0.png",
+        "lat_image": "drr_bone_LAT_t5_r-15_f30_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r-15_f30_tor10.png",
+        "lat_image": "drr_bone_LAT_t5_r-15_f30_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r-15_f45_tor-10.png",
+        "lat_image": "drr_bone_LAT_t5_r-15_f45_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r-15_f45_tor0.png",
+        "lat_image": "drr_bone_LAT_t5_r-15_f45_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r-15_f45_tor10.png",
+        "lat_image": "drr_bone_LAT_t5_r-15_f45_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r0_f0_tor-10.png",
+        "lat_image": "drr_bone_LAT_t5_r0_f0_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r0_f0_tor0.png",
+        "lat_image": "drr_bone_LAT_t5_r0_f0_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r0_f0_tor10.png",
+        "lat_image": "drr_bone_LAT_t5_r0_f0_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r0_f15_tor-10.png",
+        "lat_image": "drr_bone_LAT_t5_r0_f15_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r0_f15_tor0.png",
+        "lat_image": "drr_bone_LAT_t5_r0_f15_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r0_f15_tor10.png",
+        "lat_image": "drr_bone_LAT_t5_r0_f15_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r0_f30_tor-10.png",
+        "lat_image": "drr_bone_LAT_t5_r0_f30_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r0_f30_tor0.png",
+        "lat_image": "drr_bone_LAT_t5_r0_f30_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r0_f30_tor10.png",
+        "lat_image": "drr_bone_LAT_t5_r0_f30_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r0_f45_tor-10.png",
+        "lat_image": "drr_bone_LAT_t5_r0_f45_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r0_f45_tor0.png",
+        "lat_image": "drr_bone_LAT_t5_r0_f45_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r0_f45_tor10.png",
+        "lat_image": "drr_bone_LAT_t5_r0_f45_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r15_f0_tor-10.png",
+        "lat_image": "drr_bone_LAT_t5_r15_f0_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r15_f0_tor0.png",
+        "lat_image": "drr_bone_LAT_t5_r15_f0_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r15_f0_tor10.png",
+        "lat_image": "drr_bone_LAT_t5_r15_f0_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r15_f15_tor-10.png",
+        "lat_image": "drr_bone_LAT_t5_r15_f15_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r15_f15_tor0.png",
+        "lat_image": "drr_bone_LAT_t5_r15_f15_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r15_f15_tor10.png",
+        "lat_image": "drr_bone_LAT_t5_r15_f15_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r15_f30_tor-10.png",
+        "lat_image": "drr_bone_LAT_t5_r15_f30_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r15_f30_tor0.png",
+        "lat_image": "drr_bone_LAT_t5_r15_f30_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r15_f30_tor10.png",
+        "lat_image": "drr_bone_LAT_t5_r15_f30_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r15_f45_tor-10.png",
+        "lat_image": "drr_bone_LAT_t5_r15_f45_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r15_f45_tor0.png",
+        "lat_image": "drr_bone_LAT_t5_r15_f45_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r15_f45_tor10.png",
+        "lat_image": "drr_bone_LAT_t5_r15_f45_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r30_f0_tor-10.png",
+        "lat_image": "drr_bone_LAT_t5_r30_f0_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r30_f0_tor0.png",
+        "lat_image": "drr_bone_LAT_t5_r30_f0_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r30_f0_tor10.png",
+        "lat_image": "drr_bone_LAT_t5_r30_f0_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r30_f15_tor-10.png",
+        "lat_image": "drr_bone_LAT_t5_r30_f15_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r30_f15_tor0.png",
+        "lat_image": "drr_bone_LAT_t5_r30_f15_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r30_f15_tor10.png",
+        "lat_image": "drr_bone_LAT_t5_r30_f15_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r30_f30_tor-10.png",
+        "lat_image": "drr_bone_LAT_t5_r30_f30_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r30_f30_tor0.png",
+        "lat_image": "drr_bone_LAT_t5_r30_f30_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r30_f30_tor10.png",
+        "lat_image": "drr_bone_LAT_t5_r30_f30_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r30_f45_tor-10.png",
+        "lat_image": "drr_bone_LAT_t5_r30_f45_tor-10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r30_f45_tor0.png",
+        "lat_image": "drr_bone_LAT_t5_r30_f45_tor0.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_bone_AP_t5_r30_f45_tor10.png",
+        "lat_image": "drr_bone_LAT_t5_r30_f45_tor10.png",
+        "has_implant": false,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r-30_f0_tor-10.png",
+        "lat_image": "drr_metal_LAT_t-5_r-30_f0_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r-30_f0_tor0.png",
+        "lat_image": "drr_metal_LAT_t-5_r-30_f0_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r-30_f0_tor10.png",
+        "lat_image": "drr_metal_LAT_t-5_r-30_f0_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r-30_f15_tor-10.png",
+        "lat_image": "drr_metal_LAT_t-5_r-30_f15_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r-30_f15_tor0.png",
+        "lat_image": "drr_metal_LAT_t-5_r-30_f15_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r-30_f15_tor10.png",
+        "lat_image": "drr_metal_LAT_t-5_r-30_f15_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r-30_f30_tor-10.png",
+        "lat_image": "drr_metal_LAT_t-5_r-30_f30_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r-30_f30_tor0.png",
+        "lat_image": "drr_metal_LAT_t-5_r-30_f30_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r-30_f30_tor10.png",
+        "lat_image": "drr_metal_LAT_t-5_r-30_f30_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r-30_f45_tor-10.png",
+        "lat_image": "drr_metal_LAT_t-5_r-30_f45_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r-30_f45_tor0.png",
+        "lat_image": "drr_metal_LAT_t-5_r-30_f45_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r-30_f45_tor10.png",
+        "lat_image": "drr_metal_LAT_t-5_r-30_f45_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r-15_f0_tor-10.png",
+        "lat_image": "drr_metal_LAT_t-5_r-15_f0_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r-15_f0_tor0.png",
+        "lat_image": "drr_metal_LAT_t-5_r-15_f0_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r-15_f0_tor10.png",
+        "lat_image": "drr_metal_LAT_t-5_r-15_f0_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r-15_f15_tor-10.png",
+        "lat_image": "drr_metal_LAT_t-5_r-15_f15_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r-15_f15_tor0.png",
+        "lat_image": "drr_metal_LAT_t-5_r-15_f15_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r-15_f15_tor10.png",
+        "lat_image": "drr_metal_LAT_t-5_r-15_f15_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r-15_f30_tor-10.png",
+        "lat_image": "drr_metal_LAT_t-5_r-15_f30_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r-15_f30_tor0.png",
+        "lat_image": "drr_metal_LAT_t-5_r-15_f30_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r-15_f30_tor10.png",
+        "lat_image": "drr_metal_LAT_t-5_r-15_f30_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r-15_f45_tor-10.png",
+        "lat_image": "drr_metal_LAT_t-5_r-15_f45_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r-15_f45_tor0.png",
+        "lat_image": "drr_metal_LAT_t-5_r-15_f45_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r-15_f45_tor10.png",
+        "lat_image": "drr_metal_LAT_t-5_r-15_f45_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r0_f0_tor-10.png",
+        "lat_image": "drr_metal_LAT_t-5_r0_f0_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r0_f0_tor0.png",
+        "lat_image": "drr_metal_LAT_t-5_r0_f0_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r0_f0_tor10.png",
+        "lat_image": "drr_metal_LAT_t-5_r0_f0_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r0_f15_tor-10.png",
+        "lat_image": "drr_metal_LAT_t-5_r0_f15_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r0_f15_tor0.png",
+        "lat_image": "drr_metal_LAT_t-5_r0_f15_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r0_f15_tor10.png",
+        "lat_image": "drr_metal_LAT_t-5_r0_f15_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r0_f30_tor-10.png",
+        "lat_image": "drr_metal_LAT_t-5_r0_f30_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r0_f30_tor0.png",
+        "lat_image": "drr_metal_LAT_t-5_r0_f30_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r0_f30_tor10.png",
+        "lat_image": "drr_metal_LAT_t-5_r0_f30_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r0_f45_tor-10.png",
+        "lat_image": "drr_metal_LAT_t-5_r0_f45_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r0_f45_tor0.png",
+        "lat_image": "drr_metal_LAT_t-5_r0_f45_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r0_f45_tor10.png",
+        "lat_image": "drr_metal_LAT_t-5_r0_f45_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r15_f0_tor-10.png",
+        "lat_image": "drr_metal_LAT_t-5_r15_f0_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r15_f0_tor0.png",
+        "lat_image": "drr_metal_LAT_t-5_r15_f0_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r15_f0_tor10.png",
+        "lat_image": "drr_metal_LAT_t-5_r15_f0_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r15_f15_tor-10.png",
+        "lat_image": "drr_metal_LAT_t-5_r15_f15_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r15_f15_tor0.png",
+        "lat_image": "drr_metal_LAT_t-5_r15_f15_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r15_f15_tor10.png",
+        "lat_image": "drr_metal_LAT_t-5_r15_f15_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r15_f30_tor-10.png",
+        "lat_image": "drr_metal_LAT_t-5_r15_f30_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r15_f30_tor0.png",
+        "lat_image": "drr_metal_LAT_t-5_r15_f30_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r15_f30_tor10.png",
+        "lat_image": "drr_metal_LAT_t-5_r15_f30_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r15_f45_tor-10.png",
+        "lat_image": "drr_metal_LAT_t-5_r15_f45_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r15_f45_tor0.png",
+        "lat_image": "drr_metal_LAT_t-5_r15_f45_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r15_f45_tor10.png",
+        "lat_image": "drr_metal_LAT_t-5_r15_f45_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r30_f0_tor-10.png",
+        "lat_image": "drr_metal_LAT_t-5_r30_f0_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r30_f0_tor0.png",
+        "lat_image": "drr_metal_LAT_t-5_r30_f0_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r30_f0_tor10.png",
+        "lat_image": "drr_metal_LAT_t-5_r30_f0_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r30_f15_tor-10.png",
+        "lat_image": "drr_metal_LAT_t-5_r30_f15_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r30_f15_tor0.png",
+        "lat_image": "drr_metal_LAT_t-5_r30_f15_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r30_f15_tor10.png",
+        "lat_image": "drr_metal_LAT_t-5_r30_f15_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r30_f30_tor-10.png",
+        "lat_image": "drr_metal_LAT_t-5_r30_f30_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r30_f30_tor0.png",
+        "lat_image": "drr_metal_LAT_t-5_r30_f30_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r30_f30_tor10.png",
+        "lat_image": "drr_metal_LAT_t-5_r30_f30_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r30_f45_tor-10.png",
+        "lat_image": "drr_metal_LAT_t-5_r30_f45_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r30_f45_tor0.png",
+        "lat_image": "drr_metal_LAT_t-5_r30_f45_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t-5_r30_f45_tor10.png",
+        "lat_image": "drr_metal_LAT_t-5_r30_f45_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": -5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r-30_f0_tor-10.png",
+        "lat_image": "drr_metal_LAT_t0_r-30_f0_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r-30_f0_tor0.png",
+        "lat_image": "drr_metal_LAT_t0_r-30_f0_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r-30_f0_tor10.png",
+        "lat_image": "drr_metal_LAT_t0_r-30_f0_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r-30_f15_tor-10.png",
+        "lat_image": "drr_metal_LAT_t0_r-30_f15_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r-30_f15_tor0.png",
+        "lat_image": "drr_metal_LAT_t0_r-30_f15_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r-30_f15_tor10.png",
+        "lat_image": "drr_metal_LAT_t0_r-30_f15_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r-30_f30_tor-10.png",
+        "lat_image": "drr_metal_LAT_t0_r-30_f30_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r-30_f30_tor0.png",
+        "lat_image": "drr_metal_LAT_t0_r-30_f30_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r-30_f30_tor10.png",
+        "lat_image": "drr_metal_LAT_t0_r-30_f30_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r-30_f45_tor-10.png",
+        "lat_image": "drr_metal_LAT_t0_r-30_f45_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r-30_f45_tor0.png",
+        "lat_image": "drr_metal_LAT_t0_r-30_f45_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r-30_f45_tor10.png",
+        "lat_image": "drr_metal_LAT_t0_r-30_f45_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r-15_f0_tor-10.png",
+        "lat_image": "drr_metal_LAT_t0_r-15_f0_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r-15_f0_tor0.png",
+        "lat_image": "drr_metal_LAT_t0_r-15_f0_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r-15_f0_tor10.png",
+        "lat_image": "drr_metal_LAT_t0_r-15_f0_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r-15_f15_tor-10.png",
+        "lat_image": "drr_metal_LAT_t0_r-15_f15_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r-15_f15_tor0.png",
+        "lat_image": "drr_metal_LAT_t0_r-15_f15_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r-15_f15_tor10.png",
+        "lat_image": "drr_metal_LAT_t0_r-15_f15_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r-15_f30_tor-10.png",
+        "lat_image": "drr_metal_LAT_t0_r-15_f30_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r-15_f30_tor0.png",
+        "lat_image": "drr_metal_LAT_t0_r-15_f30_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r-15_f30_tor10.png",
+        "lat_image": "drr_metal_LAT_t0_r-15_f30_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r-15_f45_tor-10.png",
+        "lat_image": "drr_metal_LAT_t0_r-15_f45_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r-15_f45_tor0.png",
+        "lat_image": "drr_metal_LAT_t0_r-15_f45_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r-15_f45_tor10.png",
+        "lat_image": "drr_metal_LAT_t0_r-15_f45_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r0_f0_tor-10.png",
+        "lat_image": "drr_metal_LAT_t0_r0_f0_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r0_f0_tor0.png",
+        "lat_image": "drr_metal_LAT_t0_r0_f0_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r0_f0_tor10.png",
+        "lat_image": "drr_metal_LAT_t0_r0_f0_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r0_f15_tor-10.png",
+        "lat_image": "drr_metal_LAT_t0_r0_f15_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r0_f15_tor0.png",
+        "lat_image": "drr_metal_LAT_t0_r0_f15_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r0_f15_tor10.png",
+        "lat_image": "drr_metal_LAT_t0_r0_f15_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r0_f30_tor-10.png",
+        "lat_image": "drr_metal_LAT_t0_r0_f30_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r0_f30_tor0.png",
+        "lat_image": "drr_metal_LAT_t0_r0_f30_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r0_f30_tor10.png",
+        "lat_image": "drr_metal_LAT_t0_r0_f30_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r0_f45_tor-10.png",
+        "lat_image": "drr_metal_LAT_t0_r0_f45_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r0_f45_tor0.png",
+        "lat_image": "drr_metal_LAT_t0_r0_f45_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r0_f45_tor10.png",
+        "lat_image": "drr_metal_LAT_t0_r0_f45_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r15_f0_tor-10.png",
+        "lat_image": "drr_metal_LAT_t0_r15_f0_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r15_f0_tor0.png",
+        "lat_image": "drr_metal_LAT_t0_r15_f0_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r15_f0_tor10.png",
+        "lat_image": "drr_metal_LAT_t0_r15_f0_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r15_f15_tor-10.png",
+        "lat_image": "drr_metal_LAT_t0_r15_f15_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r15_f15_tor0.png",
+        "lat_image": "drr_metal_LAT_t0_r15_f15_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r15_f15_tor10.png",
+        "lat_image": "drr_metal_LAT_t0_r15_f15_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r15_f30_tor-10.png",
+        "lat_image": "drr_metal_LAT_t0_r15_f30_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r15_f30_tor0.png",
+        "lat_image": "drr_metal_LAT_t0_r15_f30_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r15_f30_tor10.png",
+        "lat_image": "drr_metal_LAT_t0_r15_f30_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r15_f45_tor-10.png",
+        "lat_image": "drr_metal_LAT_t0_r15_f45_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r15_f45_tor0.png",
+        "lat_image": "drr_metal_LAT_t0_r15_f45_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r15_f45_tor10.png",
+        "lat_image": "drr_metal_LAT_t0_r15_f45_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r30_f0_tor-10.png",
+        "lat_image": "drr_metal_LAT_t0_r30_f0_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r30_f0_tor0.png",
+        "lat_image": "drr_metal_LAT_t0_r30_f0_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r30_f0_tor10.png",
+        "lat_image": "drr_metal_LAT_t0_r30_f0_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r30_f15_tor-10.png",
+        "lat_image": "drr_metal_LAT_t0_r30_f15_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r30_f15_tor0.png",
+        "lat_image": "drr_metal_LAT_t0_r30_f15_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r30_f15_tor10.png",
+        "lat_image": "drr_metal_LAT_t0_r30_f15_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r30_f30_tor-10.png",
+        "lat_image": "drr_metal_LAT_t0_r30_f30_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r30_f30_tor0.png",
+        "lat_image": "drr_metal_LAT_t0_r30_f30_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r30_f30_tor10.png",
+        "lat_image": "drr_metal_LAT_t0_r30_f30_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r30_f45_tor-10.png",
+        "lat_image": "drr_metal_LAT_t0_r30_f45_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r30_f45_tor0.png",
+        "lat_image": "drr_metal_LAT_t0_r30_f45_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t0_r30_f45_tor10.png",
+        "lat_image": "drr_metal_LAT_t0_r30_f45_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 0,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r-30_f0_tor-10.png",
+        "lat_image": "drr_metal_LAT_t5_r-30_f0_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r-30_f0_tor0.png",
+        "lat_image": "drr_metal_LAT_t5_r-30_f0_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r-30_f0_tor10.png",
+        "lat_image": "drr_metal_LAT_t5_r-30_f0_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r-30_f15_tor-10.png",
+        "lat_image": "drr_metal_LAT_t5_r-30_f15_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r-30_f15_tor0.png",
+        "lat_image": "drr_metal_LAT_t5_r-30_f15_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r-30_f15_tor10.png",
+        "lat_image": "drr_metal_LAT_t5_r-30_f15_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r-30_f30_tor-10.png",
+        "lat_image": "drr_metal_LAT_t5_r-30_f30_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r-30_f30_tor0.png",
+        "lat_image": "drr_metal_LAT_t5_r-30_f30_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r-30_f30_tor10.png",
+        "lat_image": "drr_metal_LAT_t5_r-30_f30_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r-30_f45_tor-10.png",
+        "lat_image": "drr_metal_LAT_t5_r-30_f45_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r-30_f45_tor0.png",
+        "lat_image": "drr_metal_LAT_t5_r-30_f45_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r-30_f45_tor10.png",
+        "lat_image": "drr_metal_LAT_t5_r-30_f45_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r-15_f0_tor-10.png",
+        "lat_image": "drr_metal_LAT_t5_r-15_f0_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r-15_f0_tor0.png",
+        "lat_image": "drr_metal_LAT_t5_r-15_f0_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r-15_f0_tor10.png",
+        "lat_image": "drr_metal_LAT_t5_r-15_f0_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r-15_f15_tor-10.png",
+        "lat_image": "drr_metal_LAT_t5_r-15_f15_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r-15_f15_tor0.png",
+        "lat_image": "drr_metal_LAT_t5_r-15_f15_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r-15_f15_tor10.png",
+        "lat_image": "drr_metal_LAT_t5_r-15_f15_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r-15_f30_tor-10.png",
+        "lat_image": "drr_metal_LAT_t5_r-15_f30_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r-15_f30_tor0.png",
+        "lat_image": "drr_metal_LAT_t5_r-15_f30_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r-15_f30_tor10.png",
+        "lat_image": "drr_metal_LAT_t5_r-15_f30_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r-15_f45_tor-10.png",
+        "lat_image": "drr_metal_LAT_t5_r-15_f45_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r-15_f45_tor0.png",
+        "lat_image": "drr_metal_LAT_t5_r-15_f45_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r-15_f45_tor10.png",
+        "lat_image": "drr_metal_LAT_t5_r-15_f45_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": -15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r0_f0_tor-10.png",
+        "lat_image": "drr_metal_LAT_t5_r0_f0_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r0_f0_tor0.png",
+        "lat_image": "drr_metal_LAT_t5_r0_f0_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r0_f0_tor10.png",
+        "lat_image": "drr_metal_LAT_t5_r0_f0_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r0_f15_tor-10.png",
+        "lat_image": "drr_metal_LAT_t5_r0_f15_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r0_f15_tor0.png",
+        "lat_image": "drr_metal_LAT_t5_r0_f15_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r0_f15_tor10.png",
+        "lat_image": "drr_metal_LAT_t5_r0_f15_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r0_f30_tor-10.png",
+        "lat_image": "drr_metal_LAT_t5_r0_f30_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r0_f30_tor0.png",
+        "lat_image": "drr_metal_LAT_t5_r0_f30_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r0_f30_tor10.png",
+        "lat_image": "drr_metal_LAT_t5_r0_f30_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r0_f45_tor-10.png",
+        "lat_image": "drr_metal_LAT_t5_r0_f45_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r0_f45_tor0.png",
+        "lat_image": "drr_metal_LAT_t5_r0_f45_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r0_f45_tor10.png",
+        "lat_image": "drr_metal_LAT_t5_r0_f45_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 0,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r15_f0_tor-10.png",
+        "lat_image": "drr_metal_LAT_t5_r15_f0_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r15_f0_tor0.png",
+        "lat_image": "drr_metal_LAT_t5_r15_f0_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r15_f0_tor10.png",
+        "lat_image": "drr_metal_LAT_t5_r15_f0_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r15_f15_tor-10.png",
+        "lat_image": "drr_metal_LAT_t5_r15_f15_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r15_f15_tor0.png",
+        "lat_image": "drr_metal_LAT_t5_r15_f15_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r15_f15_tor10.png",
+        "lat_image": "drr_metal_LAT_t5_r15_f15_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r15_f30_tor-10.png",
+        "lat_image": "drr_metal_LAT_t5_r15_f30_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r15_f30_tor0.png",
+        "lat_image": "drr_metal_LAT_t5_r15_f30_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r15_f30_tor10.png",
+        "lat_image": "drr_metal_LAT_t5_r15_f30_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r15_f45_tor-10.png",
+        "lat_image": "drr_metal_LAT_t5_r15_f45_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r15_f45_tor0.png",
+        "lat_image": "drr_metal_LAT_t5_r15_f45_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r15_f45_tor10.png",
+        "lat_image": "drr_metal_LAT_t5_r15_f45_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 15,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r30_f0_tor-10.png",
+        "lat_image": "drr_metal_LAT_t5_r30_f0_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r30_f0_tor0.png",
+        "lat_image": "drr_metal_LAT_t5_r30_f0_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r30_f0_tor10.png",
+        "lat_image": "drr_metal_LAT_t5_r30_f0_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 0,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r30_f15_tor-10.png",
+        "lat_image": "drr_metal_LAT_t5_r30_f15_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r30_f15_tor0.png",
+        "lat_image": "drr_metal_LAT_t5_r30_f15_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r30_f15_tor10.png",
+        "lat_image": "drr_metal_LAT_t5_r30_f15_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 15,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r30_f30_tor-10.png",
+        "lat_image": "drr_metal_LAT_t5_r30_f30_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r30_f30_tor0.png",
+        "lat_image": "drr_metal_LAT_t5_r30_f30_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r30_f30_tor10.png",
+        "lat_image": "drr_metal_LAT_t5_r30_f30_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 30,
+        "tibia_torsion_deg": 10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r30_f45_tor-10.png",
+        "lat_image": "drr_metal_LAT_t5_r30_f45_tor-10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": -10
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r30_f45_tor0.png",
+        "lat_image": "drr_metal_LAT_t5_r30_f45_tor0.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 0
+    },
+    {
+        "ap_image": "drr_metal_AP_t5_r30_f45_tor10.png",
+        "lat_image": "drr_metal_LAT_t5_r30_f45_tor10.png",
+        "has_implant": true,
+        "global_tilt_deg": 5,
+        "global_rotation_deg": 30,
+        "tibia_flexion_deg": 45,
+        "tibia_torsion_deg": 10
+    }
+]
