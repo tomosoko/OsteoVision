@@ -288,6 +288,52 @@ def run(ct_dir):
     with open(json_path, "w") as f:
         json.dump(results, f, indent=2, ensure_ascii=False, default=str)
 
+    # 4. CT真値 vs AI推定 Bland-Altman CSV
+    # CT由来の真値（既知の回旋角）とAI推定値を比較するゴールドスタンダード検証
+    print("\n[4/4] CT真値 vs AI推定 Bland-Altman データ出力...")
+    import csv as _csv
+    ba_path = os.path.join(OUT_DIR, "bland_altman_data.csv")
+    with open(ba_path, "w", newline="") as f:
+        writer = _csv.writer(f)
+        writer.writerow([
+            "filename",
+            "ct_true_rotation_y",   # CT由来の真値（ゴールドスタンダード）
+            "ai_rotation",          # AI推定値
+            "rotation_error",       # 差（AI - 真値）
+            "ct_true_tilt_x",       # X軸あおり角（真値）
+            "conf",
+            "detected",
+        ])
+        for r in results:
+            gt = r["rotation_gt"]               # (rx, ry, rz)
+            ang = r["angles"]
+            ai_rot = ang["Rotation"] if ang else None
+            ct_rot_y = gt[1]                    # Y軸回旋が主なポジショニング変数
+            error = round(ai_rot - ct_rot_y, 2) if ai_rot is not None else None
+            writer.writerow([
+                r["filename"],
+                ct_rot_y,
+                ai_rot,
+                error,
+                gt[0],                          # X軸あおり角（真値）
+                round(r["conf"], 3),
+                r["conf"] > 0.3,
+            ])
+
+    # 簡易Bland-Altman統計
+    detected = [r for r in results if r["conf"] > 0.3 and r["angles"]]
+    if detected:
+        errors = [r["angles"]["Rotation"] - r["rotation_gt"][1] for r in detected]
+        mean_err = sum(errors) / len(errors)
+        sd = (sum((e - mean_err) ** 2 for e in errors) / len(errors)) ** 0.5
+        loa_upper = mean_err + 1.96 * sd
+        loa_lower = mean_err - 1.96 * sd
+        print(f"  Bland-Altman（回旋角, n={len(detected)}）:")
+        print(f"    平均差（バイアス）: {mean_err:+.2f}°")
+        print(f"    95% LoA: {loa_lower:.2f}° 〜 {loa_upper:.2f}°")
+        print(f"    ← 臨床許容範囲: ±5°以内が目標")
+    print(f"  CSVファイル: {ba_path}")
+
     # サマリー
     n_det = sum(1 for r in results if r["conf"] > 0.3)
     avg_ms = sum(r["elapsed_ms"] for r in results) / len(results)
@@ -296,6 +342,7 @@ def run(ct_dir):
     print(f"  平均推論速度  : {avg_ms:.1f}ms / 枚")
     print(f"  HTMLレポート  : {report_path}")
     print(f"  JSON結果      : {json_path}")
+    print(f"  BA用CSV       : {ba_path}")
     print(f"{'='*60}")
     print("\n✅ 検証完了！結果をEXPERIMENTS.mdのEXP-002に記録してください。")
 

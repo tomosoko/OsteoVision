@@ -172,8 +172,7 @@ if dl_model is not None:
 
 
 # Allow CORS — configurable via environment variable for production
-import os as _os
-_CORS_ORIGINS = _os.environ.get("CORS_ORIGINS", "http://localhost:3000").split(",")
+_CORS_ORIGINS = os.environ.get("CORS_ORIGINS", "http://localhost:3000").split(",")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=_CORS_ORIGINS,
@@ -684,7 +683,7 @@ def detect_bone_landmarks(image_array: np.ndarray) -> dict:
     # Sanity check: if condyles collapsed to same point, plateau angle is meaningless
     if abs(medial_condyle["x"] - lateral_condyle["x"]) < 5 and abs(medial_condyle["y"] - lateral_condyle["y"]) < 5:
         # Human knee posterior tibial slope (PTS) average is ~7° (range 4-12°)
-        tpa = 7.0  # Fallback to human population average when geometry is insufficient
+        tpa = 22.0  # Fallback to canine population average (18-25°) when geometry is insufficient
 
     # Flexion (Angle between the two main shafts)
     flexion = round(angle_between_vectors(femoral_axis_angle, tibial_axis_angle), 1)
@@ -809,7 +808,7 @@ async def analyze_knee(file: UploadFile = File(...)):
             wc = ds.get("WindowCenter"); ww = ds.get("WindowWidth")
             if isinstance(wc, pydicom.multival.MultiValue): wc = wc[0]
             if isinstance(ww, pydicom.multival.MultiValue): ww = ww[0]
-            if wc and ww:
+            if wc is not None and ww is not None:
                 pixel = apply_windowing(pixel, float(wc), float(ww))
             else:
                 mn, mx = pixel.min(), pixel.max()

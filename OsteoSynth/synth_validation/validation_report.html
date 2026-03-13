@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<title>OsteoVision — Synthetic DRR Validation</title>
+<style>
+  body{background:#0a0a14;color:#eee;font-family:monospace;padding:24px;margin:0}
+  h1{color:#5ae0ff;margin-bottom:4px} h2{color:#888;font-size:0.9em;margin-top:0}
+  .stats{display:flex;gap:16px;flex-wrap:wrap;margin:16px 0}
+  .stat{background:#1a1a2e;border-radius:6px;padding:12px 20px;min-width:120px}
+  .stat .label{color:#888;font-size:0.8em} .stat .val{color:#5ae0ff;font-size:1.6em;font-weight:bold}
+  table{border-collapse:collapse;width:100%;margin-top:16px;font-size:0.88em}
+  th{background:#1a1a2e;color:#5ae0ff;padding:10px 8px;text-align:left}
+  tr:nth-child(even){background:#0f0f1e}
+  td{padding:6px 8px;border-bottom:1px solid #1a1a2e;vertical-align:middle}
+  footer{color:#444;margin-top:32px;font-size:0.8em}
+</style>
+</head><body>
+<h1>🦴 OsteoVision AI — Synthetic DRR Validation</h1>
+<h2>Generated: 2026-03-06 20:30:17 | Model: YOLOv8n-pose (best.pt)</h2>
+
+<div class="stats">
+  <div class="stat"><div class="label">Total DRRs</div><div class="val">66</div></div>
+  <div class="stat"><div class="label">Detected (conf>0.3)</div><div class="val">8</div></div>
+  <div class="stat"><div class="label">Detection Rate</div><div class="val">12%</div></div>
+  <div class="stat"><div class="label">Avg Inference</div><div class="val">184ms</div></div>
+  <div class="stat"><div class="label">Avg TPA</div><div class="val">9.3°</div></div>
+</div>
+
+<table>
+  <tr>
+    <th>ファイル</th><th>GT rot(°)</th><th>conf</th>
+    <th>TPA(°)</th><th>Flex(°)</th><th>Rot(°)</th>
+    <th>TPA判定</th><th>Rotation判定</th><th>画像</th>
+  </tr>
+  
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-1_rot-10.png</td>
+          <td style="text-align:center">-10</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-1_rot-10.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-1_rot-2.png</td>
+          <td style="text-align:center">-2</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-1_rot-2.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-1_rot-4.png</td>
+          <td style="text-align:center">-4</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-1_rot-4.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-1_rot-6.png</td>
+          <td style="text-align:center">-6</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-1_rot-6.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-1_rot-8.png</td>
+          <td style="text-align:center">-8</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-1_rot-8.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-1_rot0.png</td>
+          <td style="text-align:center">0</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-1_rot0.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-1_rot10.png</td>
+          <td style="text-align:center">10</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-1_rot10.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-1_rot2.png</td>
+          <td style="text-align:center">2</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-1_rot2.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-1_rot4.png</td>
+          <td style="text-align:center">4</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-1_rot4.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-1_rot6.png</td>
+          <td style="text-align:center">6</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-1_rot6.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-1_rot8.png</td>
+          <td style="text-align:center">8</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-1_rot8.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-3_rot-10.png</td>
+          <td style="text-align:center">-10</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-3_rot-10.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-3_rot-2.png</td>
+          <td style="text-align:center">-2</td>
+          <td style="text-align:center">0.531</td>
+          <td style="text-align:center">5.8</td>
+          <td style="text-align:center">12.7</td>
+          <td style="text-align:center">-9.4</td>
+          <td><span style="color:#aaaaaa;font-weight:bold">[INFO]</span> 5.8°</td>
+          <td><span style="color:#ffdd44;font-weight:bold">[WARN]</span> 9.4° 修正指示</td>
+          <td><a href="overlays/ov_drr_tilt-3_rot-2.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-3_rot-4.png</td>
+          <td style="text-align:center">-4</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-3_rot-4.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-3_rot-6.png</td>
+          <td style="text-align:center">-6</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-3_rot-6.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-3_rot-8.png</td>
+          <td style="text-align:center">-8</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-3_rot-8.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-3_rot0.png</td>
+          <td style="text-align:center">0</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-3_rot0.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-3_rot10.png</td>
+          <td style="text-align:center">10</td>
+          <td style="text-align:center">0.635</td>
+          <td style="text-align:center">9.6</td>
+          <td style="text-align:center">6.5</td>
+          <td style="text-align:center">-10.1</td>
+          <td><span style="color:#aaaaaa;font-weight:bold">[INFO]</span> 9.6°</td>
+          <td><span style="color:#ffdd44;font-weight:bold">[WARN]</span> 10.1° 修正指示</td>
+          <td><a href="overlays/ov_drr_tilt-3_rot10.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-3_rot2.png</td>
+          <td style="text-align:center">2</td>
+          <td style="text-align:center">0.534</td>
+          <td style="text-align:center">1.2</td>
+          <td style="text-align:center">11.8</td>
+          <td style="text-align:center">-7.9</td>
+          <td><span style="color:#aaaaaa;font-weight:bold">[INFO]</span> 1.2°</td>
+          <td><span style="color:#ffdd44;font-weight:bold">[WARN]</span> 7.9° 修正指示</td>
+          <td><a href="overlays/ov_drr_tilt-3_rot2.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-3_rot4.png</td>
+          <td style="text-align:center">4</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-3_rot4.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-3_rot6.png</td>
+          <td style="text-align:center">6</td>
+          <td style="text-align:center">0.591</td>
+          <td style="text-align:center">20.5</td>
+          <td style="text-align:center">7.8</td>
+          <td style="text-align:center">-9.9</td>
+          <td><span style="color:#44ff88;font-weight:bold">[GOOD]</span> 20.5° 正常(18〜25°)</td>
+          <td><span style="color:#ffdd44;font-weight:bold">[WARN]</span> 9.9° 修正指示</td>
+          <td><a href="overlays/ov_drr_tilt-3_rot6.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-3_rot8.png</td>
+          <td style="text-align:center">8</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-3_rot8.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-5_rot-10.png</td>
+          <td style="text-align:center">-10</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-5_rot-10.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-5_rot-2.png</td>
+          <td style="text-align:center">-2</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-5_rot-2.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-5_rot-4.png</td>
+          <td style="text-align:center">-4</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-5_rot-4.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-5_rot-6.png</td>
+          <td style="text-align:center">-6</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-5_rot-6.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-5_rot-8.png</td>
+          <td style="text-align:center">-8</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-5_rot-8.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-5_rot0.png</td>
+          <td style="text-align:center">0</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-5_rot0.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-5_rot10.png</td>
+          <td style="text-align:center">10</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-5_rot10.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-5_rot2.png</td>
+          <td style="text-align:center">2</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-5_rot2.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-5_rot4.png</td>
+          <td style="text-align:center">4</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-5_rot4.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-5_rot6.png</td>
+          <td style="text-align:center">6</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-5_rot6.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt-5_rot8.png</td>
+          <td style="text-align:center">8</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt-5_rot8.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt1_rot-10.png</td>
+          <td style="text-align:center">-10</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt1_rot-10.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt1_rot-2.png</td>
+          <td style="text-align:center">-2</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt1_rot-2.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt1_rot-4.png</td>
+          <td style="text-align:center">-4</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt1_rot-4.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt1_rot-6.png</td>
+          <td style="text-align:center">-6</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt1_rot-6.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt1_rot-8.png</td>
+          <td style="text-align:center">-8</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt1_rot-8.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt1_rot0.png</td>
+          <td style="text-align:center">0</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt1_rot0.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt1_rot10.png</td>
+          <td style="text-align:center">10</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt1_rot10.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt1_rot2.png</td>
+          <td style="text-align:center">2</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt1_rot2.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt1_rot4.png</td>
+          <td style="text-align:center">4</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt1_rot4.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt1_rot6.png</td>
+          <td style="text-align:center">6</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt1_rot6.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt1_rot8.png</td>
+          <td style="text-align:center">8</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt1_rot8.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt3_rot-10.png</td>
+          <td style="text-align:center">-10</td>
+          <td style="text-align:center">0.635</td>
+          <td style="text-align:center">9.6</td>
+          <td style="text-align:center">6.5</td>
+          <td style="text-align:center">-10.1</td>
+          <td><span style="color:#aaaaaa;font-weight:bold">[INFO]</span> 9.6°</td>
+          <td><span style="color:#ffdd44;font-weight:bold">[WARN]</span> 10.1° 修正指示</td>
+          <td><a href="overlays/ov_drr_tilt3_rot-10.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt3_rot-2.png</td>
+          <td style="text-align:center">-2</td>
+          <td style="text-align:center">0.534</td>
+          <td style="text-align:center">1.2</td>
+          <td style="text-align:center">11.8</td>
+          <td style="text-align:center">-7.9</td>
+          <td><span style="color:#aaaaaa;font-weight:bold">[INFO]</span> 1.2°</td>
+          <td><span style="color:#ffdd44;font-weight:bold">[WARN]</span> 7.9° 修正指示</td>
+          <td><a href="overlays/ov_drr_tilt3_rot-2.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt3_rot-4.png</td>
+          <td style="text-align:center">-4</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt3_rot-4.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt3_rot-6.png</td>
+          <td style="text-align:center">-6</td>
+          <td style="text-align:center">0.591</td>
+          <td style="text-align:center">20.5</td>
+          <td style="text-align:center">7.8</td>
+          <td style="text-align:center">-9.9</td>
+          <td><span style="color:#44ff88;font-weight:bold">[GOOD]</span> 20.5° 正常(18〜25°)</td>
+          <td><span style="color:#ffdd44;font-weight:bold">[WARN]</span> 9.9° 修正指示</td>
+          <td><a href="overlays/ov_drr_tilt3_rot-6.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt3_rot-8.png</td>
+          <td style="text-align:center">-8</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt3_rot-8.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt3_rot0.png</td>
+          <td style="text-align:center">0</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt3_rot0.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt3_rot10.png</td>
+          <td style="text-align:center">10</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt3_rot10.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt3_rot2.png</td>
+          <td style="text-align:center">2</td>
+          <td style="text-align:center">0.531</td>
+          <td style="text-align:center">5.8</td>
+          <td style="text-align:center">12.7</td>
+          <td style="text-align:center">-9.4</td>
+          <td><span style="color:#aaaaaa;font-weight:bold">[INFO]</span> 5.8°</td>
+          <td><span style="color:#ffdd44;font-weight:bold">[WARN]</span> 9.4° 修正指示</td>
+          <td><a href="overlays/ov_drr_tilt3_rot2.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt3_rot4.png</td>
+          <td style="text-align:center">4</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt3_rot4.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt3_rot6.png</td>
+          <td style="text-align:center">6</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt3_rot6.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt3_rot8.png</td>
+          <td style="text-align:center">8</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt3_rot8.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt5_rot-10.png</td>
+          <td style="text-align:center">-10</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt5_rot-10.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt5_rot-2.png</td>
+          <td style="text-align:center">-2</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt5_rot-2.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt5_rot-4.png</td>
+          <td style="text-align:center">-4</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt5_rot-4.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt5_rot-6.png</td>
+          <td style="text-align:center">-6</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt5_rot-6.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt5_rot-8.png</td>
+          <td style="text-align:center">-8</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt5_rot-8.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt5_rot0.png</td>
+          <td style="text-align:center">0</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt5_rot0.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt5_rot10.png</td>
+          <td style="text-align:center">10</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt5_rot10.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt5_rot2.png</td>
+          <td style="text-align:center">2</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt5_rot2.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt5_rot4.png</td>
+          <td style="text-align:center">4</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt5_rot4.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt5_rot6.png</td>
+          <td style="text-align:center">6</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt5_rot6.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px;font-size:0.85em">drr_tilt5_rot8.png</td>
+          <td style="text-align:center">8</td>
+          <td style="text-align:center">0.000</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td style="text-align:center">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="overlays/ov_drr_tilt5_rot8.png" target="_blank" style="color:#5ae0ff">👁</a></td>
+        </tr>
+</table>
+
+<footer>
+※ conf &lt; 0.3 はキーポイント未検出<br>
+※ GT rot = ファイル名から読み取った正解回旋角
+</footer>
+</body></html>

@@ -1,0 +1,74 @@
+[
+  {
+    "filename": "phantom_rx0_ry0_rz0.png",
+    "gt_rotation": 0,
+    "conf": 0.9751304388046265,
+    "angles": {
+      "TPA": 8.2,
+      "Flexion": 6.9,
+      "Rotation": 5.9
+    },
+    "elapsed_ms": 209.2
+  },
+  {
+    "filename": "phantom_rx0_ry5_rz0.png",
+    "gt_rotation": 5,
+    "conf": 0.0,
+    "angles": null,
+    "elapsed_ms": 174.7
+  },
+  {
+    "filename": "phantom_rx0_ry-5_rz0.png",
+    "gt_rotation": -5,
+    "conf": 0.0,
+    "angles": null,
+    "elapsed_ms": 139.5
+  },
+  {
+    "filename": "phantom_rx0_ry10_rz0.png",
+    "gt_rotation": 10,
+    "conf": 0.0,
+    "angles": null,
+    "elapsed_ms": 174.5
+  },
+  {
+    "filename": "phantom_rx0_ry-10_rz0.png",
+    "gt_rotation": -10,
+    "conf": 0.0,
+    "angles": null,
+    "elapsed_ms": 111.0
+  },
+  {
+    "filename": "phantom_rx0_ry15_rz0.png",
+    "gt_rotation": 15,
+    "conf": 0.958940863609314,
+    "angles": {
+      "TPA": 9.4,
+      "Flexion": 0.8,
+      "Rotation": 1.5
+    },
+    "elapsed_ms": 119.3
+  },
+  {
+    "filename": "phantom_rx0_ry-15_rz0.png",
+    "gt_rotation": -15,
+    "conf": 0.9464832544326782,
+    "angles": {
+      "TPA": 16.4,
+      "Flexion": 3.0,
+      "Rotation": 4.5
+    },
+    "elapsed_ms": 146.1
+  },
+  {
+    "filename": "phantom_rx2_ry0_rz0.png",
+    "gt_rotation": 0,
+    "conf": 0.9833630919456482,
+    "angles": {
+      "TPA": 11.4,
+      "Flexion": 5.2,
+      "Rotation": 3.7
+    },
+    "elapsed_ms": 132.6
+  }
+]

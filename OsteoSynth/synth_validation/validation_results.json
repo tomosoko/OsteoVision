@@ -1,0 +1,782 @@
+[
+  {
+    "filename": "drr_tilt-1_rot-10.png",
+    "gt_rotation": -10,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 501.3
+  },
+  {
+    "filename": "drr_tilt-1_rot-2.png",
+    "gt_rotation": -2,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 208.7
+  },
+  {
+    "filename": "drr_tilt-1_rot-4.png",
+    "gt_rotation": -4,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 191.9
+  },
+  {
+    "filename": "drr_tilt-1_rot-6.png",
+    "gt_rotation": -6,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 194.4
+  },
+  {
+    "filename": "drr_tilt-1_rot-8.png",
+    "gt_rotation": -8,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 175.2
+  },
+  {
+    "filename": "drr_tilt-1_rot0.png",
+    "gt_rotation": 0,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 165.4
+  },
+  {
+    "filename": "drr_tilt-1_rot10.png",
+    "gt_rotation": 10,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 207.3
+  },
+  {
+    "filename": "drr_tilt-1_rot2.png",
+    "gt_rotation": 2,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 289.4
+  },
+  {
+    "filename": "drr_tilt-1_rot4.png",
+    "gt_rotation": 4,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 552.8
+  },
+  {
+    "filename": "drr_tilt-1_rot6.png",
+    "gt_rotation": 6,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 322.0
+  },
+  {
+    "filename": "drr_tilt-1_rot8.png",
+    "gt_rotation": 8,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 333.0
+  },
+  {
+    "filename": "drr_tilt-3_rot-10.png",
+    "gt_rotation": -10,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 235.4
+  },
+  {
+    "filename": "drr_tilt-3_rot-2.png",
+    "gt_rotation": -2,
+    "conf": 0.5307937860488892,
+    "angles": {
+      "TPA": 5.8,
+      "Flexion": 12.7,
+      "Rotation": -9.4
+    },
+    "qc": {
+      "Rotation": [
+        "WARN",
+        "9.4° 修正指示"
+      ],
+      "TPA": [
+        "INFO",
+        "5.8°"
+      ],
+      "Flexion": [
+        "WARN",
+        "12.7° 屈曲過多"
+      ]
+    },
+    "elapsed_ms": 235.6
+  },
+  {
+    "filename": "drr_tilt-3_rot-4.png",
+    "gt_rotation": -4,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 200.9
+  },
+  {
+    "filename": "drr_tilt-3_rot-6.png",
+    "gt_rotation": -6,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 161.6
+  },
+  {
+    "filename": "drr_tilt-3_rot-8.png",
+    "gt_rotation": -8,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 197.0
+  },
+  {
+    "filename": "drr_tilt-3_rot0.png",
+    "gt_rotation": 0,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 166.7
+  },
+  {
+    "filename": "drr_tilt-3_rot10.png",
+    "gt_rotation": 10,
+    "conf": 0.6346961259841919,
+    "angles": {
+      "TPA": 9.6,
+      "Flexion": 6.5,
+      "Rotation": -10.1
+    },
+    "qc": {
+      "Rotation": [
+        "WARN",
+        "10.1° 修正指示"
+      ],
+      "TPA": [
+        "INFO",
+        "9.6°"
+      ],
+      "Flexion": [
+        "WARN",
+        "6.5° 屈曲過多"
+      ]
+    },
+    "elapsed_ms": 170.7
+  },
+  {
+    "filename": "drr_tilt-3_rot2.png",
+    "gt_rotation": 2,
+    "conf": 0.5342320203781128,
+    "angles": {
+      "TPA": 1.2,
+      "Flexion": 11.8,
+      "Rotation": -7.9
+    },
+    "qc": {
+      "Rotation": [
+        "WARN",
+        "7.9° 修正指示"
+      ],
+      "TPA": [
+        "INFO",
+        "1.2°"
+      ],
+      "Flexion": [
+        "WARN",
+        "11.8° 屈曲過多"
+      ]
+    },
+    "elapsed_ms": 208.2
+  },
+  {
+    "filename": "drr_tilt-3_rot4.png",
+    "gt_rotation": 4,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 178.3
+  },
+  {
+    "filename": "drr_tilt-3_rot6.png",
+    "gt_rotation": 6,
+    "conf": 0.5907490849494934,
+    "angles": {
+      "TPA": 20.5,
+      "Flexion": 7.8,
+      "Rotation": -9.9
+    },
+    "qc": {
+      "Rotation": [
+        "WARN",
+        "9.9° 修正指示"
+      ],
+      "TPA": [
+        "GOOD",
+        "20.5° 正常(18〜25°)"
+      ],
+      "Flexion": [
+        "WARN",
+        "7.8° 屈曲過多"
+      ]
+    },
+    "elapsed_ms": 166.8
+  },
+  {
+    "filename": "drr_tilt-3_rot8.png",
+    "gt_rotation": 8,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 200.2
+  },
+  {
+    "filename": "drr_tilt-5_rot-10.png",
+    "gt_rotation": -10,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 175.5
+  },
+  {
+    "filename": "drr_tilt-5_rot-2.png",
+    "gt_rotation": -2,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 173.7
+  },
+  {
+    "filename": "drr_tilt-5_rot-4.png",
+    "gt_rotation": -4,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 191.9
+  },
+  {
+    "filename": "drr_tilt-5_rot-6.png",
+    "gt_rotation": -6,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 146.8
+  },
+  {
+    "filename": "drr_tilt-5_rot-8.png",
+    "gt_rotation": -8,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 145.1
+  },
+  {
+    "filename": "drr_tilt-5_rot0.png",
+    "gt_rotation": 0,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 152.2
+  },
+  {
+    "filename": "drr_tilt-5_rot10.png",
+    "gt_rotation": 10,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 134.6
+  },
+  {
+    "filename": "drr_tilt-5_rot2.png",
+    "gt_rotation": 2,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 138.4
+  },
+  {
+    "filename": "drr_tilt-5_rot4.png",
+    "gt_rotation": 4,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 138.6
+  },
+  {
+    "filename": "drr_tilt-5_rot6.png",
+    "gt_rotation": 6,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 133.9
+  },
+  {
+    "filename": "drr_tilt-5_rot8.png",
+    "gt_rotation": 8,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 129.7
+  },
+  {
+    "filename": "drr_tilt1_rot-10.png",
+    "gt_rotation": -10,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 133.8
+  },
+  {
+    "filename": "drr_tilt1_rot-2.png",
+    "gt_rotation": -2,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 178.1
+  },
+  {
+    "filename": "drr_tilt1_rot-4.png",
+    "gt_rotation": -4,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 151.9
+  },
+  {
+    "filename": "drr_tilt1_rot-6.png",
+    "gt_rotation": -6,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 151.1
+  },
+  {
+    "filename": "drr_tilt1_rot-8.png",
+    "gt_rotation": -8,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 134.6
+  },
+  {
+    "filename": "drr_tilt1_rot0.png",
+    "gt_rotation": 0,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 144.0
+  },
+  {
+    "filename": "drr_tilt1_rot10.png",
+    "gt_rotation": 10,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 127.6
+  },
+  {
+    "filename": "drr_tilt1_rot2.png",
+    "gt_rotation": 2,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 189.2
+  },
+  {
+    "filename": "drr_tilt1_rot4.png",
+    "gt_rotation": 4,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 162.7
+  },
+  {
+    "filename": "drr_tilt1_rot6.png",
+    "gt_rotation": 6,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 192.0
+  },
+  {
+    "filename": "drr_tilt1_rot8.png",
+    "gt_rotation": 8,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 235.0
+  },
+  {
+    "filename": "drr_tilt3_rot-10.png",
+    "gt_rotation": -10,
+    "conf": 0.6346961259841919,
+    "angles": {
+      "TPA": 9.6,
+      "Flexion": 6.5,
+      "Rotation": -10.1
+    },
+    "qc": {
+      "Rotation": [
+        "WARN",
+        "10.1° 修正指示"
+      ],
+      "TPA": [
+        "INFO",
+        "9.6°"
+      ],
+      "Flexion": [
+        "WARN",
+        "6.5° 屈曲過多"
+      ]
+    },
+    "elapsed_ms": 146.1
+  },
+  {
+    "filename": "drr_tilt3_rot-2.png",
+    "gt_rotation": -2,
+    "conf": 0.5342320203781128,
+    "angles": {
+      "TPA": 1.2,
+      "Flexion": 11.8,
+      "Rotation": -7.9
+    },
+    "qc": {
+      "Rotation": [
+        "WARN",
+        "7.9° 修正指示"
+      ],
+      "TPA": [
+        "INFO",
+        "1.2°"
+      ],
+      "Flexion": [
+        "WARN",
+        "11.8° 屈曲過多"
+      ]
+    },
+    "elapsed_ms": 155.3
+  },
+  {
+    "filename": "drr_tilt3_rot-4.png",
+    "gt_rotation": -4,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 160.1
+  },
+  {
+    "filename": "drr_tilt3_rot-6.png",
+    "gt_rotation": -6,
+    "conf": 0.5907490849494934,
+    "angles": {
+      "TPA": 20.5,
+      "Flexion": 7.8,
+      "Rotation": -9.9
+    },
+    "qc": {
+      "Rotation": [
+        "WARN",
+        "9.9° 修正指示"
+      ],
+      "TPA": [
+        "GOOD",
+        "20.5° 正常(18〜25°)"
+      ],
+      "Flexion": [
+        "WARN",
+        "7.8° 屈曲過多"
+      ]
+    },
+    "elapsed_ms": 177.2
+  },
+  {
+    "filename": "drr_tilt3_rot-8.png",
+    "gt_rotation": -8,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 143.7
+  },
+  {
+    "filename": "drr_tilt3_rot0.png",
+    "gt_rotation": 0,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 155.8
+  },
+  {
+    "filename": "drr_tilt3_rot10.png",
+    "gt_rotation": 10,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 154.9
+  },
+  {
+    "filename": "drr_tilt3_rot2.png",
+    "gt_rotation": 2,
+    "conf": 0.5307937860488892,
+    "angles": {
+      "TPA": 5.8,
+      "Flexion": 12.7,
+      "Rotation": -9.4
+    },
+    "qc": {
+      "Rotation": [
+        "WARN",
+        "9.4° 修正指示"
+      ],
+      "TPA": [
+        "INFO",
+        "5.8°"
+      ],
+      "Flexion": [
+        "WARN",
+        "12.7° 屈曲過多"
+      ]
+    },
+    "elapsed_ms": 166.8
+  },
+  {
+    "filename": "drr_tilt3_rot4.png",
+    "gt_rotation": 4,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 160.1
+  },
+  {
+    "filename": "drr_tilt3_rot6.png",
+    "gt_rotation": 6,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 205.0
+  },
+  {
+    "filename": "drr_tilt3_rot8.png",
+    "gt_rotation": 8,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 170.9
+  },
+  {
+    "filename": "drr_tilt5_rot-10.png",
+    "gt_rotation": -10,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 130.3
+  },
+  {
+    "filename": "drr_tilt5_rot-2.png",
+    "gt_rotation": -2,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 138.2
+  },
+  {
+    "filename": "drr_tilt5_rot-4.png",
+    "gt_rotation": -4,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 148.7
+  },
+  {
+    "filename": "drr_tilt5_rot-6.png",
+    "gt_rotation": -6,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 162.6
+  },
+  {
+    "filename": "drr_tilt5_rot-8.png",
+    "gt_rotation": -8,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 134.6
+  },
+  {
+    "filename": "drr_tilt5_rot0.png",
+    "gt_rotation": 0,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 149.7
+  },
+  {
+    "filename": "drr_tilt5_rot10.png",
+    "gt_rotation": 10,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 138.3
+  },
+  {
+    "filename": "drr_tilt5_rot2.png",
+    "gt_rotation": 2,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 167.6
+  },
+  {
+    "filename": "drr_tilt5_rot4.png",
+    "gt_rotation": 4,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 155.4
+  },
+  {
+    "filename": "drr_tilt5_rot6.png",
+    "gt_rotation": 6,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 176.0
+  },
+  {
+    "filename": "drr_tilt5_rot8.png",
+    "gt_rotation": 8,
+    "conf": 0.0,
+    "angles": null,
+    "qc": {
+      "overall": "FAIL"
+    },
+    "elapsed_ms": 143.0
+  }
+]
