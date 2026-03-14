@@ -2,7 +2,7 @@
 
 **Automated Knee Joint Angle Measurement & X-ray Positioning QA System**
 
-[![CI](https://github.com/YOUR_USERNAME/OsteoVision/actions/workflows/test.yml/badge.svg)](https://github.com/YOUR_USERNAME/OsteoVision/actions)
+[![CI](https://github.com/tomosoko/OsteoVision/actions/workflows/test.yml/badge.svg)](https://github.com/tomosoko/OsteoVision/actions)
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
@@ -45,7 +45,7 @@ OsteoVision automatically measures anatomical angles from knee X-ray images and 
 ### Docker (Recommended)
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/OsteoVision.git
+git clone https://github.com/tomosoko/OsteoVision.git
 cd OsteoVision
 docker-compose up
 # API  → http://localhost:8000

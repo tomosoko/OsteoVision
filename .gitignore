@@ -40,3 +40,6 @@ out/
 
 # Logs
 *.log
+
+# Large model files (>50MB)
+*.pth
