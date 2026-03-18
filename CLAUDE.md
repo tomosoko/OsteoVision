@@ -81,15 +81,15 @@
 
 ```bash
 # APIサーバー起動（ポート8000）
-cd /Users/kohei/OsteoVision_Dev/dicom-viewer-prototype-api
+cd /Users/kohei/Dev/OsteoVision_Dev/dicom-viewer-prototype-api
 ./venv/bin/python3 -m uvicorn main:app --host 0.0.0.0 --port 8000
 
 # フロントエンド起動（ポート3000）
-cd /Users/kohei/OsteoVision_Dev/dicom-viewer-prototype
+cd /Users/kohei/Dev/OsteoVision_Dev/dicom-viewer-prototype
 npm run dev
 
 # Docker一括起動
-cd /Users/kohei/OsteoVision_Dev
+cd /Users/kohei/Dev/OsteoVision_Dev
 docker-compose up
 ```
 

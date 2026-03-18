@@ -192,7 +192,7 @@ pytest tests/ -v
 ## Docker で一発起動
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/OsteoVision.git
+git clone https://github.com/tomosoko/OsteoVision.git
 docker-compose up
 # API  → http://localhost:8000
 # UI   → http://localhost:3000
@@ -223,7 +223,7 @@ docker-compose up
 「現場の課題 × AI」という組み合わせは、技師にしか作れないものがあります。
 
 コードはGitHubに公開しています。
-→ [github.com/YOUR_USERNAME/OsteoVision](https://github.com/YOUR_USERNAME/OsteoVision)
+→ [github.com/tomosoko/OsteoVision](https://github.com/tomosoko/OsteoVision)
 
 ---
 
