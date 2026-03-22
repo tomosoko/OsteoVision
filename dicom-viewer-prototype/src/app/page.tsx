@@ -28,6 +28,8 @@ interface LandmarkData {
   heatmap_data?: string;
 }
 
+const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000';
+
 export default function Home() {
   // Tailwind cannot generate classes dynamically (e.g. `bg-${color}-500`).
   // We must map color names to actual Tailwind class strings.
@@ -91,7 +93,7 @@ export default function Home() {
     const formData = new FormData();
     formData.append('file', f);
     try {
-      const res = await fetch('http://localhost:8000/api/upload', { method: 'POST', body: formData });
+      const res = await fetch(`${API_BASE}/api/upload`, { method: 'POST', body: formData });
       if (!res.ok) { const e = await res.json(); throw new Error(e.detail || 'Failed'); }
       const data = await res.json();
       setMetadata(data.metadata);
@@ -153,7 +155,7 @@ export default function Home() {
       const formData = new FormData();
       formData.append('file', imageBlob, filename);
 
-      const res = await fetch('http://localhost:8000/api/analyze', { method: 'POST', body: formData });
+      const res = await fetch(`${API_BASE}/api/analyze`, { method: 'POST', body: formData });
       if (!res.ok) { const e = await res.json(); throw new Error(e.detail || 'Analysis failed'); }
       const data = await res.json();
 
