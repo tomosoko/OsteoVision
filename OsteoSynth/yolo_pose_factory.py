@@ -319,7 +319,7 @@ def run_yolo_drr_factory():
         os.makedirs(os.path.join(out_dir, "labels", split), exist_ok=True)
     VAL_RATIO = 0.15  # 15% of data goes to validation
 
-    vol_size = 128
+    vol_size = 256  # Increased from 128 for higher-fidelity DRR (M4 Pro 64GB)
     out_img_size = (512, 512)
 
     # Try to load Real CT if available, fallback to dummy synthetic

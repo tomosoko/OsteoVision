@@ -1,0 +1,89 @@
+{
+  "TPA": {
+    "n": 30,
+    "bias": 0.610265457800385,
+    "sd": 0.6198099338519983,
+    "loa_upper": 1.8250929281503017,
+    "loa_lower": -0.6045620125495317,
+    "loa_width": 2.4296549406998333,
+    "ci_bias": [
+      0.37882462487641677,
+      0.8417062907243532
+    ],
+    "ci_loa_upper": [
+      1.424225646579929,
+      2.2259602097206743
+    ],
+    "ci_loa_lower": [
+      -1.0054292941199043,
+      -0.20369473097915897
+    ],
+    "prop_bias_p": 0.9629513465640145,
+    "within_threshold_pct": 100.0,
+    "threshold": 3.0,
+    "verdict": "PASS -- Clinically acceptable agreement"
+  },
+  "Flexion": {
+    "n": 30,
+    "bias": 0.6102654578003835,
+    "sd": 0.6198099338519982,
+    "loa_upper": 1.8250929281502999,
+    "loa_lower": -0.6045620125495329,
+    "loa_width": 2.429654940699833,
+    "ci_bias": [
+      0.3788246248764154,
+      0.8417062907243518
+    ],
+    "ci_loa_upper": [
+      1.4242256465799272,
+      2.2259602097206725
+    ],
+    "ci_loa_lower": [
+      -1.0054292941199057,
+      -0.20369473097916024
+    ],
+    "prop_bias_p": 0.6856667013044759,
+    "within_threshold_pct": 100.0,
+    "threshold": 3.0,
+    "verdict": "PASS -- Clinically acceptable agreement"
+  },
+  "Rotation": {
+    "n": 30,
+    "bias": 0.6102654578003835,
+    "sd": 0.6198099338519982,
+    "loa_upper": 1.8250929281502999,
+    "loa_lower": -0.6045620125495329,
+    "loa_width": 2.429654940699833,
+    "ci_bias": [
+      0.3788246248764154,
+      0.8417062907243518
+    ],
+    "ci_loa_upper": [
+      1.4242256465799272,
+      2.2259602097206725
+    ],
+    "ci_loa_lower": [
+      -1.0054292941199057,
+      -0.20369473097916024
+    ],
+    "prop_bias_p": 0.9031096107866559,
+    "within_threshold_pct": 100.0,
+    "threshold": 5.0,
+    "verdict": "PASS -- Clinically acceptable agreement"
+  },
+  "_training": {
+    "epochs_completed": 50,
+    "total_epochs": 50,
+    "mAP50_box": 0.87505,
+    "mAP50_pose": 0.76041,
+    "mAP50_95_pose": 0.69959,
+    "precision_pose": 0.57122,
+    "recall_pose": 0.99379,
+    "val_pose_loss": 0.3482,
+    "val_box_loss": 0.55717,
+    "device": "mps",
+    "imgsz": 256,
+    "batch": 16,
+    "model": "yolov8n-pose.pt"
+  }
+}

@@ -33,9 +33,12 @@ def load_dicom_volume(dicom_dir):
         
     print(f"Loaded {len(slices)} slices. Constructing 3D volume...")
     
-    # Stack slices into 3D array (Z, Y, X)
-    volume = np.stack([s.pixel_array for s in slices])
-    
+    # Stack slices into 3D array (Z, Y, X), applying RescaleSlope/Intercept to get HU values
+    ref = slices[0]
+    slope = float(getattr(ref, 'RescaleSlope', 1.0))
+    intercept = float(getattr(ref, 'RescaleIntercept', 0.0))
+    volume = np.stack([s.pixel_array.astype(np.float32) * slope + intercept for s in slices])
+
     # Pixel spacing (dx, dy, dz)
     try:
         dx, dy = float(slices[0].PixelSpacing[0]), float(slices[0].PixelSpacing[1])

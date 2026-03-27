@@ -182,7 +182,7 @@ def run_yolo_inference(image_path, model_path):
     try:
         from ultralytics import YOLO
         model = YOLO(model_path)
-        results = model(image_path, conf=0.3, verbose=False)
+        results = model(image_path, conf=0.1, imgsz=512, verbose=False)
         keypoints = []
         if results and results[0].keypoints is not None:
             kp_data = results[0].keypoints.xyn.cpu().numpy()
@@ -275,8 +275,14 @@ def generate_synthetic_drr_for_overlay(size=512):
 
 def create_overlay_image(use_yolo=True):
     """メイン: オーバーレイ画像を生成"""
-    model_path = os.path.join(API_DIR, "best.pt")
-    sample_img_path = os.path.join(BASE_DIR, "yolo_dataset", "images", "train", "drr_t0_r-5.png")
+    # 新しい訓練済みモデル（M4 Pro訓練 osteo_m4pro）を優先使用
+    model_path_new = os.path.join(BASE_DIR, "..", "runs", "pose", "runs", "osteo_m4pro", "weights", "best.pt")
+    model_path_old = os.path.join(API_DIR, "best.pt")
+    model_path = model_path_new if os.path.exists(model_path_new) else model_path_old
+    # 新フォーマット画像を優先（M4 Pro訓練データ）
+    sample_img_new = os.path.join(BASE_DIR, "yolo_dataset", "images", "train", "drr_bone_AP_t-5_r-15_f0_tor0.png")
+    sample_img_old = os.path.join(BASE_DIR, "yolo_dataset", "images", "train", "drr_t0_r-5.png")
+    sample_img_path = sample_img_new if os.path.exists(sample_img_new) else sample_img_old
 
     # ── 入力画像の準備 ──────────────────────────────────────────
     print("入力画像の準備中...")

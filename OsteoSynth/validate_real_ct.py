@@ -23,7 +23,7 @@ OUT_DIR  = os.path.join(BASE_DIR, "real_ct_validation")
 os.makedirs(OUT_DIR, exist_ok=True)
 
 # venv site-packages
-VENV_SP = os.path.join(API_DIR, "venv", "lib", "python3.9", "site-packages")
+VENV_SP = os.path.join(API_DIR, "venv312", "lib", "python3.12", "site-packages")
 if os.path.isdir(VENV_SP):
     sys.path.insert(0, VENV_SP)
 

@@ -1,0 +1,16 @@
+# OsteoVision YOLOv8-Pose Dataset Configuration (Auto-generated)
+path: /Users/kohei/develop/Dev/vision/OsteoVision/OsteoSynth/yolo_dataset
+train: images/train
+val: images/val
+
+kpt_shape: [4, 3]  # 4 keypoints, each with (x, y, visibility)
+flip_idx: [0, 2, 1, 3]  # medial/lateral condyles swap on horizontal flip
+
+names:
+  0: knee_joint
+
+# Keypoint names (for reference):
+# 0: femur_shaft (top of femoral axis)
+# 1: medial_condyle
+# 2: lateral_condyle
+# 3: tibia_plateau

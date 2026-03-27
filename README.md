@@ -123,6 +123,17 @@ No patient data required. OsteoSynth generates anatomically correct synthetic DR
 
 ---
 
+## Performance
+
+| Environment | Latency (ms) | Throughput | Speedup |
+|---|---|---|---|
+| Intel CPU (2019 MacBook) | 174 ms | 5.7 FPS | baseline |
+| **Apple M4 Pro (MPS)** | **13.7 ms** | **73.2 FPS** | **12.7x faster** |
+
+> M4 Pro with MPS acceleration achieves real-time inference — suitable for live positioning feedback during X-ray acquisition.
+
+---
+
 ## Tests
 
 ```bash

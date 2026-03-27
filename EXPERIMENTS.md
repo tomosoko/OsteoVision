@@ -77,19 +77,85 @@ device: 0 (T4 GPU)
 
 ---
 
-## EXP-002 | ファントムCTデータ検証（予定）
+## EXP-001c | Mac Mini M4 Pro ベンチマーク
 
-**日付:** Mac mini M4 Pro 到着後
-**目的:** 合成データで訓練したモデルが実データに近いファントムでどれだけ通用するか検証
+**日付:** 2026-03-27
+**実施者:** [氏名]
+**環境:** Mac Mini M4 Pro 64GB / Python 3.12 / MPS GPU
 
-### 予定設定
+### 設定
 
 ```yaml
-model: EXP-001のbest.pt（転移学習ベース）
-data: ファントムCT由来DRR
-評価指標: mAP50, Bland-Altman分析
-目標値: バイアス < 1.0°、LOA幅 < 5.0°
+スクリプト: benchmark_inference.py
+ベンチマーク回数: 50回（ウォームアップ3回後）
+比較基準: EXP-001b環境（Intel Mac 2019 / CPU推論 174ms/枚）
 ```
+
+### 結果
+
+| エンジン | 速度 | FPS | vs Intel CPU |
+|---|---|---|---|
+| YOLOv8n-pose（MPS GPU） | **13.7 ms/枚** | 73.2 FPS | **12.7x 高速化** |
+| 古典的CV（フォールバック） | **1.8 ms/枚** | 557.7 FPS | — |
+
+### 所見
+
+- YOLOv8n-poseがMPS GPUで73.2 FPSを達成し、リアルタイム処理（30FPS以上）を十分にクリア
+- Intel CPU比で12.7倍の高速化を確認
+- 古典的CVは557.7 FPSと極めて高速で、フォールバックとして全く問題なし
+- EXP-002のファントムCT検証をローカル環境で実行可能になった
+
+### 次のステップ
+
+- [x] リアルタイム処理可能を確認
+- [ ] EXP-002をローカル（M4 Pro）で実施
+
+---
+
+## EXP-002 | 解剖学的ファントムCT検証
+
+**日付:** 2026-03-27
+**実施者:** [氏名]
+**環境:** Mac Mini M4 Pro 64GB / Python 3.12 / MPS GPU
+
+### 設定
+
+```yaml
+model: EXP-001のbest.pt（YOLOv8n-pose, mAP50 99.8%）
+data: 合成解剖学的ファントムCT（create_knee_phantom.py生成）
+  ファントム仕様: 256x256x180 voxels, 0.5mm等方性
+  骨構造: 大腿骨（骨幹＋内外側顆）＋脛骨（高原＋骨幹）＋膝蓋骨＋軟部組織
+  DRR生成: validate_real_ct.py → drr_generator.py
+検証角度: 8パターン（回旋0/±5/±10/±15°, 前後傾斜±2°）
+出力先: OsteoSynth/real_ct_validation/
+```
+
+### 結果
+
+| 指標 | 値 |
+|---|---|
+| 検出率（conf > 0.3） | **0 / 8（0%）** |
+| 平均信頼度（conf） | **0.000** |
+| 平均推論速度 | **15.8 ms/枚** |
+| Bland-Altman | 検出データなし（計算不可） |
+
+### 所見
+
+- **YOLOキーポイントが全フレームで未検出**（conf=0.0）
+- 推論速度はM4 Pro MPS GPUで15.8ms（前回174ms比11倍高速）
+- **主因: 訓練データとのドメインギャップ**
+  - 訓練用DRR（OsteoSynth）: 簡易ボクセルファントムを直接プロジェクション、骨輪郭が明瞭
+  - 検証用DRR（drr_generator.py）: DICOM CT積算投影、軟部組織の混入・コントラスト特性が異なる
+  - 結果として見た目が全く異なるDRRになりモデルが認識できなかった
+- ファントムCT自体は正しく生成されている（大腿骨・脛骨・膝蓋骨・軟部組織の解剖学的構造）
+
+### 次のステップ
+
+- [ ] **EXP-002b**: OsteoSynthパイプラインをファントムCTに対応させる
+  - `yolo_pose_factory.py` でDICOM CTを読み込み、訓練時と同じ描画パラメータでDRR生成
+  - または `drr_generator.py` のコントラスト・ウィンドウをOsteoSynthと合わせる
+- [ ] **EXP-002c**: ファントムCT由来DRRを追加訓練データとして混合（Domain Randomization）
+- [ ] **EXP-003**: 実患者CT（TCIA/OAI）での検証（倫理審査後）
 
 ---
 
