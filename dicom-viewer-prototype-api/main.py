@@ -12,6 +12,8 @@ import cv2
 import numpy as np
 import base64
 
+from med_image_pipeline import apply_windowing, apply_clahe_to_gray, apply_gaussian_blur
+
 import torch
 import torch.nn as nn
 from torchvision import models, transforms
@@ -197,17 +199,6 @@ async def health_check():
         },
         "message": "OsteoVision AI API is running."
     }
-
-def apply_windowing(image_array, center, width):
-    """Applies windowing to a DICOM image array."""
-    if center is None or width is None:
-        return image_array
-    lower = center - (width / 2.0)
-    upper = center + (width / 2.0)
-    windowed = np.clip(image_array, lower, upper)
-    windowed = ((windowed - lower) / width) * 255.0
-    return windowed.astype(np.uint8)
-
 
 def detect_with_yolo_pose(image_array: np.ndarray) -> Optional[dict]:
     """
@@ -417,9 +408,8 @@ def detect_bone_landmarks(image_array: np.ndarray) -> dict:
         gray = image_array.copy()
 
     gray = gray.astype(np.uint8)
-    clahe = cv2.createCLAHE(clipLimit=3.0, tileGridSize=(8, 8))
-    enhanced = clahe.apply(gray)
-    blurred = cv2.GaussianBlur(enhanced, (5, 5), 0)
+    enhanced = apply_clahe_to_gray(gray, clip_limit=3.0, tile_grid_size=(8, 8))
+    blurred = apply_gaussian_blur(enhanced, kernel_size=(5, 5))
 
     # --- 2. Otsu thresholding ---
     _, bone_mask = cv2.threshold(blurred, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
