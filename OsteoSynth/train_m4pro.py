@@ -2,7 +2,7 @@
 64GB RAM + MPS GPU + 14コアCPUをフル活用
 
 使い方:
-  cd /Users/kohei/develop/Dev/vision/OsteoVision/OsteoSynth
+  cd /Users/kohei/develop/research/OsteoVision/OsteoSynth
   source venv/bin/activate
   python train_m4pro.py
 """

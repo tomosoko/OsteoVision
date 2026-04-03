@@ -116,10 +116,11 @@ No patient data required. OsteoSynth generates anatomically correct synthetic DR
 
 | Model | Training Data | mAP50 | Notes |
 |---|---|---|---|
-| YOLOv8n-pose | 633 synthetic DRRs | **99.8%** | Converged at epoch 10 |
+| YOLOv8n-pose | 633 synthetic DRRs | **99.8%** | EXP-001 · Converged at epoch 10 |
+| YOLO11s-pose | 633 synthetic DRRs | — | EXP-002a · In Progress (train_exp002.py) |
 | ResNet50 | Synthetic DRRs | — | Angle regression + Grad-CAM XAI |
 
-> ⚠️ Currently validated on synthetic data only. Real X-ray validation (EXP-002) planned after phantom CT acquisition.
+> ⚠️ EXP-001 validated on synthetic data only. Real X-ray validation (EXP-002b) in progress — domain gap identified between synthetic and phantom CT DRRs.
 
 ---
 
@@ -150,12 +151,29 @@ pytest tests/ -v
 
 ---
 
+## Experiments
+
+| ID | Description | Model | mAP50(P) |
+|---|---|---|---|
+| EXP-001 | Initial synthetic DRR training | YOLOv8n-pose | **99.8%** |
+| EXP-001b | Bland-Altman framework | — | — |
+| EXP-001c | M4 Pro benchmark (73.2 FPS) | YOLOv8n-pose | — |
+| EXP-002 | Phantom CT validation | YOLOv8n-pose | 0% (domain gap) |
+| EXP-002a | YOLO11s-pose + 512px comparison | YOLO11s-pose | In Progress |
+| EXP-002b | Domain gap fix (planned) | YOLO11s-pose | — |
+
+See [EXPERIMENTS.md](EXPERIMENTS.md) for full details.
+
+---
+
 ## Project Structure
 
 ```
-OsteoVision_Dev/
+OsteoVision/
 ├── OsteoSynth/                    # Synthetic DRR generation engine
 │   ├── yolo_pose_factory.py       # 720-image dataset generator
+│   ├── train_exp002.py            # EXP-002a: YOLO11s-pose training
+│   ├── train_yolo_pose.py         # EXP-001: YOLOv8n training
 │   ├── generate_6dof_demo.py      # 3-axis animation demo
 │   ├── generate_gradcam_demo.py   # Grad-CAM visualization
 │   └── generate_yolo_overlay.py   # Keypoint overlay images
@@ -165,6 +183,7 @@ OsteoVision_Dev/
 │   └── Dockerfile
 ├── dicom-viewer-prototype/        # Next.js frontend
 ├── bland_altman_analysis.py       # Clinical validation (Bland-Altman)
+├── EXPERIMENTS.md                 # Experiment log (EXP-001 to EXP-003)
 ├── docker-compose.yml
 └── .github/workflows/test.yml     # CI/CD
 ```
@@ -179,7 +198,9 @@ This project is built by a **Radiological Technologist (RT)** with the goal of:
 2. Providing real-time positioning feedback to improve image quality
 3. Demonstrating clinical AI development for medical device companies
 
-**Tech Stack:** Python · YOLOv8 · PyTorch · FastAPI · Next.js · OpenCV · Docker
+**Domain Challenge:** EXP-001 achieved 99.8% mAP50 on synthetic DRRs, but EXP-002 revealed a critical domain gap — 0% detection on real phantom CT DRRs. EXP-002a (YOLO11s-pose + 512px) and subsequent experiments aim to close this gap without requiring real patient data.
+
+**Tech Stack:** Python · YOLO11 · PyTorch · FastAPI · Next.js · OpenCV · Docker · Apple MPS
 
 ---
 

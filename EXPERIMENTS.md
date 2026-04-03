@@ -159,6 +159,53 @@ data: 合成解剖学的ファントムCT（create_knee_phantom.py生成）
 
 ---
 
+## EXP-002a | YOLO11s-pose + 512px モデル比較訓練
+
+**日付:** 2026-03-31
+**実施者:** [氏名]
+**環境:** Mac Mini M4 Pro 64GB / Python 3.12 / MPS GPU
+**スクリプト:** `OsteoSynth/train_exp002.py`
+
+### 設定
+
+```yaml
+model: yolo11s-pose.pt (small, EXP-001の yolov8n → YOLO11s へアップグレード)
+data: OsteoSynth生成合成DRR（訓練633枚 / 検証87枚）
+epochs: 150 (patience=20 early stopping)
+imgsz: 512
+batch: 32
+device: mps (Apple Silicon)
+optimizer: SGD (lr0=0.01, lrf=0.01, warmup=5epochs)
+data_aug: fliplr=0.5, mosaic=1.0, degrees=15, translate=0.1, scale=0.3
+pose_loss_weight: 1.5
+出力先: runs/pose/osteo_exp002_s11_512/
+```
+
+### 目的
+
+- EXP-001 (yolov8n, mAP50=99.8%) との精度・速度トレードオフ比較
+- YOLO11世代への移行検証（アーキテクチャ改良による精度向上期待）
+- smallモデルで実X線対応の汎化性能改善を狙う
+
+### 結果
+
+*(訓練実施後に記録)*
+
+| 指標 | EXP-001 (yolov8n) | EXP-002a (yolo11s) |
+|---|---|---|
+| mAP50(P) | 99.8% | — |
+| 訓練時間 | 約30分 (Colab T4) | — |
+| モデルサイズ | 6.1MB | — |
+| 推論速度 (MPS) | 13.7 ms | — |
+
+### 次のステップ
+
+- [ ] 訓練実行: `python OsteoSynth/train_exp002.py`
+- [ ] 結果をこのテーブルに記録
+- [ ] EXP-002bのドメインギャップ修正と組み合わせて検証
+
+---
+
 ## EXP-003 | 実患者データ検証（予定）
 
 **日付:** 倫理審査承認後（2026年内目標）

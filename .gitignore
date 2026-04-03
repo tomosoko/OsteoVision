@@ -42,8 +42,28 @@ out/
 *.log
 nohup.out
 
-# Large model files (>50MB)
+# Large model files
 *.pth
+*.pt
+
+# Training runs (large binary outputs — 1GB+)
+runs/
+
+# Generated datasets (reproducible via yolo_pose_factory.py)
+OsteoSynth/yolo_dataset/images/
+OsteoSynth/yolo_dataset/labels/
+
+# Generated output images / GIFs (reproducible)
+OsteoSynth/yolo_overlay_output/
+OsteoSynth/gradcam_output/
+OsteoSynth/phantom_validation/
+OsteoSynth/real_ct_validation/
+OsteoSynth/synth_validation/
+OsteoSynth/*.gif
+validation_output/
+
+# PDF / presentation files
+*.pdf
 
 # Claude Code internal files (not for public)
 CLAUDE.md

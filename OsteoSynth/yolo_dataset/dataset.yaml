@@ -1,5 +1,5 @@
 # OsteoVision YOLOv8-Pose Dataset Configuration (Auto-generated)
-path: /Users/kohei/develop/Dev/vision/OsteoVision/OsteoSynth/yolo_dataset
+path: /Users/kohei/develop/research/OsteoVision/OsteoSynth/yolo_dataset
 train: images/train
 val: images/val
 
