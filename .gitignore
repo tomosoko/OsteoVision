@@ -71,3 +71,7 @@ CLAUDE_HANDOFF.md
 
 # Draft / work-in-progress files (not for public)
 qiita_draft.md
+*.cache
+dicom-viewer-prototype-api/venv*/
+OsteoSynth/data/
+OsteoSynth/yolo_dataset_exp002b/
