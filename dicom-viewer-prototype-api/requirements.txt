@@ -46,3 +46,4 @@ ultralytics-thop==2.0.18
 urllib3==2.6.3
 uvicorn==0.39.0
 zipp==3.23.0
+med-image-pipeline @ git+https://github.com/tomosoko/med-image-pipeline.git
