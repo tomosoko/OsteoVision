@@ -260,12 +260,87 @@ pose_loss_weight: 1.5
 - EXP-001 (yolov8n, 99.8%) と同等の精度をYOLO11sでも達成
 - ベストモデル: `runs/osteo_exp002b/weights/best.pt`
 
+### EXP-002b → ファントムCT検証の失敗（根本原因特定）
+
+EXP-002b モデルを `validate_real_ct.py --ct data/phantom_ct` で検証 → 0% 検出:
+
+**原因1: DRR生成バグ（`drr_generator.py`）**
+- 空気 (HU=-1000) が投影の合計値を強く負方向に引っ張り、クリップ後ほぼゼロ（黒画像）
+- DRR平均値: 3.5（正常なら30以上）
+- 修正: HU < -500 を 0 にクリップしてから投影（✅ fix適用済み）
+
+**原因2: ランドマーク座標ミス**
+- EXP-002bは固定比率（femur=ボリューム高さ×0.75等）でランドマークをハードコード
+- `sample_ct` (64×64×64) と `phantom_ct` (180×256×256) では比率が異なる
+- 結果: モデルが固定ピクセル位置を学習し、別ボリュームで転移失敗
+
+→ **EXP-002c** で両問題を修正
+
 ### 次のステップ
 
 - [x] 訓練完了・EXPERIMENTS.md記録
-- [ ] ファントムCT (data/phantom_ct/) を使った検証 → validate_real_ct.py
-- [ ] ファントムCT由来DRRで精度確認 (EXP-002c相当)
-- [ ] GitHub push
+- [x] ファントムCT検証 → 0% 検出（原因特定）
+- [x] drr_generator.py の DRR黒画像バグ修正
+- [x] EXP-002c実装（解剖学的正確ランドマーク）
+- [x] GitHub push (commit 15ee956)
+
+---
+
+## EXP-002c | 解剖学的正確ランドマーク版（訓練中）
+
+**日付:** 2026-04-12
+**実施者:** [氏名]
+**環境:** Mac Mini M4 Pro 64GB / Python 3.12 / MPS GPU
+**スクリプト:** `OsteoSynth/train_exp002c.py`
+
+### 背景・修正方針
+
+EXP-002b (mAP50=0.994) がファントムCT検証で 0% 検出。二重の問題を修正:
+
+1. **drr_generator.py DRRバグ修正済み**: HU < -500 を 0 にクリップ（DRR平均 3.5 → 36.9）
+2. **ランドマーク座標修正**: `create_knee_phantom.build_phantom()` から実際の解剖学的座標を使用
+
+### 実際のランドマーク座標 (k=Z, i=Y, j=X)
+
+| キーポイント | 座標 |
+|---|---|
+| femur_shaft | (150, 126, 128) |
+| medial_condyle | (90, 134, 152) |
+| lateral_condyle | (88, 126, 106) |
+| tibia_plateau | (63, 132, 128) |
+
+### 設定
+
+```yaml
+model: yolo11s-pose.pt
+data: OsteoSynth/yolo_dataset_exp002c/ (解剖学的正確ランドマーク)
+  訓練画像数: 613枚 / 検証画像数: 107枚
+  生成パイプライン: yolo_pose_factory_exp002c.py
+  バリエーション: bone/metal × tilts × rots × flexions × torsions × LAT/AP
+epochs: 150
+imgsz: 512
+batch: 32
+device: mps (Apple Silicon)
+optimizer: AdamW (lr=0.002, momentum=0.9) - auto-selected
+出力先: runs/osteo_exp002c/
+```
+
+### 訓練経過（リアルタイム更新）
+
+| epoch | mAP50(B) | mAP50(P) | 備考 |
+|---|---|---|---|
+| 9 | 0.635 | 0.411 | — |
+| 10 | 0.977 | 0.699 | ピーク |
+| 11-13 | fluctuating | fluctuating | 初期振動 |
+
+*(訓練完了後に最終結果を追記)*
+
+### 次のステップ
+
+- [x] EXP-002c データ生成・訓練開始
+- [ ] 訓練完了 → ベストモデル確認
+- [ ] `python validate_real_ct.py --ct data/phantom_ct --model runs/osteo_exp002c/weights/best.pt`
+- [ ] ファントムCT検出成功を確認 → 実骨CTへ
 
 ---
 
