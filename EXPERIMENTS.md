@@ -193,16 +193,79 @@ pose_loss_weight: 1.5
 
 | 指標 | EXP-001 (yolov8n) | EXP-002a (yolo11s) |
 |---|---|---|
-| mAP50(P) | 99.8% | — |
-| 訓練時間 | 約30分 (Colab T4) | — |
-| モデルサイズ | 6.1MB | — |
-| 推論速度 (MPS) | 13.7 ms | — |
+| mAP50(P) | 99.8% | **0.005**（ドメインギャップ失敗） |
+| 訓練時間 | 約30分 (Colab T4) | 5.8分 (M4 Pro) |
+| モデルサイズ | 6.1MB | 19.7MB |
+| 推論速度 (MPS) | 13.7 ms | 30.0 ms |
 
 ### 次のステップ
 
-- [ ] 訓練実行: `python OsteoSynth/train_exp002.py`
-- [ ] 結果をこのテーブルに記録
-- [ ] EXP-002bのドメインギャップ修正と組み合わせて検証
+- [x] 訓練実行: `python OsteoSynth/train_exp002.py`
+- [x] 結果をこのテーブルに記録（mAP50=0.005, ドメインギャップで失敗）
+- [x] EXP-002bのドメインギャップ修正と組み合わせて検証
+
+---
+
+## EXP-002b | ドメインギャップ修正版訓練（CLAHE統一）
+
+**日付:** 2026-04-12
+**実施者:** [氏名]
+**環境:** Mac Mini M4 Pro 64GB / Python 3.12 / MPS GPU
+**スクリプト:** `OsteoSynth/train_exp002b.py`
+
+### 背景・修正方針
+
+EXP-002a (mAP50=0.005) の失敗原因はドメインギャップ:
+- 訓練DRR (yolo_pose_factory.py): HU>200 骨のみ投影、BMIノイズあり、CLAHEなし
+- 検証DRR (drr_generator.py): 全組織投影、CLAHEあり
+
+修正: 訓練側も検証側に合わせて統一
+1. HU閾値除去 → 全組織 (HU > -500) 投影
+2. BMIノイズ・密度係数シミュレーション除去
+3. 投影後にCLAHE (clipLimit=2.0, tileGridSize=(8,8)) を適用
+
+### 設定
+
+```yaml
+model: yolo11s-pose.pt (small)
+data: OsteoSynth/yolo_dataset_exp002b/ (統一DRRパイプライン)
+  訓練画像数: 618枚 / 検証画像数: 160枚
+  生成パイプライン: yolo_pose_factory_exp002b.py (CLAHE統一版)
+epochs: 150 (早期停止: epoch 86で終了, best: epoch 53)
+imgsz: 512
+batch: 32
+device: mps (Apple Silicon)
+optimizer: SGD (lr0=0.01, lrf=0.01, warmup=5epochs)
+data_aug: fliplr=0.5, mosaic=1.0, degrees=15, translate=0.1, scale=0.3
+pose_loss_weight: 1.5
+出力先: runs/osteo_exp002b/
+訓練時間: 2409秒 (40.2分)
+```
+
+### 結果
+
+| 指標 | EXP-002a (失敗) | EXP-002b (修正版) |
+|---|---|---|
+| mAP50(P) | 0.005 | **0.994** |
+| mAP50(B) | 0.638 | **0.994** |
+| mAP50-95(P) | 0.001 | **0.613** |
+| ベストエポック | epoch 2 | **epoch 53** |
+| 訓練時間 | 5.8分 | 40.2分 |
+| モデルサイズ | 19.7MB | 19.7MB |
+
+### 所見
+
+- **ドメインギャップ解消に成功**: mAP50 0.005 → 0.994 (大幅改善)
+- CLAHEと全組織投影の統一が効果的だった
+- EXP-001 (yolov8n, 99.8%) と同等の精度をYOLO11sでも達成
+- ベストモデル: `runs/osteo_exp002b/weights/best.pt`
+
+### 次のステップ
+
+- [x] 訓練完了・EXPERIMENTS.md記録
+- [ ] ファントムCT (data/phantom_ct/) を使った検証 → validate_real_ct.py
+- [ ] ファントムCT由来DRRで精度確認 (EXP-002c相当)
+- [ ] GitHub push
 
 ---
 

@@ -199,7 +199,7 @@ def make_html_report(results, out_path):
 
 
 # ─── メイン ────────────────────────────────────────────────────────────────
-def run(ct_dir):
+def run(ct_dir, model_path=None):
     print("=" * 60)
     print("OsteoVision — Real CT Validation Pipeline")
     print("=" * 60)
@@ -237,10 +237,12 @@ def run(ct_dir):
 
     # 2. YOLO推論
     print("\n[2/3] YOLOv8推論...")
-    model_path = os.path.join(API_DIR, "best.pt")
+    if model_path is None:
+        model_path = os.path.join(API_DIR, "best.pt")
     if not os.path.exists(model_path):
         print(f"  ERROR: best.pt が見つかりません: {model_path}")
         sys.exit(1)
+    print(f"  モデル: {model_path}")
 
     from ultralytics import YOLO
     model = YOLO(model_path)
@@ -351,5 +353,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--ct", default=os.path.join(BASE_DIR, "sample_ct"),
                         help="CTのDICOMディレクトリパス")
+    parser.add_argument("--model", default=None,
+                        help="YOLOモデルパス (default: dicom-viewer-prototype-api/best.pt)")
     args = parser.parse_args()
-    run(args.ct)
+    run(args.ct, args.model)

@@ -137,9 +137,15 @@ def generate_drr(volume, spacing, rx_deg, ry_deg, rz_deg, out_shape=(512, 512)):
         cval=0.0
     )
 
+    # 2.5. Preprocess HU values to match EXP-002b training pipeline:
+    # Clip air (HU < -500) to 0 so air doesn't dominate projection.
+    # This matches yolo_pose_factory_exp002b.py which uses AIR_HU_THRESHOLD = -500.
+    rotated_vol = np.where(rotated_vol < -500, 0.0, rotated_vol)
+    rotated_vol = np.clip(rotated_vol, 0, None)
+
     # 3. X-ray simulation: sum attenuation along ray direction
     projection = np.sum(rotated_vol, axis=2)  # Lateral view (project along X)
-    
+
     # Normalize to 0-255
     projection = np.clip(projection, 0, None)
     p_max = np.max(projection)
