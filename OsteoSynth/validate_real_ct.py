@@ -27,6 +27,21 @@ VENV_SP = os.path.join(API_DIR, "venv312", "lib", "python3.12", "site-packages")
 if os.path.isdir(VENV_SP):
     sys.path.insert(0, VENV_SP)
 
+# ─── 回旋角校正定数（Bland-Altman EXP-002c ファントムCT 8例から推定） ─────
+# AI推定値 - CT真値 の平均誤差 = -15.89° → 補正値 = +15.89°
+# TODO: 実骨CT症例が増えたら linear regression で slope も校正する
+ROTATION_CALIB_BIAS: float = 15.89
+
+
+def apply_rotation_calibration(rotation: float, bias: float = ROTATION_CALIB_BIAS) -> float:
+    """回旋角にBland-Altmanバイアス補正を適用する.
+
+    EXP-002c ファントムCT (n=8) で測定したバイアス (-15.89°) を加算して
+    CT真値に近い値を返す。実データが増えた時点で bias を更新すること。
+    """
+    return round(rotation + bias, 1)
+
+
 # ─── 角度計算（main.pyと同一ロジック） ────────────────────────────────────
 def angle_deg(p1, p2):
     return math.degrees(math.atan2(p2[1]-p1[1], p2[0]-p1[0]))
@@ -263,6 +278,9 @@ def run(ct_dir, model_path=None):
                 conf = float(res[0].keypoints.conf[0].mean())
 
         angles = calc_angles([(x*w,y*h) for x,y in kpts_norm]) if kpts_norm else None
+        # 回旋角バイアス補正（EXP-002c Bland-Altman: -15.89°オフセット）
+        if angles is not None:
+            angles["Rotation"] = apply_rotation_calibration(angles["Rotation"])
         qc     = qc_judge(angles)
 
         # 可視化
@@ -299,10 +317,10 @@ def run(ct_dir, model_path=None):
         writer = _csv.writer(f)
         writer.writerow([
             "filename",
-            "ct_true_rotation_y",   # CT由来の真値（ゴールドスタンダード）
-            "ai_rotation",          # AI推定値
-            "rotation_error",       # 差（AI - 真値）
-            "ct_true_tilt_x",       # X軸あおり角（真値）
+            "ct_true_rotation_y",       # CT由来の真値（ゴールドスタンダード）
+            "ai_rotation_calibrated",   # AI推定値（バイアス補正済み +15.89°）
+            "rotation_error",           # 差（補正後AI - 真値）
+            "ct_true_tilt_x",           # X軸あおり角（真値）
             "conf",
             "detected",
         ])
