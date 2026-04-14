@@ -12,7 +12,7 @@ EXP-002b の修正:
   3. 同一パイプラインで生成したデータで再訓練
 
 使い方:
-  cd /Users/kohei/develop/research/OsteoVision/OsteoSynth
+  cd ~/develop/research/OsteoVision/OsteoSynth
   source venv/bin/activate
   python train_exp002b.py
 

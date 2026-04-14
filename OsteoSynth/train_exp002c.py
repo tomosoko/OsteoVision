@@ -9,8 +9,8 @@ EXP-002c の修正:
   - 統一DRRパイプライン (CLAHE, HU<-500=0) 維持
 
 使い方:
-  cd /Users/kohei/develop/research/OsteoVision/OsteoSynth
-  /Users/kohei/develop/research/OsteoVision/dicom-viewer-prototype-api/venv312/bin/python3 train_exp002c.py
+  cd ~/develop/research/OsteoVision/OsteoSynth
+  ~/develop/research/OsteoVision/dicom-viewer-prototype-api/venv312/bin/python3 train_exp002c.py
 """
 
 import os

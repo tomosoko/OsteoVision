@@ -4,7 +4,7 @@ EXP-001 (yolov8n, 512px, mAP50=99.8%) の後継実験。
 YOLO11s (small) モデルで精度・速度のトレードオフを検証する。
 
 使い方:
-  cd /Users/kohei/develop/research/OsteoVision/OsteoSynth
+  cd ~/develop/research/OsteoVision/OsteoSynth
   source venv/bin/activate
   python train_exp002.py
 
