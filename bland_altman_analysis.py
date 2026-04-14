@@ -17,6 +17,7 @@ Enhanced for M4 Pro trained model (osteo_m4pro) with:
 CSVフォーマット (measurements.csv):
   subject_id, ai_tpa, expert_tpa, ai_flexion, expert_flexion, ai_rotation, expert_rotation
 """
+from __future__ import annotations
 import os
 import argparse
 import json
