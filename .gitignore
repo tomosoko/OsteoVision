@@ -74,5 +74,6 @@ qiita_draft.md
 *.cache
 dicom-viewer-prototype-api/venv*/
 OsteoSynth/data/
+data/
 OsteoSynth/yolo_dataset_exp002b/
 OsteoSynth/yolo_dataset_exp002c/
