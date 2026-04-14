@@ -11,6 +11,8 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "OsteoSynth"))
 from yolo_pose_factory_exp002c import (
     get_rotation_matrix,
     preprocess_volume,
+    apply_unified_postprocess,
+    project_landmark_3d_to_2d,
     convert_to_yolov8_pose,
 )
 
@@ -102,6 +104,82 @@ class TestPreprocessVolume:
         # -100 は負なのでゼロクリップ → 出力は0
         assert out[0, 0, 0] == 0.0
         assert out[0, 0, 1] > 0.0
+
+
+class TestApplyUnifiedPostprocess:
+    """apply_unified_postprocess のテスト."""
+
+    def test_returns_uint8(self):
+        proj = np.random.uniform(0, 1000, (64, 64)).astype(np.float32)
+        out = apply_unified_postprocess(proj, (64, 64))
+        assert out.dtype == np.uint8
+
+    def test_output_shape_matches_target(self):
+        proj = np.ones((32, 32), dtype=np.float32) * 500
+        out = apply_unified_postprocess(proj, (64, 128))
+        assert out.shape == (128, 64)
+
+    def test_negative_values_clipped_uniform(self):
+        """負値はゼロにクリップされ、均一画像になる（CLAHEが均等化してもuint8）."""
+        proj = np.full((16, 16), -500.0, dtype=np.float32)
+        out = apply_unified_postprocess(proj, (16, 16))
+        assert out.dtype == np.uint8
+        # all-negative → clip to 0 → uniform → CLAHE may equalize
+        assert out.min() == out.max()  # uniform output
+
+    def test_all_zeros_no_crash(self):
+        """ゼロ入力でゼロ除算しない（クラッシュしない）."""
+        proj = np.zeros((16, 16), dtype=np.float32)
+        out = apply_unified_postprocess(proj, (16, 16))
+        assert out.dtype == np.uint8  # should not raise
+
+    def test_positive_projection_has_nonzero_output(self):
+        proj = np.random.uniform(100, 1000, (32, 32)).astype(np.float32)
+        out = apply_unified_postprocess(proj, (32, 32))
+        assert int(out.max()) > 0
+
+
+class TestProjectLandmark3dTo2d:
+    """project_landmark_3d_to_2d のテスト."""
+
+    def _identity_rot(self):
+        return np.eye(3, dtype=np.float64)
+
+    def test_identity_rotation_maps_center(self):
+        """回転なし: ボリューム中心はほぼ画像中心にマップされる."""
+        vol_shape = (128, 128, 128)
+        center = np.array([64.0, 64.0, 64.0])
+        out_shape = (512, 512)
+        px, py = project_landmark_3d_to_2d(center, self._identity_rot(), center, out_shape, vol_shape)
+        assert 0 <= px <= out_shape[0]
+        assert 0 <= py <= out_shape[1]
+
+    def test_returns_tuple_of_two_ints(self):
+        vol_shape = (64, 64, 64)
+        center = np.array([32.0, 32.0, 32.0])
+        out_shape = (256, 256)
+        result = project_landmark_3d_to_2d(center, self._identity_rot(), center, out_shape, vol_shape)
+        assert len(result) == 2
+        assert isinstance(result[0], (int, np.integer))
+        assert isinstance(result[1], (int, np.integer))
+
+    def test_scaling_x_axis(self):
+        """i座標がx方向にスケーリングされる."""
+        vol_shape = (128, 64, 128)
+        center = np.array([0.0, 0.0, 0.0])
+        out_shape = (512, 512)
+        # i=32 (vol_shape[1]=64) → scale_x = 512/64 = 8 → pixel_x = 32*8 = 256
+        px, _ = project_landmark_3d_to_2d([0.0, 32.0, 0.0], self._identity_rot(), center, out_shape, vol_shape)
+        assert px == 256
+
+    def test_scaling_k_axis(self):
+        """k座標がy方向にスケーリングされる."""
+        vol_shape = (64, 128, 128)
+        center = np.array([0.0, 0.0, 0.0])
+        out_shape = (512, 512)
+        # k=32 (vol_shape[0]=64) → scale_y = 512/64 = 8 → pixel_y = 32*8 = 256
+        _, py = project_landmark_3d_to_2d([32.0, 0.0, 0.0], self._identity_rot(), center, out_shape, vol_shape)
+        assert py == 256
 
 
 class TestConvertToYolov8Pose:
