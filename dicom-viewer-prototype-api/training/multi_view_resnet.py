@@ -184,9 +184,9 @@ def train_model(json_path, img_dir, epochs=30):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train Dual-Stream Multi-View ResNet")
-    parser.add_argument("--json", default="/Users/kohei/Documents/DRR_Factory/yolo_dataset/resnet_pairs.json",
+    parser.add_argument("--json", default="~/Documents/DRR_Factory/yolo_dataset/resnet_pairs.json",
                         help="Path to resnet_pairs.json")
-    parser.add_argument("--img-dir", default="/Users/kohei/Documents/DRR_Factory/yolo_dataset/images/train",
+    parser.add_argument("--img-dir", default="~/Documents/DRR_Factory/yolo_dataset/images/train",
                         help="Directory containing training images")
     parser.add_argument("--epochs", type=int, default=30, help="Number of training epochs")
     args = parser.parse_args()

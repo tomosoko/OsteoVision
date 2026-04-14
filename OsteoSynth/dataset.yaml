@@ -1,4 +1,4 @@
-path: /Users/kohei/Documents/DRR_Factory/yolo_dataset # absolute dataset path
+path: ~/Documents/DRR_Factory/yolo_dataset # absolute dataset path
 train: images/train # train images (relative to 'path')
 val: images/val # val images — MUST be separate from train for overfitting detection
 

@@ -4,7 +4,7 @@ import numpy as np
 import os
 
 # Create an artifact directory path
-out_dir = "/Users/kohei/.gemini/antigravity/brain/a6ae166b-06ff-4805-9d29-44ecbcb0a008"
+out_dir = "./output"
 
 # Optional: Set a nice clinical/tech style
 plt.style.use('dark_background')

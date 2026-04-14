@@ -64,6 +64,6 @@ for t in tilts:
     images.append(np.hstack(row))
 
 collage = np.vstack(images)
-out_path = "/Users/kohei/.gemini/antigravity/brain/a6ae166b-06ff-4805-9d29-44ecbcb0a008/drr_preview.png"
+out_path = "./drr_preview.png"
 cv2.imwrite(out_path, collage)
 print(f"Generated collage at {out_path}")

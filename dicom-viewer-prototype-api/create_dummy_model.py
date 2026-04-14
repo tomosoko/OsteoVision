@@ -17,5 +17,5 @@ class KneeAnglePredictor(nn.Module):
         return self.backbone(x)
 
 model = KneeAnglePredictor()
-torch.save(model.state_dict(), "/Users/kohei/Documents/dicom-viewer-prototype-api/knee_angle_predictor_best.pth")
+torch.save(model.state_dict(), "./knee_angle_predictor_best.pth")
 print("Dummy model created.")
