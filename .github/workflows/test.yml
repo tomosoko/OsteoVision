@@ -26,13 +26,48 @@ jobs:
         working-directory: dicom-viewer-prototype-api
         run: |
           pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install pytest httpx
+          # med-image-pipeline is a private repo; install everything else first
+          grep -v 'med-image-pipeline' requirements.txt > /tmp/requirements-ci.txt
+          pip install -r /tmp/requirements-ci.txt
+          pip install pytest httpx tqdm pandas
+
+      - name: Create med-image-pipeline stub for CI
+        working-directory: dicom-viewer-prototype-api
+        run: |
+          # med-image-pipeline is a private utility lib (OpenCV wrappers).
+          # Create a minimal stub so imports resolve in CI.
+          python3 -c "
+          import pathlib, textwrap
+          d = pathlib.Path('med_image_pipeline')
+          d.mkdir(exist_ok=True)
+          (d / '__init__.py').write_text(textwrap.dedent('''
+          import cv2
+          import numpy as np
+
+          def apply_clahe_to_gray(image, clip_limit=2.0, tile_grid_size=(8, 8)):
+              if image.ndim == 3:
+                  image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+              clahe = cv2.createCLAHE(clipLimit=clip_limit, tileGridSize=tile_grid_size)
+              return clahe.apply(image)
+
+          def apply_gaussian_blur(image, kernel_size=(5, 5), sigma=0):
+              return cv2.GaussianBlur(image, kernel_size, sigma)
+
+          def apply_windowing(image, center, width):
+              if center is None or width is None:
+                  return image
+              lower = center - width / 2.0
+              upper = center + width / 2.0
+              windowed = np.clip(image, lower, upper)
+              windowed = (windowed - lower) / width * 255.0
+              return windowed.astype(np.uint8)
+          ''').lstrip())
+          print('Created med_image_pipeline stub for CI')
+          "
 
       - name: Download model (dummy) for CI
         working-directory: dicom-viewer-prototype-api
         run: |
-          # CI環境ではダミーモデルを生成（実モデルはGit管理外）
           python3 -c "
           import torch, torch.nn as nn
           from torchvision import models
