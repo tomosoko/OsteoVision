@@ -48,23 +48,14 @@ jobs:
           print('Dummy model created')
           "
 
-      - name: Run angle math unit tests
+      - name: Run API tests
         working-directory: dicom-viewer-prototype-api
         run: |
-          python3 -m pytest tests/test_angle_math.py -v
+          python3 -m pytest tests/ -v
 
-      - name: Run API integration tests
-        working-directory: dicom-viewer-prototype-api
+      - name: Run OsteoSynth & validation tests
         run: |
-          python3 -m pytest tests/test_api.py -v
-
-      - name: Run YOLO inference tests
-        working-directory: dicom-viewer-prototype-api
-        run: |
-          # best.ptがない場合はスキップ（CI環境）
-          python3 -m pytest tests/test_yolo_inference.py -v \
-            --ignore-glob="*test_yolo*" || \
-          python3 -m pytest tests/test_yolo_inference.py -v -k "not YOLOInference"
+          python3 -m pytest tests/ -v
 
       - name: Test summary
         run: |
