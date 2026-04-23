@@ -23,6 +23,20 @@ device = torch.device(
     else "cpu"
 )
 
+# --- Rotation Calibration (EXP-002c Bland-Altman, n=8 phantom CT) ---
+# Mean bias = AI - GT = -15.89° → correction = +15.89°
+# TODO: update with linear regression once real bone CT cases accumulate
+ROTATION_CALIB_BIAS: float = 15.89
+
+
+def apply_rotation_calibration(rotation: float, bias: float = ROTATION_CALIB_BIAS) -> float:
+    """Apply Bland-Altman bias correction to raw rotation estimate.
+
+    EXP-002c phantom CT (n=8): systematic offset of -15.89° was measured.
+    Adding the bias brings the estimate closer to CT ground truth.
+    """
+    return round(rotation + bias, 1)
+
 
 # --- 1. YOLOv8 Pose Model (primary landmark detector) ---
 try:
@@ -270,6 +284,7 @@ def detect_with_yolo_pose(image_array: np.ndarray) -> Optional[dict]:
         else:
             asymmetry = 0.0
         rotation_deg = round(asymmetry * 20.0, 1)
+        rotation_deg = apply_rotation_calibration(rotation_deg)
         rotation_deg = max(-20.0, min(20.0, rotation_deg))
 
         if rotation_deg > 1.5:
@@ -515,6 +530,7 @@ def detect_bone_landmarks(image_array: np.ndarray) -> dict:
 
             MAX_ROT = 20.0
             rotation_deg = round(asymmetry * MAX_ROT, 1)
+            rotation_deg = apply_rotation_calibration(rotation_deg)
 
     if rotation_deg > 1.5:
         rotation_label = f"内旋 (Internal)"

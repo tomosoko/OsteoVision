@@ -19,6 +19,8 @@ from inference import (
     detect_bone_landmarks,
     device,
     dl_transforms,
+    apply_rotation_calibration,
+    ROTATION_CALIB_BIAS,
 )
 
 
@@ -346,3 +348,54 @@ class TestDeviceSetup:
     def test_device_is_valid(self):
         """device が cpu / cuda / mps のいずれか"""
         assert str(device) in ("cpu", "cuda", "mps")
+
+
+# ─── apply_rotation_calibration ──────────────────────────────────────
+
+
+class TestApplyRotationCalibration:
+    """apply_rotation_calibration() — EXP-002c Bland-Altman bias correction."""
+
+    def test_bias_constant_value(self):
+        """ROTATION_CALIB_BIAS is 15.89 (EXP-002c phantom n=8)."""
+        assert ROTATION_CALIB_BIAS == 15.89
+
+    def test_zero_input_returns_bias(self):
+        """0.0 → round(15.89, 1) = 15.9."""
+        assert apply_rotation_calibration(0.0) == round(15.89, 1)
+
+    def test_positive_input(self):
+        """Positive raw value gets bias added."""
+        result = apply_rotation_calibration(5.0)
+        assert result == round(5.0 + 15.89, 1)
+
+    def test_negative_input(self):
+        """Negative raw value gets bias added."""
+        result = apply_rotation_calibration(-12.0)
+        assert result == round(-12.0 + 15.89, 1)
+
+    def test_custom_bias(self):
+        """Custom bias parameter is respected."""
+        result = apply_rotation_calibration(0.0, bias=10.0)
+        assert result == 10.0
+
+    def test_returns_float(self):
+        """Return type is float."""
+        assert isinstance(apply_rotation_calibration(3.5), float)
+
+    def test_exp002c_phantom_cases(self):
+        """EXP-002c データ: 補正後の平均誤差が ±10° 以内 (全8例の平均)."""
+        # (raw_ai, gt) pairs derived from EXP-002c table
+        cases = [
+            (-11.0, 0),
+            (-7.4, 5),
+            (-9.4, -5),
+            (-11.6, 10),
+            (-0.4, -10),
+            (-12.7, 15),
+            (-17.5, 0),
+            (-9.4, 0),
+        ]
+        errors = [abs(apply_rotation_calibration(raw) - gt) for raw, gt in cases]
+        mean_error = sum(errors) / len(errors)
+        assert mean_error < 15.0, f"Mean calibration error too large: {mean_error:.1f}°"
