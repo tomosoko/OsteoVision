@@ -555,7 +555,7 @@ def detect_bone_landmarks(image_array: np.ndarray) -> dict:
 
     # QA & POSITIONING NAVIGATOR LOGIC
     qa_score = 100
-    qa_status = "PERFECT"
+    qa_status = "GOOD"
     qa_msg = "ポジショニングは良好です。"
     qa_color = "green"
     symmetry_ratio = 1.0
@@ -570,7 +570,7 @@ def detect_bone_landmarks(image_array: np.ndarray) -> dict:
 
         if symmetry_ratio < 0.8:
             qa_score = 45
-            qa_status = "POOR - ROTATION ERROR"
+            qa_status = "POOR"
 
             if left_dist > right_dist:
                 direction = "外旋 (External Rotation)"
@@ -585,7 +585,7 @@ def detect_bone_landmarks(image_array: np.ndarray) -> dict:
             positioning_advice = f"► 側面像の撮影指示: 下腿が{direction}しています。側面を撮る際は下腿を約10〜15度「{correction}」させ、カセッテに対して少し挙上して調整してください。"
         elif symmetry_ratio < 0.9:
             qa_score = 80
-            qa_status = "FAIR - SLIGHT ROTATION"
+            qa_status = "FAIR"
             qa_msg = f"軽度な回旋エラーがあります。非対称性({symmetry_ratio:.2f})"
             qa_color = "yellow"
             positioning_advice = "► 側面像の撮影指示: 軽微なズレがあります。側面撮影時は下腿を約5度、逆方向に回旋させて調整してください。"
@@ -596,13 +596,13 @@ def detect_bone_landmarks(image_array: np.ndarray) -> dict:
     else:
         if abs(rotation_deg) > 7.0:
             qa_score = 45
-            qa_status = "POOR - ROTATION ERROR"
+            qa_status = "POOR"
             qa_msg = "重度の回旋エラー（顆部不一致）。正確なTPA計測が困難なため再撮影を推奨。"
             qa_color = "red"
             positioning_advice = "► 正面像の撮影指示: 側面像で回旋エラーが大きいため、正面像撮影時は下腿の回旋をより厳密に調整してください。"
         elif abs(rotation_deg) > 3.0:
             qa_score = 75
-            qa_status = "FAIR - SLIGHT ROTATION"
+            qa_status = "FAIR"
             qa_msg = "軽度の回旋ズレがあります。"
             qa_color = "yellow"
             positioning_advice = "► 正面像の撮影指示: 側面像で軽微な回旋ズレがあります。正面像撮影時は下腿の回旋を微調整してください。"
