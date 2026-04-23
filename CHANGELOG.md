@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## [0.4.0] - 2026-04-24
+
+### 追加
+- `inference.py`: 推論ロジックを `main.py` から分離（KneeAnglePredictor・GradCAM・detect_bone_landmarks・detect_with_yolo_pose）
+- `dicom-viewer-prototype-api/tests/test_inference.py`: inference.py 直接ユニットテスト 33件（7クラス、合成骨画像フィクスチャ使用）
+- GitHub Actions CI/CD 修正: 全7テストファイルを実行するよう修正
+- CI: プライベート依存 `med-image-pipeline` をインラインスタブで回避
+
+### 変更
+- テスト総数: 58件 → 289 passed / 5 skipped（API 158件 + root 131件）
+- `main.py`: 推論コードを `inference.py` に移動し、APIルーティング専用に整理（283行）
+- GitHub公開済み: `github.com/tomosoko/OsteoVision`（README英語化）
+
+### 修正
+- CI: 4つのテストファイルがサイレントスキップされていた問題を修正
+- CI: `med-image-pipeline` プライベートパッケージのインストール失敗を修正
+- GradCAM テストフィクスチャ: MPS/CUDA 環境での不安定さを CPU ピン留めで修正
+
+---
+
 ## [0.3.0] - 2026-03-05
 
 ### 追加
