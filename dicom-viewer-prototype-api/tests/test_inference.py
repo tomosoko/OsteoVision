@@ -20,7 +20,8 @@ from inference import (
     device,
     dl_transforms,
     apply_rotation_calibration,
-    ROTATION_CALIB_BIAS,
+    ROTATION_CALIB_SLOPE,
+    ROTATION_CALIB_INTERCEPT,
 )
 
 
@@ -354,38 +355,42 @@ class TestDeviceSetup:
 
 
 class TestApplyRotationCalibration:
-    """apply_rotation_calibration() — EXP-002c Bland-Altman bias correction."""
+    """apply_rotation_calibration() — EXP-002c linear regression calibration."""
 
-    def test_bias_constant_value(self):
-        """ROTATION_CALIB_BIAS is 15.89 (EXP-002c phantom n=8)."""
-        assert ROTATION_CALIB_BIAS == 15.89
+    def test_slope_constant_value(self):
+        """ROTATION_CALIB_SLOPE is -0.8616 (EXP-002c linear regression, n=8)."""
+        assert ROTATION_CALIB_SLOPE == -0.8616
 
-    def test_zero_input_returns_bias(self):
-        """0.0 → round(15.89, 1) = 15.9."""
-        assert apply_rotation_calibration(0.0) == round(15.89, 1)
+    def test_intercept_constant_value(self):
+        """ROTATION_CALIB_INTERCEPT is -6.67 (EXP-002c linear regression, n=8)."""
+        assert ROTATION_CALIB_INTERCEPT == -6.67
+
+    def test_zero_input_returns_intercept(self):
+        """0.0 → round(intercept, 1) = -6.7."""
+        assert apply_rotation_calibration(0.0) == round(-6.67, 1)
 
     def test_positive_input(self):
-        """Positive raw value gets bias added."""
+        """Positive raw value: calibrated = slope×5 + intercept."""
         result = apply_rotation_calibration(5.0)
-        assert result == round(5.0 + 15.89, 1)
+        assert result == round(-0.8616 * 5.0 + (-6.67), 1)
 
     def test_negative_input(self):
-        """Negative raw value gets bias added."""
+        """Negative raw value: calibrated = slope×(-12) + intercept."""
         result = apply_rotation_calibration(-12.0)
-        assert result == round(-12.0 + 15.89, 1)
+        assert result == round(-0.8616 * (-12.0) + (-6.67), 1)
 
-    def test_custom_bias(self):
-        """Custom bias parameter is respected."""
-        result = apply_rotation_calibration(0.0, bias=10.0)
-        assert result == 10.0
+    def test_custom_slope_intercept(self):
+        """Custom slope and intercept parameters are respected."""
+        result = apply_rotation_calibration(4.0, slope=2.0, intercept=3.0)
+        assert result == round(2.0 * 4.0 + 3.0, 1)
 
     def test_returns_float(self):
         """Return type is float."""
         assert isinstance(apply_rotation_calibration(3.5), float)
 
     def test_exp002c_phantom_cases(self):
-        """EXP-002c データ: 補正後の平均誤差が ±10° 以内 (全8例の平均)."""
-        # (raw_ai, gt) pairs derived from EXP-002c table
+        """EXP-002c ep150データ: 線形回帰で平均誤差が ~5.7° (バイアスのみ 8.9° より改善)."""
+        # (raw_ai, gt) pairs from EXP-002c ep150 table (pre-calibration values)
         cases = [
             (-11.0, 0),
             (-7.4, 5),
@@ -398,4 +403,4 @@ class TestApplyRotationCalibration:
         ]
         errors = [abs(apply_rotation_calibration(raw) - gt) for raw, gt in cases]
         mean_error = sum(errors) / len(errors)
-        assert mean_error < 15.0, f"Mean calibration error too large: {mean_error:.1f}°"
+        assert mean_error < 10.0, f"Mean calibration error too large: {mean_error:.1f}°"

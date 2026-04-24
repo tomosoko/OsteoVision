@@ -27,19 +27,26 @@ VENV_SP = os.path.join(API_DIR, "venv312", "lib", "python3.12", "site-packages")
 if os.path.isdir(VENV_SP):
     sys.path.insert(0, VENV_SP)
 
-# ─── 回旋角校正定数（Bland-Altman EXP-002c ファントムCT 8例から推定） ─────
-# AI推定値 - CT真値 の平均誤差 = -15.89° → 補正値 = +15.89°
-# TODO: 実骨CT症例が増えたら linear regression で slope も校正する
-ROTATION_CALIB_BIAS: float = 15.89
+# ─── 回旋角校正定数（EXP-002c 線形回帰, n=8 ファントムCT） ─────────────
+# numpy.polyfit: x=asymmetry×20 (生推定値), y=GT回旋角(°)
+# slope=-0.8616, intercept=-6.67
+# RMSE改善: バイアスのみ 11.4° → 線形回帰 6.4°
+ROTATION_CALIB_SLOPE: float = -0.8616
+ROTATION_CALIB_INTERCEPT: float = -6.67
 
 
-def apply_rotation_calibration(rotation: float, bias: float = ROTATION_CALIB_BIAS) -> float:
-    """回旋角にBland-Altmanバイアス補正を適用する.
+def apply_rotation_calibration(
+    rotation: float,
+    slope: float = ROTATION_CALIB_SLOPE,
+    intercept: float = ROTATION_CALIB_INTERCEPT,
+) -> float:
+    """回旋角に線形回帰校正を適用する.
 
-    EXP-002c ファントムCT (n=8) で測定したバイアス (-15.89°) を加算して
-    CT真値に近い値を返す。実データが増えた時点で bias を更新すること。
+    EXP-002c ファントムCT (n=8) で従来のBland-Altmanバイアス補正(+15.89°)を置き換え。
+    RMSE改善: 11.4°(バイアスのみ) → 6.4°(線形回帰)
+    式: calibrated = slope × rotation + intercept
     """
-    return round(rotation + bias, 1)
+    return round(slope * rotation + intercept, 1)
 
 
 # ─── 角度計算（main.pyと同一ロジック） ────────────────────────────────────

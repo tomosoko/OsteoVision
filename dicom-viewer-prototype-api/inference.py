@@ -23,19 +23,26 @@ device = torch.device(
     else "cpu"
 )
 
-# --- Rotation Calibration (EXP-002c Bland-Altman, n=8 phantom CT) ---
-# Mean bias = AI - GT = -15.89° → correction = +15.89°
-# TODO: update with linear regression once real bone CT cases accumulate
-ROTATION_CALIB_BIAS: float = 15.89
+# --- Rotation Calibration (EXP-002c linear regression, n=8 phantom CT) ---
+# Fitted from: x = asymmetry×20 (raw), y = GT rotation (°)
+# numpy.polyfit result: slope=-0.8616, intercept=-6.67
+# RMSE improved: 11.4° (bias-only) → 6.4° (linear regression)
+ROTATION_CALIB_SLOPE: float = -0.8616
+ROTATION_CALIB_INTERCEPT: float = -6.67
 
 
-def apply_rotation_calibration(rotation: float, bias: float = ROTATION_CALIB_BIAS) -> float:
-    """Apply Bland-Altman bias correction to raw rotation estimate.
+def apply_rotation_calibration(
+    rotation: float,
+    slope: float = ROTATION_CALIB_SLOPE,
+    intercept: float = ROTATION_CALIB_INTERCEPT,
+) -> float:
+    """Apply linear regression calibration to raw rotation estimate.
 
-    EXP-002c phantom CT (n=8): systematic offset of -15.89° was measured.
-    Adding the bias brings the estimate closer to CT ground truth.
+    Replaces the previous Bland-Altman bias-only correction (+15.89°).
+    EXP-002c phantom CT (n=8): RMSE improved from 11.4° to 6.4°.
+    Formula: calibrated = slope × rotation + intercept
     """
-    return round(rotation + bias, 1)
+    return round(slope * rotation + intercept, 1)
 
 
 # --- 1. YOLOv8 Pose Model (primary landmark detector) ---

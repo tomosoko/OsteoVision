@@ -7,7 +7,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "OsteoSynth"))
 
 from validate_real_ct import (
     angle_deg, acute_angle, calc_angles, qc_judge,
-    apply_rotation_calibration, ROTATION_CALIB_BIAS,
+    apply_rotation_calibration, ROTATION_CALIB_SLOPE, ROTATION_CALIB_INTERCEPT,
 )
 
 
@@ -165,44 +165,49 @@ class TestQcJudge:
 
 
 class TestRotationCalibration:
-    """apply_rotation_calibration() — Bland-Altman バイアス補正テスト."""
+    """apply_rotation_calibration() — EXP-002c 線形回帰校正テスト."""
 
-    def test_calib_bias_is_positive_15_89(self):
-        """EXP-002c 実測バイアス値が定数として保持されている."""
-        assert abs(ROTATION_CALIB_BIAS - 15.89) < 1e-9
+    def test_slope_constant_value(self):
+        """EXP-002c 線形回帰 slope 定数が保持されている."""
+        assert abs(ROTATION_CALIB_SLOPE - (-0.8616)) < 1e-9
 
-    def test_zero_rotation_adds_bias(self):
+    def test_intercept_constant_value(self):
+        """EXP-002c 線形回帰 intercept 定数が保持されている."""
+        assert abs(ROTATION_CALIB_INTERCEPT - (-6.67)) < 1e-9
+
+    def test_zero_rotation_returns_intercept(self):
         result = apply_rotation_calibration(0.0)
-        assert abs(result - 15.89) < 0.01
+        assert abs(result - round(-6.67, 1)) < 0.01
 
     def test_negative_raw_shifts_toward_zero(self):
-        # EXP-002c 実測値: AI=-12.3°(GT=0°) → 補正後≈+3.6°（ほぼ0に近づく）
+        # EXP-002c ep17実測値: AI=-12.3°(GT=0°) → 補正後≈+3.9°（GT=0に近づく）
         raw = -12.3
         corrected = apply_rotation_calibration(raw)
-        assert abs(corrected - (raw + 15.89)) < 0.05
+        expected = round(-0.8616 * raw + (-6.67), 1)
+        assert abs(corrected - expected) < 0.05
         assert abs(corrected) < abs(raw)  # GT=0に近づく
 
     def test_phantom_gt0_corrected_near_zero(self):
-        # EXP-002c: rx0ry0 → AI=-12.3 → 補正後=3.6 (GT=0 の±5°許容内)
+        # EXP-002c: rx0ry0 → AI=-12.3 → 線形回帰補正後≈3.9 (GT=0 の±5°許容内)
         corrected = apply_rotation_calibration(-12.3)
         assert abs(corrected) < 5.0
 
     def test_phantom_gt5_corrected_near_gt(self):
-        # EXP-002c: rx0ry5 → AI=-17.8 → 補正後=-1.9 (GT=5 に対して誤差<7°)
+        # EXP-002c: rx0ry5 → AI=-17.8 → 線形回帰補正後≈8.7 (GT=5 に対して誤差<7°)
         corrected = apply_rotation_calibration(-17.8)
         assert abs(corrected - 5.0) < 7.0
 
-    def test_custom_bias_override(self):
-        result = apply_rotation_calibration(0.0, bias=10.0)
-        assert abs(result - 10.0) < 0.01
+    def test_custom_slope_intercept_override(self):
+        result = apply_rotation_calibration(4.0, slope=2.0, intercept=3.0)
+        assert abs(result - round(2.0 * 4.0 + 3.0, 1)) < 0.01
 
     def test_output_rounded_to_1_decimal(self):
         result = apply_rotation_calibration(-12.345)
         assert round(result, 1) == result
 
     def test_all_phantom_cases_reduce_absolute_error(self):
-        """EXP-002c 全8症例でバイアス補正後の誤差絶対値が補正前より小さい."""
-        # (ai_raw, gt_rotation_y)
+        """EXP-002c 全8症例で線形回帰校正後の誤差が未校正より小さい."""
+        # (ai_raw, gt_rotation_y) — ep17 pre-calibration values
         cases = [
             (-12.3, 0), (-17.8, 5), (-15.2, -5), (-15.1, 10),
             (-13.7, -10), (-13.4, 15), (-13.8, 0), (-10.8, 0),
