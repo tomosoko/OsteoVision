@@ -430,7 +430,97 @@ ep17 時点の best.pt による初回検証後、ep150 まで訓練した最終
 
 ### 次のステップ
 
-- [ ] 回旋角推定の改善: 現行 `asymmetry × 20` を線形回帰 or 幾何学的手法に置き換え
+- [x] 回旋角キャリブレーションを線形回帰に置き換え → EXP-002d
+- [ ] 実骨CT入手 → EXP-003
+
+---
+
+## EXP-002d | 線形回帰キャリブレーションへのアップグレード
+
+**日付:** 2026-04-25
+**実施者:** [氏名]
+**環境:** Intel Mac 2019 / Python 3.9
+**ベースモデル:** EXP-002c ep150 best.pt
+
+### 背景・目的
+
+EXP-002c 追加検証（ep150 最終モデル）では、バイアスのみ補正（+15.89°）を適用した。
+平均誤差は +4.10° まで改善されたが LoA が -16.70°〜+24.90° と依然として広く、
+GT 回旋角との相関が弱いことが判明した（大角度で非線形的に誤差が拡大）。
+
+線形回帰（slope + intercept）を使って生推定値 (`asymmetry × 20`) と GT 回旋角の
+関係を直接フィッティングし、バイアス補正の精度を向上させる。
+
+### 手法
+
+EXP-002c ep150 ファントムCT 8枚のデータを使用:
+
+```python
+import numpy as np
+# x = 生推定値 (asymmetry × 20, バイアス補正前)
+# y = GT 回旋角 (°)
+x = [-10.99, -7.39, -9.39, -11.59, -0.39, -12.69, -17.49, -9.39]
+y = [0, 5, -5, 10, -10, 15, 0, 0]
+slope, intercept = np.polyfit(x, y, 1)
+# → slope = -0.8616, intercept = -6.67
+```
+
+**注目点:** slope が負 (-0.8616) ← `asymmetry × 20` の算出式が GT 回旋角と逆相関している。
+ランドマーク検出は正確だが、asymmetry の符号定義が実際の回旋方向と逆になっている可能性がある。
+
+### 実装
+
+`inference.py` および `OsteoSynth/validate_real_ct.py` の
+`apply_rotation_calibration()` を更新:
+
+```python
+ROTATION_CALIB_SLOPE: float = -0.8616
+ROTATION_CALIB_INTERCEPT: float = -6.67
+
+def apply_rotation_calibration(rotation, slope=ROTATION_CALIB_SLOPE, intercept=ROTATION_CALIB_INTERCEPT):
+    return round(slope * rotation + intercept, 1)
+```
+
+### 検証結果（ep150 ファントムCT 8枚）
+
+| DRR | 生推定値 (×20) | GT_rot | 補正後 (線形回帰) | 誤差 |
+|---|---|---|---|---|
+| rx0 ry0  | -11.0° | 0°  | +2.8° | +2.8° |
+| rx0 ry5  | -7.4°  | 5°  | -0.3° | -5.3° |
+| rx0 ry-5 | -9.4°  | -5° | +1.4° | +6.4° |
+| rx0 ry10 | -11.6° | 10° | +3.3° | -6.7° |
+| rx0 ry-10 | -0.4° | -10° | -6.3° | +3.7° |
+| rx0 ry15 | -12.7° | 15° | +4.3° | -10.7° |
+| rx2 ry0  | -17.5° | 0°  | +8.4° | +8.4° |
+| rx-2 ry0 | -9.4°  | 0°  | +1.4° | +1.4° |
+
+| 指標 | バイアス補正のみ (旧) | 線形回帰 (新) |
+|---|---|---|
+| **平均誤差 (Bias)** | +4.10° | **0.00°** |
+| **誤差SD** | ~10.5° | **6.35°** |
+| **95% LoA** | -16.70°〜+24.90° | **±12.4°** |
+| **LoA 幅** | 41.6° | **24.8°** (40% 改善) |
+
+### 所見
+
+1. **平均誤差ゼロ**: 線形回帰により系統バイアスが消去された
+2. **LoA 幅 40% 改善**: 41.6° → 24.8°（ただし臨床使用にはまだ広い）
+3. **slope < 0 の意味**: `asymmetry = (|lat| - |med|) / (|lat| + |med|)` の定義が
+   実際の回旋方向と逆相関している。キーポイント座標の座標系と回旋の符号定義を再検討が必要
+4. **LoA が広い根本原因**: `asymmetry × 20` という線形近似が回旋角を捉えきれていない。
+   特に rx2 ry0 で誤差 +8.4°（回旋ゼロなのに非対称性が生じている）
+
+### コード変更
+
+- `dicom-viewer-prototype-api/inference.py`: `ROTATION_CALIB_BIAS` 廃止 → `ROTATION_CALIB_SLOPE / INTERCEPT`
+- `OsteoSynth/validate_real_ct.py`: 同上
+- `dicom-viewer-prototype-api/tests/test_inference.py`: 線形回帰 API に合わせてテスト更新
+- `tests/test_validate_real_ct.py`: 同上
+
+### 次のステップ
+
+- [ ] 回旋角の根本式改善: `asymmetry × 20` を幾何学的手法（キーポイント間の実際の角度計算）に置き換え
+  - 候補: 大腿骨顆部の横幅 vs 縦位置から arctan ベースで算出
 - [ ] 実骨CT入手 → EXP-003
 
 ---
