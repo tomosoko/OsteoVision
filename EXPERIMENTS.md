@@ -519,9 +519,84 @@ def apply_rotation_calibration(rotation, slope=ROTATION_CALIB_SLOPE, intercept=R
 
 ### 次のステップ
 
-- [ ] 回旋角の根本式改善: `asymmetry × 20` を幾何学的手法（キーポイント間の実際の角度計算）に置き換え
-  - 候補: 大腿骨顆部の横幅 vs 縦位置から arctan ベースで算出
-- [ ] 実骨CT入手 → EXP-003
+- [x] 回旋角の根本式改善: `asymmetry × 20` を幾何学的手法に置き換え → EXP-002e として比較解析完了
+- [ ] 実骨CT入手 → EXP-003（信頼性の高いキャリブレーション再計算に必要）
+
+---
+
+## EXP-002e | 回旋角の幾何学的手法比較解析
+
+**日付:** 2026-04-26
+**実施者:** [氏名]
+**環境:** Intel Mac 2019 / Python 3.9
+**ベースモデル:** EXP-002d best.pt
+
+### 背景・目的
+
+EXP-002d の線形回帰キャリブレーションで slope = -0.8616（負）という問題が残った。
+`asymmetry × 20` という生推定式の符号定義が GT 回旋角と逆相関している根本原因を解決するため、
+arctan ベースの幾何学的手法 3 種を比較した。
+
+### 検証手法
+
+使用スクリプト: `OsteoSynth/exp002e_formula_comparison.py`
+検証画像: ファントム DRR 4 枚 + 実 CT DRR 3 枚（計 7 枚）
+※ YOLO 検出率は 7/16（44%）——中角度回旋で検出失敗が多い
+
+### 比較した 3 式
+
+**旧式（EXP-002d）:**
+```python
+shaft_mx = (fs_x + tp_x) / 2
+asym = (|lc_x - shaft_mx| - |mc_x - shaft_mx|) / (|lc_x - shaft_mx| + |mc_x - shaft_mx|)
+rotation = asym * 20
+```
+
+**Formula A（arctan-shift）— 推奨:**
+```python
+# 骨幹軸を顆部高さに投影し、顆部中点のズレを arctan で角度化
+t = (mid_y - fs_y) / (tp_y - fs_y)
+shaft_x_at_condyle = fs_x + t * (tp_x - fs_x)
+net_shift = mid_x - shaft_x_at_condyle
+condyle_half_w = abs(lc_x - mc_x) / 2
+rotation = degrees(atan(net_shift / condyle_half_w))
+```
+
+**Formula B（顆部軸角度偏差）:**
+```python
+rot_B = condyle_line_angle - (femoral_axis_angle + 90)
+```
+
+### 結果
+
+| 式 | slope | Pearson r | 備考 |
+|---|---|---|---|
+| 旧式（asym×20） | -0.923 | -0.478 | 符号逆、スケール任意 |
+| **Formula A（arctan-shift）** | **+0.324** | **+0.460** | **符号正しい ← 採用候補** |
+| Formula B（顆部軸角度） | -0.075 | -0.081 | ほぼ無相関 |
+
+**注意:** n=7（YOLO 検出成功分のみ）で r 値は変動が大きい。
+動的範囲が中立付近に偏っているため r が低い。Formula A の符号方向の正しさが主な知見。
+
+### 所見
+
+1. **Formula A は符号方向が正しい** (+0.324 vs -0.923): arctan-shift 式を採用すれば
+   キャリブレーションの slope が正の値になり、物理的に自然な方向になる
+2. **n=7 では信頼性の高いキャリブレーション係数を導出できない** (df=5)
+3. **EXP-003 でのキャリブレーション再計算が必須**: 実患者 CT 取得後に Formula A ベースで
+   slope・intercept を再導出する
+4. **検出率の改善も必要**: 中角度回旋（ry=±5°, ±10°）で YOLO が失敗する問題がある
+
+### コード変更
+
+- `OsteoSynth/exp002e_formula_comparison.py`: 比較解析スクリプト（新規追加）
+- 本番コード（inference.py, validate_real_ct.py）は**未変更**
+  → EXP-003 データ取得後に Formula A + 新キャリブレーションを本番実装予定
+
+### 次のステップ
+
+- [ ] EXP-003: 実患者 CT 取得 → Formula A ベースでキャリブレーション再計算 (n≥20 推奨)
+- [ ] YOLO 検出率改善: 中角度回旋 DRR での検出失敗対策（データ拡張・再訓練）
 
 ---
 
