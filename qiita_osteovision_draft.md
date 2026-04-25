@@ -244,15 +244,21 @@ def apply_rotation_calibration(rotation, slope=ROTATION_CALIB_SLOPE, intercept=R
 
 LoA ±12.4° は臨床使用（±5° 以内が望ましい）にはまだ広い状態です。
 
-根本原因は `asymmetry × 20` という線形近似が回旋角の物理的な幾何学を正確に表現していないこと。次の改善として **幾何学的手法（arctan ベース）** への置き換えを計画しています：
+根本原因は `asymmetry × 20` という線形近似が回旋角の物理的な幾何学を正確に表現していないこと。
+
+**EXP-002e（完了）** で幾何学的手法 3 式を比較した結果、**Formula A（arctan-shift）** が正しい符号方向（slope = +0.324）を示すことを確認しました。旧式は slope = -0.923 で符号が逆でした：
 
 ```python
-# 次期実装案（EXP-002e）: キーポイント間の実際の角度から回旋を推定
-# 大腿骨軸に対する顆部軸の傾きを arctan で直接計算
-condyle_axis_angle = math.degrees(math.atan2(lat_y - med_y, lat_x - med_x))
-femoral_perp = femoral_axis_angle - 90  # 大腿骨軸の垂線
-rotation_deg = normalize_angle(condyle_axis_angle - femoral_perp)
+# Formula A（arctan-shift）— EXP-002e で推奨確認済み
+# 骨幹軸を顆部高さに投影し、顆部中点のズレを arctan で角度化
+t = (mid_y - fs_y) / (tp_y - fs_y)
+shaft_x_at_condyle = fs_x + t * (tp_x - fs_x)
+net_shift = mid_x - shaft_x_at_condyle
+condyle_half_w = abs(lc_x - mc_x) / 2
+rotation = math.degrees(math.atan(net_shift / condyle_half_w))
 ```
+
+ただし n=7（YOLO 検出成功分）では信頼性の高いキャリブレーション係数を導出できないため、本番実装は EXP-003（実患者 CT n≥20）後を予定しています。
 
 ---
 
@@ -363,8 +369,9 @@ GitHub Actions で push 時に自動実行：
 
 ## 今後の課題
 
-- [ ] **EXP-002e**: 回旋角の根本式改善（`asymmetry × 20` → arctan 幾何学的手法）
-- [ ] **EXP-003**: 実患者データ検証（TCIA/OAI 公開膝CTで validate_real_ct.py 実行）
+- [x] **EXP-002e 完了**: Formula A（arctan-shift）が符号方向正と確認（slope +0.324 vs 旧式 -0.923）
+- [ ] **EXP-003**: 実患者データ取得 → Formula A ベースでキャリブレーション再計算（n≥20 推奨、TCIA/OAI 公開膝CT）
+- [ ] **YOLO 検出率改善**: 中角度回旋（±5°, ±10°）での検出失敗対策（データ拡張・再訓練）
 - [ ] **倫理審査**: 実臨床X線での定量検証申請
 - [ ] **Qiita/学会**: 日本放射線技術学会での発表
 
@@ -378,7 +385,7 @@ GitHub Actions で push 時に自動実行：
 | 開発者 | 放射線技師（現役） |
 | 患者データ | **ゼロ**（合成DRR 633枚のみ） |
 | YOLO Pose mAP50 | **100%**（ファントムCT 8/8 全件成功） |
-| 回旋角 LoA | **±12.4°**（線形回帰キャリブレーション後） |
+| 回旋角 LoA | **±12.4°**（線形回帰キャリブレーション後） ※次期 Formula A（arctan-shift）で改善予定 |
 | 推論速度 | 174 ms/枚（CPU） |
 | テスト数 | 298 passed / 5 skipped |
 
