@@ -33,7 +33,7 @@ ignorePublish: false
 | 回旋角キャリブレーション精度 | **LoA ±12.4°**（線形回帰、前手法比40%改善） |
 | 推論速度 | **174 ms/枚**（CPU、Intel Mac 2019） |
 | 訓練データ | **患者データゼロ**（合成DRRのみ、633枚） |
-| テスト数 | **298 tests passed / 5 skipped** |
+| テスト数 | **303 tests passed / 0 skipped** |
 
 ---
 
@@ -327,7 +327,7 @@ else:
 
 ---
 
-## テスト設計（298 passed / 5 skipped）
+## テスト設計（303 passed / 0 skipped）
 
 TDD（テスト駆動開発）で品質を担保しています。
 
@@ -343,7 +343,7 @@ TDD（テスト駆動開発）で品質を担保しています。
 | `test_api.py` | 多数 | FastAPIエンドポイント |
 | （他3ファイル） | — | エッジケース・YOLO推論 |
 
-計 **298 passed / 5 skipped（5件はGPU非搭載環境でスキップ）**
+計 **303 passed / 0 skipped**
 
 GitHub Actions で push 時に自動実行：
 
@@ -387,7 +387,7 @@ GitHub Actions で push 時に自動実行：
 | YOLO Pose mAP50 | **100%**（ファントムCT 8/8 全件成功） |
 | 回旋角 LoA | **±12.4°**（線形回帰キャリブレーション後） ※次期 Formula A（arctan-shift）で改善予定 |
 | 推論速度 | 174 ms/枚（CPU） |
-| テスト数 | 298 passed / 5 skipped |
+| テスト数 | 303 passed / 0 skipped |
 
 「患者データゼロ」「倫理審査不要」でここまで動くシステムが作れました。
 
