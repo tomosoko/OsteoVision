@@ -12,7 +12,7 @@ import cv2
 
 SAMPLE_DRR = os.path.abspath(os.path.join(
     os.path.dirname(__file__),
-    "../../OsteoSynth/yolo_dataset/images/train/drr_t0_r-5.png"
+    "../../OsteoSynth/yolo_dataset/images/train/drr_bone_AP_t-5_r-15_f45_tor-10.png"
 ))
 MODEL_PATH = os.path.abspath(os.path.join(
     os.path.dirname(__file__), "..", "best.pt"
