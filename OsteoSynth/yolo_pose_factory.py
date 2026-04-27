@@ -338,7 +338,7 @@ def run_yolo_drr_factory():
 
     # Base Camera rotations
     tilts = [-5, 0, 5]
-    rots = [-30, -15, 0, 15, 30]
+    rots = [-30, -15, -10, -5, 0, 5, 10, 15, 30]  # EXP-002f: added ±5°/±10° for intermediate rotation coverage
 
     # INDEPENDENT BONE KINEMATICS
     # Knee bending (rotation of tibia around X-axis relative to femur)
