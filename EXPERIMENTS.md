@@ -595,7 +595,6 @@ rot_B = condyle_line_angle - (femoral_axis_angle + 90)
 
 ### 次のステップ
 
-- [ ] EXP-003: 実患者 CT 取得 → Formula A ベースでキャリブレーション再計算 (n≥20 推奨)
 - [x] YOLO 検出率改善: 中角度回旋 DRR での検出失敗対策（→ EXP-002f でデータセット拡張）
 - [ ] EXP-003: 実患者 CT 取得 → Formula A ベースでキャリブレーション再計算 (n≥20 推奨)
 
