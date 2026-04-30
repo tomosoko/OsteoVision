@@ -392,10 +392,13 @@ TDD（テスト駆動開発）で品質を担保しています。
 | テストファイル | 件数 | 対象 |
 |---|---|---|
 | `test_inference.py` | 52 | YOLOv8-Pose推論・角度計算・GradCAM・Formula A |
-| `test_classical_cv.py` | 多数 | 古典CV フォールバック |
-| `test_api.py` / `test_upload.py` | 多数 | FastAPIエンドポイント |
-| `test_edge_cases.py` / `test_yolo_inference.py` | 多数 | エッジケース・YOLO推論 |
-| `test_angle_math.py` / `test_gradcam.py` | 多数 | 角度計算・GradCAM可視化 |
+| `test_classical_cv.py` | 21 | 古典CV フォールバック（`detect_bone_landmarks`） |
+| `test_api.py` | 16 | FastAPIエンドポイント（`/api/analyze`・`/api/gradcam`） |
+| `test_upload.py` | 22 | ファイルアップロード・バリデーション |
+| `test_edge_cases.py` | 26 | エッジケース（ゼロサイズ・破損ファイル・形式違反） |
+| `test_yolo_inference.py` | 10 | YOLO推論パイプライン（実DRR画像使用） |
+| `test_angle_math.py` | 19 | 角度計算関数（TPA・回旋・屈曲） |
+| `test_gradcam.py` | 16 | `GradCAM` クラス・`apply_gradcam_overlay` |
 
 計 **332 passed / 0 skipped**
 
