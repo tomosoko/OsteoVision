@@ -590,8 +590,12 @@ rot_B = condyle_line_angle - (femoral_axis_angle + 90)
 ### コード変更
 
 - `OsteoSynth/exp002e_formula_comparison.py`: 比較解析スクリプト（新規追加）
-- 本番コード（inference.py, validate_real_ct.py）は**未変更**
-  → EXP-003 データ取得後に Formula A + 新キャリブレーションを本番実装予定
+- `dicom-viewer-prototype-api/inference.py`: **Formula A を本番実装済み（2026-04-30）**
+  - `compute_formula_a()` 追加、YOLO 推論パイプラインを `asymmetry×20` から Formula A (arctan-shift) に切り替え
+  - commit: `781fe41`
+- `dicom-viewer-prototype-api/tests/test_inference.py`: Formula A カバレッジ 19 テスト追加（33件 → 52件）
+  - `TestComputeFormulaA` クラス追加、`TestYOLORotationAngle` 更新
+- ※ `validate_real_ct.py` は未変更（実患者 CT 取得後に更新予定）
 
 ### 次のステップ
 
@@ -630,7 +634,7 @@ rots = [-30, -15, -10, -5, 0, 5, 10, 15, 30]
 
 ### 次のステップ
 
-- [ ] Google Colab で再訓練（EXP-002c モデルから fine-tune またはスクラッチ訓練）
+- [x] Google Colab 再訓練ノートブック作成済み（`EXP-002f_Colab_Retraining.ipynb`・commit: `0b71272`）
 - [ ] 中角度回旋画像での検出率を再評価（目標: 全角度で 80%+ 検出）
 - [ ] 検出率改善後、EXP-002d キャリブレーション係数を再計算
 
