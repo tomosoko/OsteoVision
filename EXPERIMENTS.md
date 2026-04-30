@@ -595,7 +595,10 @@ rot_B = condyle_line_angle - (femoral_axis_angle + 90)
   - commit: `781fe41`
 - `dicom-viewer-prototype-api/tests/test_inference.py`: Formula A カバレッジ 19 テスト追加（33件 → 52件）
   - `TestComputeFormulaA` クラス追加、`TestYOLORotationAngle` 更新
-- ※ `validate_real_ct.py` は未変更（実患者 CT 取得後に更新予定）
+- `OsteoSynth/validate_real_ct.py`: **Formula A へ移行済み（2026-05-01, commit: `3fa219c`）**
+  - `FORMULA_A_CALIB_SLOPE/INTERCEPT` 定数追加（identity 値、EXP-003 再キャリブレーション待ち）
+  - `calc_angles()` 内の `asym*20` を Formula A (arctan-shift) に置き換え
+  - `tests/test_validate_real_ct.py`: 36件 → 43件（Formula A 校正定数 + 符号方向テスト追加）
 
 ### 次のステップ
 

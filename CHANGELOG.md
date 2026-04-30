@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## [0.5.0] - 2026-05-01
+
+### 追加
+- `OsteoSynth/exp002e_formula_comparison.py`: Formula A vs 旧式 vs Formula B の幾何学的手法比較解析スクリプト（EXP-002e）
+- `tests/test_exp002e_formula_comparison.py`: `compute_formula_a()` の 18 ユニットテスト
+- `dicom-viewer-prototype-api/tests/test_inference.py`: Formula A カバレッジ 19 テスト追加（33件 → 52件）
+- `OsteoSynth/EXP-002f_Colab_Retraining.ipynb`: 拡張データセット（1296枚）による Google Colab 再訓練ノートブック
+
+### 変更
+- `dicom-viewer-prototype-api/inference.py`: YOLO 推論パイプラインを `asymmetry×20` から Formula A (arctan-shift) へ移行（EXP-002e 推奨式, commit: `781fe41`）
+- `OsteoSynth/validate_real_ct.py`: 同上、`FORMULA_A_CALIB_SLOPE/INTERCEPT` 定数追加（commit: `3fa219c`）
+- `OsteoSynth/yolo_pose_factory.py`: `rots` パラメータを 5値 → 9値（±5°, ±10° 追加）、訓練画像 720 → 1296枚（EXP-002f）
+- テスト総数: 332 → 338 passed / 0 skipped（API 182件 + root 156件）
+
+---
+
 ## [0.4.0] - 2026-04-24
 
 ### 追加
