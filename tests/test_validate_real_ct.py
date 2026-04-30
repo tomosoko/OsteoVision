@@ -8,6 +8,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "OsteoSynth"))
 from validate_real_ct import (
     angle_deg, acute_angle, calc_angles, qc_judge,
     apply_rotation_calibration, ROTATION_CALIB_SLOPE, ROTATION_CALIB_INTERCEPT,
+    FORMULA_A_CALIB_SLOPE, FORMULA_A_CALIB_INTERCEPT,
 )
 
 
@@ -81,7 +82,7 @@ class TestCalcAngles:
     def test_symmetric_condyles_near_zero_rotation(self):
         kpts = self._make_straight_knee()
         result = calc_angles(kpts)
-        # symmetric mc/lc → asym ≈ 0 → rotation ≈ 0
+        # symmetric mc/lc → Formula A net_shift = 0 → rotation = 0
         assert abs(result["Rotation"]) < 0.5
 
     def test_tpa_is_nonnegative(self):
@@ -219,3 +220,46 @@ class TestRotationCalibration:
         assert mean_calib < mean_raw, (
             f"校正後平均誤差 {mean_calib:.2f}° が校正前 {mean_raw:.2f}° より大きい"
         )
+
+
+class TestFormulaACalibConstants:
+    """Formula A 校正定数（EXP-002e 暫定アイデンティティ、EXP-003 待ち）."""
+
+    def test_formula_a_slope_is_identity(self):
+        """EXP-003 キャリブレーション前はアイデンティティ (slope=1.0)."""
+        assert abs(FORMULA_A_CALIB_SLOPE - 1.0) < 1e-9
+
+    def test_formula_a_intercept_is_zero(self):
+        """EXP-003 キャリブレーション前はゼロオフセット (intercept=0.0)."""
+        assert abs(FORMULA_A_CALIB_INTERCEPT - 0.0) < 1e-9
+
+    def test_formula_a_calibration_is_passthrough(self):
+        """アイデンティティ校正では入力値がそのまま返る."""
+        for val in (-15.0, 0.0, 5.5, 30.0):
+            result = apply_rotation_calibration(
+                val, slope=FORMULA_A_CALIB_SLOPE, intercept=FORMULA_A_CALIB_INTERCEPT
+            )
+            assert abs(result - round(val, 1)) < 0.01, f"val={val} -> {result}"
+
+    def test_calc_angles_formula_a_symmetric_is_zero(self):
+        """対称顆部 → Formula A net_shift=0 → rotation=0.0."""
+        kpts = [(100, 50), (90, 200), (110, 200), (100, 350)]
+        result = calc_angles(kpts)
+        assert result is not None
+        assert result["Rotation"] == 0.0
+
+    def test_calc_angles_formula_a_right_shift_positive(self):
+        """顆部中点が骨幹軸より右にずれた場合、正の回旋角が返る."""
+        # mid_x=130 > shaft_x_at_condyle=100 → net_shift>0 → rotation>0
+        kpts = [(100, 50), (110, 200), (150, 200), (100, 350)]
+        result = calc_angles(kpts)
+        assert result is not None
+        assert result["Rotation"] > 0.0
+
+    def test_calc_angles_formula_a_left_shift_negative(self):
+        """顆部中点が骨幹軸より左にずれた場合、負の回旋角が返る."""
+        # mid_x=70 < shaft_x_at_condyle=100 → net_shift<0 → rotation<0
+        kpts = [(100, 50), (50, 200), (90, 200), (100, 350)]
+        result = calc_angles(kpts)
+        assert result is not None
+        assert result["Rotation"] < 0.0

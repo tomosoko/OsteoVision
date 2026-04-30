@@ -28,11 +28,18 @@ if os.path.isdir(VENV_SP):
     sys.path.insert(0, VENV_SP)
 
 # ─── 回旋角校正定数（EXP-002c 線形回帰, n=8 ファントムCT） ─────────────
+# ※ 旧式 asymmetry×20 用。Formula A 移行後は参照のみ。
 # numpy.polyfit: x=asymmetry×20 (生推定値), y=GT回旋角(°)
 # slope=-0.8616, intercept=-6.67
 # RMSE改善: バイアスのみ 11.4° → 線形回帰 6.4°
 ROTATION_CALIB_SLOPE: float = -0.8616
 ROTATION_CALIB_INTERCEPT: float = -6.67
+
+# ─── Formula A 校正定数（EXP-002e 推奨、EXP-003 再キャリブレーション待ち） ──
+# Formula A (arctan-shift): r=+0.978（旧式 r=-0.959 と符号が正しい）
+# EXP-003（実CT n≥20）まではアイデンティティ適用（inference.py と同一設定）
+FORMULA_A_CALIB_SLOPE: float = 1.0
+FORMULA_A_CALIB_INTERCEPT: float = 0.0
 
 
 def apply_rotation_calibration(
@@ -76,9 +83,18 @@ def calc_angles(kpts):
     flexion = round(abs(femoral - tibial) % 360, 1)
     if flexion > 180: flexion = 360 - flexion
 
-    shaft_mx = (fs[0]+tp[0])/2
-    asym = (abs(lc[0]-shaft_mx)-abs(mc[0]-shaft_mx)) / (abs(lc[0]-shaft_mx)+abs(mc[0]-shaft_mx)+1e-9)
-    rotation = round(asym * 20, 1)
+    # Formula A (arctan-shift) — EXP-002e 推奨式、inference.py と同一ロジック
+    mid_x = (mc[0] + lc[0]) / 2.0
+    mid_y = (mc[1] + lc[1]) / 2.0
+    dy_shaft = tp[1] - fs[1]
+    if abs(dy_shaft) < 1e-3:
+        rotation = 0.0
+    else:
+        t = (mid_y - fs[1]) / dy_shaft
+        shaft_x_at_condyle = fs[0] + t * (tp[0] - fs[0])
+        net_shift = mid_x - shaft_x_at_condyle
+        condyle_half_w = abs(lc[0] - mc[0]) / 2.0
+        rotation = 0.0 if condyle_half_w < 1e-3 else round(math.degrees(math.atan(net_shift / condyle_half_w)), 1)
 
     return {"TPA": tpa, "Flexion": round(flexion,1), "Rotation": rotation}
 
@@ -287,7 +303,11 @@ def run(ct_dir, model_path=None):
         angles = calc_angles([(x*w,y*h) for x,y in kpts_norm]) if kpts_norm else None
         # 回旋角バイアス補正（EXP-002c Bland-Altman: -15.89°オフセット）
         if angles is not None:
-            angles["Rotation"] = apply_rotation_calibration(angles["Rotation"])
+            angles["Rotation"] = apply_rotation_calibration(
+                angles["Rotation"],
+                slope=FORMULA_A_CALIB_SLOPE,
+                intercept=FORMULA_A_CALIB_INTERCEPT,
+            )
         qc     = qc_judge(angles)
 
         # 可視化
