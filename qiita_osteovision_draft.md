@@ -33,7 +33,7 @@ ignorePublish: false
 | 回旋角キャリブレーション精度 | **LoA ±12.4°**（線形回帰、前手法比40%改善） |
 | 推論速度 | **174 ms/枚**（CPU、Intel Mac 2019） |
 | 訓練データ | **患者データゼロ**（合成DRRのみ、633枚） |
-| テスト数 | **321 tests passed / 0 skipped** |
+| テスト数 | **332 tests passed / 0 skipped** |
 
 ---
 
@@ -258,7 +258,7 @@ condyle_half_w = abs(lc_x - mc_x) / 2
 rotation = math.degrees(math.atan(net_shift / condyle_half_w))
 ```
 
-ただし n=7（YOLO 検出成功分）では信頼性の高いキャリブレーション係数を導出できないため、本番実装は EXP-003（実患者 CT n≥20）後を予定しています。
+**本番適用済み（2026-04-30）**: `inference.py` に `compute_formula_a()` を実装し、YOLO 推論パイプラインを `asymmetry × 20` から Formula A（arctan-shift）へ移行しました。キャリブレーション係数は EXP-002c 由来の暫定値を継続使用しており、EXP-003（実患者 CT n≥20）で再キャリブレーション予定です。
 
 ---
 
@@ -340,8 +340,9 @@ def detect_with_yolo_pose(image_array):
     # 三角関数で臨床角度計算
     flexion  = calc_flexion(femur_shaft, condyle_mid, tibia_plateau)
     tpa      = calc_tpa(medial_condyle, lateral_condyle, tibia_plateau)
-    rotation = calc_rotation(femur_shaft, medial_condyle, lateral_condyle, tibia_plateau)
-    rotation = apply_rotation_calibration(rotation)  # EXP-002d 線形回帰補正
+    # Formula A（arctan-shift）— EXP-002e で arctan-shift が正しい符号方向と確認
+    rotation = compute_formula_a(kpts)               # arctan(net_shift / condyle_half_width)
+    rotation = apply_rotation_calibration(rotation)  # 線形回帰補正（暫定 EXP-002c 係数）
 
     return {
         "flexion": flexion,
@@ -367,7 +368,7 @@ else:
 
 ---
 
-## テスト設計（321 passed / 0 skipped）
+## テスト設計（332 passed / 0 skipped）
 
 TDD（テスト駆動開発）で品質を担保しています。
 
@@ -386,17 +387,17 @@ TDD（テスト駆動開発）で品質を担保しています。
 | `test_create_knee_phantom.py` | 9 | ファントム生成 |
 | `test_exp002e_formula_comparison.py` | 18 | `compute_formula_a`（arctan-shift 回旋角式） |
 
-**APIテスト（dicom-viewer-prototype-api/tests/ — 171件）**
+**APIテスト（dicom-viewer-prototype-api/tests/ — 182件）**
 
 | テストファイル | 件数 | 対象 |
 |---|---|---|
-| `test_inference.py` | 33 | YOLOv8-Pose推論・角度計算・GradCAM |
+| `test_inference.py` | 52 | YOLOv8-Pose推論・角度計算・GradCAM・Formula A |
 | `test_classical_cv.py` | 多数 | 古典CV フォールバック |
 | `test_api.py` / `test_upload.py` | 多数 | FastAPIエンドポイント |
 | `test_edge_cases.py` / `test_yolo_inference.py` | 多数 | エッジケース・YOLO推論 |
 | `test_angle_math.py` / `test_gradcam.py` | 多数 | 角度計算・GradCAM可視化 |
 
-計 **321 passed / 0 skipped**
+計 **332 passed / 0 skipped**
 
 GitHub Actions で push 時に自動実行：
 
@@ -423,6 +424,7 @@ GitHub Actions で push 時に自動実行：
 ## 今後の課題
 
 - [x] **EXP-002e 完了**: Formula A（arctan-shift）が符号方向正と確認（slope +0.324 vs 旧式 -0.923）
+- [x] **Formula A 本番適用**: `inference.py` に `compute_formula_a()` 実装済み、推論パイプラインを arctan-shift へ移行（332 tests passed）
 - [ ] **EXP-003**: 実患者データ取得 → Formula A ベースでキャリブレーション再計算（n≥20 推奨、TCIA/OAI 公開膝CT）
 - [x] **EXP-002f 完了**: 中角度回旋（±5°, ±10°）対策としてデータセット拡張（720→1296枚、rots 5→9値）
 - [ ] **EXP-002f 再訓練**: Google Colab で拡張データセットによる再訓練（目標: 全回旋角で 80%+ 検出）
@@ -439,9 +441,9 @@ GitHub Actions で push 時に自動実行：
 | 開発者 | 放射線技師（現役） |
 | 患者データ | **ゼロ**（合成DRR 633枚のみ） |
 | YOLO Pose mAP50 | **100%**（ファントムCT 8/8 全件成功） |
-| 回旋角 LoA | **±12.4°**（線形回帰キャリブレーション後） ※次期 Formula A（arctan-shift）で改善予定 |
+| 回旋角 LoA | **±12.4°**（線形回帰キャリブレーション後）※Formula A（arctan-shift）本番適用済み、EXP-003 で再キャリブレーション予定 |
 | 推論速度 | 174 ms/枚（CPU） |
-| テスト数 | 321 passed / 0 skipped |
+| テスト数 | 332 passed / 0 skipped |
 
 「患者データゼロ」「倫理審査不要」でここまで動くシステムが作れました。
 
