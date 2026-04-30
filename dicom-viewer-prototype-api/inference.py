@@ -30,6 +30,12 @@ device = torch.device(
 ROTATION_CALIB_SLOPE: float = -0.8616
 ROTATION_CALIB_INTERCEPT: float = -6.67
 
+# --- Formula A Calibration (EXP-002e; EXP-003 calibration pending) ---
+# Formula A (arctan-shift): r=+0.978 correct sign (vs old r=-0.959)
+# Calibration against real CT pending EXP-003 (n≥20); identity used for now
+FORMULA_A_CALIB_SLOPE: float = 1.0
+FORMULA_A_CALIB_INTERCEPT: float = 0.0
+
 
 def apply_rotation_calibration(
     rotation: float,
@@ -43,6 +49,41 @@ def apply_rotation_calibration(
     Formula: calibrated = slope × rotation + intercept
     """
     return round(slope * rotation + intercept, 1)
+
+
+def compute_formula_a(kpts: np.ndarray) -> float:
+    """Formula A (arctan-shift): EXP-002e recommended rotation estimate.
+
+    Projects the bone shaft axis to condyle level, measures net lateral shift,
+    normalises by half condyle width.
+
+        rot_A = atan(net_shift / condyle_half_width)  [degrees]
+
+    Keypoint order: 0=femur_shaft, 1=medial_condyle, 2=lateral_condyle, 3=tibial_plateau
+    EXP-002e offline analysis: r=+0.978 (correct sign vs old asymmetry×20 r=-0.959).
+    """
+    fs_x, fs_y = float(kpts[0][0]), float(kpts[0][1])
+    mc_x, mc_y = float(kpts[1][0]), float(kpts[1][1])
+    lc_x, lc_y = float(kpts[2][0]), float(kpts[2][1])
+    tp_x, tp_y = float(kpts[3][0]), float(kpts[3][1])
+
+    mid_x = (mc_x + lc_x) / 2.0
+    mid_y = (mc_y + lc_y) / 2.0
+
+    dy_shaft = tp_y - fs_y
+    if abs(dy_shaft) < 1e-3:
+        return 0.0
+
+    t = (mid_y - fs_y) / dy_shaft
+    shaft_x_at_condyle = fs_x + t * (tp_x - fs_x)
+
+    net_shift = mid_x - shaft_x_at_condyle
+    condyle_half_w = abs(lc_x - mc_x) / 2.0
+
+    if condyle_half_w < 1e-3:
+        return 0.0
+
+    return round(math.degrees(math.atan(net_shift / condyle_half_w)), 1)
 
 
 # --- 1. YOLOv8 Pose Model (primary landmark detector) ---
@@ -281,18 +322,14 @@ def detect_with_yolo_pose(image_array: np.ndarray) -> Optional[dict]:
         # View classification: AP (wide condyle separation) vs LAT (overlapping)
         view_type = "AP" if condyle_separation > w * 0.1 else "LAT"
 
-        # Use asymmetry of condyles relative to shaft axis for rotation
-        shaft_midx = (femur_shaft_pt["x"] + tibia_plateau_pt["x"]) / 2
-        med_offset = medial_condyle_pt["x"] - shaft_midx
-        lat_offset = lateral_condyle_pt["x"] - shaft_midx
-
-        if abs(med_offset) + abs(lat_offset) > 1e-3:
-            asymmetry = (abs(lat_offset) - abs(med_offset)) / (abs(med_offset) + abs(lat_offset))
-        else:
-            asymmetry = 0.0
-        rotation_deg = round(asymmetry * 20.0, 1)
-        rotation_deg = apply_rotation_calibration(rotation_deg)
-        rotation_deg = max(-20.0, min(20.0, rotation_deg))
+        # Use Formula A (arctan-shift) for rotation — EXP-002e recommended
+        rotation_deg = compute_formula_a(kpts)
+        rotation_deg = apply_rotation_calibration(
+            rotation_deg,
+            slope=FORMULA_A_CALIB_SLOPE,
+            intercept=FORMULA_A_CALIB_INTERCEPT,
+        )
+        rotation_deg = max(-45.0, min(45.0, rotation_deg))
 
         if rotation_deg > 1.5:
             rotation_label = "内旋 (Internal)"

@@ -20,8 +20,11 @@ from inference import (
     device,
     dl_transforms,
     apply_rotation_calibration,
+    compute_formula_a,
     ROTATION_CALIB_SLOPE,
     ROTATION_CALIB_INTERCEPT,
+    FORMULA_A_CALIB_SLOPE,
+    FORMULA_A_CALIB_INTERCEPT,
 )
 
 
@@ -404,3 +407,78 @@ class TestApplyRotationCalibration:
         errors = [abs(apply_rotation_calibration(raw) - gt) for raw, gt in cases]
         mean_error = sum(errors) / len(errors)
         assert mean_error < 10.0, f"Mean calibration error too large: {mean_error:.1f}°"
+
+
+# ─── compute_formula_a ────────────────────────────────────────────────
+
+
+class TestComputeFormulaA:
+    """compute_formula_a() — EXP-002e arctan-shift rotation formula."""
+
+    def _kpts(self, fs, mc, lc, tp) -> np.ndarray:
+        """Build (4,2) keypoint array: [femur_shaft, medial_condyle, lateral_condyle, tibial_plateau]."""
+        return np.array([fs, mc, lc, tp], dtype=float)
+
+    def test_neutral_symmetric_returns_zero(self):
+        """Symmetric condyles centered on shaft axis → 0°."""
+        # shaft: x=100, condyles symmetric at x=90 and x=110 (mid=100)
+        kpts = self._kpts(fs=(100, 0), mc=(90, 200), lc=(110, 200), tp=(100, 400))
+        assert compute_formula_a(kpts) == 0.0
+
+    def test_internal_rotation_positive(self):
+        """Condyle midpoint shifted right of shaft axis → positive (内旋)."""
+        # shaft axis at x=100, condyle mid at x=120 (shifted right by 20)
+        kpts = self._kpts(fs=(100, 0), mc=(110, 200), lc=(130, 200), tp=(100, 400))
+        result = compute_formula_a(kpts)
+        assert result > 0.0
+
+    def test_external_rotation_negative(self):
+        """Condyle midpoint shifted left of shaft axis → negative (外旋)."""
+        kpts = self._kpts(fs=(100, 0), mc=(70, 200), lc=(90, 200), tp=(100, 400))
+        result = compute_formula_a(kpts)
+        assert result < 0.0
+
+    def test_zero_dy_shaft_returns_zero(self):
+        """Degenerate case: fs_y == tp_y → 0.0."""
+        kpts = self._kpts(fs=(100, 200), mc=(90, 200), lc=(110, 200), tp=(100, 200))
+        assert compute_formula_a(kpts) == 0.0
+
+    def test_zero_condyle_width_returns_zero(self):
+        """Degenerate case: mc_x == lc_x → 0.0."""
+        kpts = self._kpts(fs=(100, 0), mc=(100, 200), lc=(100, 200), tp=(100, 400))
+        assert compute_formula_a(kpts) == 0.0
+
+    def test_returns_float(self):
+        """Return type is float."""
+        kpts = self._kpts(fs=(100, 0), mc=(90, 200), lc=(110, 200), tp=(100, 400))
+        assert isinstance(compute_formula_a(kpts), float)
+
+    def test_range_reasonable(self):
+        """Result stays within ±90° for realistic inputs."""
+        kpts = self._kpts(fs=(100, 0), mc=(50, 200), lc=(150, 200), tp=(200, 400))
+        result = compute_formula_a(kpts)
+        assert -90.0 <= result <= 90.0
+
+    def test_symmetry_sign(self):
+        """Mirrored shift produces equal magnitude, opposite sign."""
+        kpts_right = self._kpts(fs=(100, 0), mc=(110, 200), lc=(130, 200), tp=(100, 400))
+        kpts_left  = self._kpts(fs=(100, 0), mc=(70,  200), lc=(90,  200), tp=(100, 400))
+        assert compute_formula_a(kpts_right) == -compute_formula_a(kpts_left)
+
+    def test_formula_a_calib_slope_is_identity(self):
+        """FORMULA_A_CALIB_SLOPE is 1.0 (identity, pending EXP-003)."""
+        assert FORMULA_A_CALIB_SLOPE == 1.0
+
+    def test_formula_a_calib_intercept_is_zero(self):
+        """FORMULA_A_CALIB_INTERCEPT is 0.0 (identity, pending EXP-003)."""
+        assert FORMULA_A_CALIB_INTERCEPT == 0.0
+
+    def test_known_angle(self):
+        """Known geometry: net_shift=condyle_half_w → atan(1) = 45°."""
+        # condyle_half_w = 10, net_shift = 10 → atan(1) = 45°
+        # shaft at x=100, condyles at x=90,x=110 (half_w=10), mid=100
+        # shift mid to x=110 by moving both condyles right by 10
+        # shaft projected at condyle level = 100 → net_shift = 110 - 100 = 10
+        kpts = self._kpts(fs=(100, 0), mc=(100, 200), lc=(120, 200), tp=(100, 400))
+        result = compute_formula_a(kpts)
+        assert abs(result - 45.0) < 0.1
