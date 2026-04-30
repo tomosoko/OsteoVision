@@ -33,7 +33,7 @@ ignorePublish: false
 | 回旋角キャリブレーション精度 | **LoA ±12.4°**（線形回帰、前手法比40%改善） |
 | 推論速度 | **174 ms/枚**（CPU、Intel Mac 2019） |
 | 訓練データ | **患者データゼロ**（合成DRRのみ、633枚） |
-| テスト数 | **303 tests passed / 0 skipped** |
+| テスト数 | **321 tests passed / 0 skipped** |
 
 ---
 
@@ -367,23 +367,36 @@ else:
 
 ---
 
-## テスト設計（303 passed / 0 skipped）
+## テスト設計（321 passed / 0 skipped）
 
 TDD（テスト駆動開発）で品質を担保しています。
 
 ### テスト構成
 
+**ルートレベル（tests/ — 150件）**
+
 | テストファイル | 件数 | 対象 |
 |---|---|---|
 | `test_bland_altman.py` | 27 | Bland-Altman 一致性解析 |
 | `test_drr_generator.py` | 15 | DRR生成（回転行列） |
+| `test_drr_multiview_generator.py` | 16 | `project_volume`, `process_drr_image` |
+| `test_yolo_pose_factory_exp002c.py` | 21 | `get_rotation_matrix`, `convert_to_yolov8_pose` |
+| `test_generate_yolo_overlay.py` | 7 | `compute_tpa_angle`（TPA角度計算） |
 | `test_validate_real_ct.py` | 36 | 角度計算・QC判定・回旋キャリブレーション |
+| `test_create_knee_phantom.py` | 9 | ファントム生成 |
+| `test_exp002e_formula_comparison.py` | 18 | `compute_formula_a`（arctan-shift 回旋角式） |
+
+**APIテスト（dicom-viewer-prototype-api/tests/ — 171件）**
+
+| テストファイル | 件数 | 対象 |
+|---|---|---|
 | `test_inference.py` | 33 | YOLOv8-Pose推論・角度計算・GradCAM |
 | `test_classical_cv.py` | 多数 | 古典CV フォールバック |
-| `test_api.py` | 多数 | FastAPIエンドポイント |
-| （他3ファイル） | — | エッジケース・YOLO推論 |
+| `test_api.py` / `test_upload.py` | 多数 | FastAPIエンドポイント |
+| `test_edge_cases.py` / `test_yolo_inference.py` | 多数 | エッジケース・YOLO推論 |
+| `test_angle_math.py` / `test_gradcam.py` | 多数 | 角度計算・GradCAM可視化 |
 
-計 **303 passed / 0 skipped**
+計 **321 passed / 0 skipped**
 
 GitHub Actions で push 時に自動実行：
 
@@ -428,7 +441,7 @@ GitHub Actions で push 時に自動実行：
 | YOLO Pose mAP50 | **100%**（ファントムCT 8/8 全件成功） |
 | 回旋角 LoA | **±12.4°**（線形回帰キャリブレーション後） ※次期 Formula A（arctan-shift）で改善予定 |
 | 推論速度 | 174 ms/枚（CPU） |
-| テスト数 | 303 passed / 0 skipped |
+| テスト数 | 321 passed / 0 skipped |
 
 「患者データゼロ」「倫理審査不要」でここまで動くシステムが作れました。
 
