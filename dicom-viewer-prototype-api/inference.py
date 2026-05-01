@@ -562,19 +562,19 @@ def detect_bone_landmarks(image_array: np.ndarray) -> dict:
             if len(right_cols) > 0:
                 lateral_condyle = {"x": int(np.average(right_cols, weights=col_profile[right_cols])), "y": int(condyle_y)}
 
-            # Use asymmetry of condyles relative to shaft axis for rotation
-            shaft_midx = (femur_axis_top["x"] + tibia_axis_bottom["x"]) / 2
-            med_offset = medial_condyle["x"] - shaft_midx
-            lat_offset = lateral_condyle["x"] - shaft_midx
-
-            if abs(med_offset) + abs(lat_offset) > 1e-3:
-                asymmetry = (abs(lat_offset) - abs(med_offset)) / (abs(med_offset) + abs(lat_offset))
-            else:
-                asymmetry = 0.0
-
-            MAX_ROT = 20.0
-            rotation_deg = round(asymmetry * MAX_ROT, 1)
-            rotation_deg = apply_rotation_calibration(rotation_deg)
+            # Formula A (arctan-shift): consistent with YOLO path and validate_real_ct.py
+            kpts_cv = np.array([
+                [femur_axis_top["x"],    femur_axis_top["y"]],
+                [medial_condyle["x"],    medial_condyle["y"]],
+                [lateral_condyle["x"],   lateral_condyle["y"]],
+                [tibia_axis_bottom["x"], tibia_axis_bottom["y"]],
+            ])
+            rotation_deg = compute_formula_a(kpts_cv)
+            rotation_deg = apply_rotation_calibration(
+                rotation_deg,
+                slope=FORMULA_A_CALIB_SLOPE,
+                intercept=FORMULA_A_CALIB_INTERCEPT,
+            )
 
     if rotation_deg > 1.5:
         rotation_label = f"内旋 (Internal)"
