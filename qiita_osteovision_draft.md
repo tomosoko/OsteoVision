@@ -424,6 +424,63 @@ GitHub Actions で push 時に自動実行：
 
 ---
 
+## 試してみる（クイックスタート）
+
+コードは GitHub で公開しており、Docker があればすぐに動かせます。
+
+### Docker（推奨）
+
+```bash
+git clone https://github.com/tomosoko/OsteoVision.git
+cd OsteoVision
+docker-compose up
+```
+
+`http://localhost:3000` で Next.js フロントエンドが、`http://localhost:8000` で FastAPI バックエンドが起動します。
+
+### 手動セットアップ
+
+```bash
+# Python 3.9 仮想環境を作成
+cd dicom-viewer-prototype-api
+python3.9 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+# API サーバー起動（ポート 8000）
+uvicorn main:app --host 0.0.0.0 --port 8000
+```
+
+### API を叩いてみる
+
+```bash
+# 膝関節 X 線画像を送信 → キーポイント＋臨床角度が返ってくる
+curl -X POST http://localhost:8000/api/analyze \
+  -F "file=@knee_xray.png" | python3 -m json.tool
+
+# レスポンス例
+# {
+#   "landmarks": { ... },
+#   "angles": {
+#     "TPA": 22.3,
+#     "flexion": 1.8,
+#     "rotation": -3.1,
+#     "rotation_label": "中立 (Neutral) [YOLOv8]"
+#   },
+#   "qa_status": "GOOD"
+# }
+```
+
+### テスト実行
+
+```bash
+cd /path/to/OsteoVision
+/path/to/venv/bin/python -m pytest tests/ dicom-viewer-prototype-api/tests/ -q
+# 353 passed, 0 skipped
+```
+
+---
+
 ## 今後の課題
 
 - [x] **EXP-002e 完了**: Formula A（arctan-shift）が符号方向正と確認（slope +0.324 vs 旧式 -0.923）
