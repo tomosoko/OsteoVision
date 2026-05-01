@@ -33,7 +33,7 @@ ignorePublish: false
 | 回旋角キャリブレーション精度 | **LoA ±12.4°**（線形回帰、前手法比40%改善） |
 | 推論速度 | **174 ms/枚**（CPU、Intel Mac 2019） |
 | 訓練データ | **患者データゼロ**（合成DRRのみ、633枚） |
-| テスト数 | **338 tests passed / 0 skipped** |
+| テスト数 | **353 tests passed / 0 skipped** |
 
 ---
 
@@ -368,7 +368,7 @@ else:
 
 ---
 
-## テスト設計（338 passed / 0 skipped）
+## テスト設計（353 passed / 0 skipped）
 
 TDD（テスト駆動開発）で品質を担保しています。
 
@@ -392,7 +392,7 @@ TDD（テスト駆動開発）で品質を担保しています。
 | テストファイル | 件数 | 対象 |
 |---|---|---|
 | `test_inference.py` | 52 | YOLOv8-Pose推論・角度計算・GradCAM・Formula A |
-| `test_classical_cv.py` | 21 | 古典CV フォールバック（`detect_bone_landmarks`） |
+| `test_classical_cv.py` | 36 | 古典CV フォールバック（`detect_bone_landmarks`） |
 | `test_api.py` | 16 | FastAPIエンドポイント（`/api/analyze`・`/api/gradcam`） |
 | `test_upload.py` | 22 | ファイルアップロード・バリデーション |
 | `test_edge_cases.py` | 26 | エッジケース（ゼロサイズ・破損ファイル・形式違反） |
@@ -400,7 +400,7 @@ TDD（テスト駆動開発）で品質を担保しています。
 | `test_angle_math.py` | 19 | 角度計算関数（TPA・回旋・屈曲） |
 | `test_gradcam.py` | 16 | `GradCAM` クラス・`apply_gradcam_overlay` |
 
-計 **338 passed / 0 skipped**
+計 **353 passed / 0 skipped**
 
 GitHub Actions で push 時に自動実行：
 
@@ -427,7 +427,7 @@ GitHub Actions で push 時に自動実行：
 ## 今後の課題
 
 - [x] **EXP-002e 完了**: Formula A（arctan-shift）が符号方向正と確認（slope +0.324 vs 旧式 -0.923）
-- [x] **Formula A 本番適用**: `inference.py` + `validate_real_ct.py` の両方を arctan-shift へ移行済み（338 tests passed）
+- [x] **Formula A 本番適用**: `inference.py` + `validate_real_ct.py` の両方を arctan-shift へ移行済み（353 tests passed）
 - [ ] **EXP-003**: 実患者データ取得 → Formula A ベースでキャリブレーション再計算（n≥20 推奨、TCIA/OAI 公開膝CT）
 - [x] **EXP-002f 完了**: 中角度回旋（±5°, ±10°）対策としてデータセット拡張（720→1296枚、rots 5→9値）
 - [ ] **EXP-002f 再訓練**: Google Colab で拡張データセットによる再訓練（目標: 全回旋角で 80%+ 検出）
@@ -446,7 +446,7 @@ GitHub Actions で push 時に自動実行：
 | YOLO Pose mAP50 | **100%**（ファントムCT 8/8 全件成功） |
 | 回旋角 LoA | **±12.4°**（線形回帰キャリブレーション後）※Formula A（arctan-shift）本番適用済み、EXP-003 で再キャリブレーション予定 |
 | 推論速度 | 174 ms/枚（CPU） |
-| テスト数 | 338 passed / 0 skipped |
+| テスト数 | 353 passed / 0 skipped |
 
 「患者データゼロ」「倫理審査不要」でここまで動くシステムが作れました。
 

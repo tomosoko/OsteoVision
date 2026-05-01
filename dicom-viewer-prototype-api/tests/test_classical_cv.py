@@ -244,3 +244,139 @@ class TestFallbackActivation:
         result = detect_bone_landmarks(img)
         assert result is not None
         assert "angles" in result
+
+
+# ─── compute_formula_a 直接ユニットテスト ────────────────────────────────
+
+
+class TestComputeFormulaA:
+    """compute_formula_a (arctan-shift) 回旋角計算式の直接テスト。
+
+    kpt順序: 0=femur_shaft, 1=medial_condyle, 2=lateral_condyle, 3=tibial_plateau
+    rot_A = atan(net_shift / condyle_half_width)  [degrees]
+    net_shift = mid_x − shaft_x_at_condyle_level
+    """
+
+    def _kpts(self, fs_x, fs_y, mc_x, mc_y, lc_x, lc_y, tp_x, tp_y):
+        from inference import compute_formula_a  # noqa: F401 (local import for clarity)
+        return np.array(
+            [[fs_x, fs_y], [mc_x, mc_y], [lc_x, lc_y], [tp_x, tp_y]], dtype=float
+        )
+
+    def _formula_a(self, *args):
+        from inference import compute_formula_a
+        return compute_formula_a(self._kpts(*args))
+
+    def test_importable(self):
+        """compute_formula_a が inference.py から import できる"""
+        from inference import compute_formula_a
+        assert callable(compute_formula_a)
+
+    def test_symmetric_shaft_returns_zero(self):
+        """骨幹軸と顆部中点が一致するとき回旋角 ≈ 0°"""
+        # shaft vertical at x=100; condyles symmetric: mid_x=100 = shaft projection
+        result = self._formula_a(100, 0, 85, 50, 115, 50, 100, 100)
+        assert result == pytest.approx(0.0, abs=0.1)
+
+    def test_right_shift_returns_positive_angle(self):
+        """顆部中点が骨幹軸より右にあるとき正の回旋角"""
+        # mid_x=120, shaft_x_at_condyle=100 → net_shift=+20 → positive
+        result = self._formula_a(100, 0, 105, 50, 135, 50, 100, 100)
+        assert result > 0, f"Expected positive rotation, got {result}"
+
+    def test_left_shift_returns_negative_angle(self):
+        """顆部中点が骨幹軸より左にあるとき負の回旋角"""
+        # mid_x=80, shaft_x_at_condyle=100 → net_shift=-20 → negative
+        result = self._formula_a(100, 0, 65, 50, 95, 50, 100, 100)
+        assert result < 0, f"Expected negative rotation, got {result}"
+
+    def test_tilted_shaft_projection_corrected(self):
+        """骨幹軸が傾いていても軸投影を正しく補正して 0° に近い値を返す"""
+        # fs=(90,0), tp=(110,100): at y=50, shaft_x = 90+0.5*(110-90) = 100
+        # condyle mid_x = (85+115)/2 = 100 → net_shift = 0
+        result = self._formula_a(90, 0, 85, 50, 115, 50, 110, 100)
+        assert abs(result) < 0.5, f"Tilted shaft not compensated: {result}°"
+
+    def test_zero_shaft_length_returns_zero(self):
+        """骨幹軸の長さが 0（fs_y == tp_y）のとき 0° を返す（ゼロ除算防止）"""
+        result = self._formula_a(100, 50, 85, 50, 115, 50, 100, 50)
+        assert result == 0.0
+
+    def test_zero_condyle_width_returns_zero(self):
+        """顆部幅が 0（mc_x == lc_x）のとき 0° を返す（ゼロ除算防止）"""
+        result = self._formula_a(100, 0, 100, 50, 100, 50, 100, 100)
+        assert result == 0.0
+
+    def test_returns_float(self):
+        """戻り値が float"""
+        result = self._formula_a(100, 0, 85, 50, 115, 50, 100, 100)
+        assert isinstance(result, float)
+
+    def test_angle_bounded_by_arctan(self):
+        """極端なシフトでも arctan の範囲（-90°〜+90°）を超えない"""
+        result = self._formula_a(100, 0, 300, 50, 360, 50, 100, 100)
+        assert -90.0 < result < 90.0
+
+    def test_antisymmetric(self):
+        """左右を反転すると符号が逆になる"""
+        pos = self._formula_a(100, 0, 105, 50, 135, 50, 100, 100)
+        neg = self._formula_a(100, 0, 65,  50, 95,  50, 100, 100)
+        assert pos > 0 and neg < 0
+        assert abs(pos + neg) < 0.5, "Symmetric inputs should produce equal-magnitude results"
+
+
+# ─── detect_bone_landmarks の回旋角整合性テスト ──────────────────────────
+
+
+class TestRotationOutputInClassicalCV:
+    """detect_bone_landmarks から返される回旋角・ラベルの整合性テスト。
+
+    commit 91948fb で古典的CV フォールバックが asymmetry×20 から
+    Formula A (arctan-shift) へ移行された後の動作を検証する。
+    """
+
+    def test_rotation_bounded_to_45(self):
+        """回旋角は [-45, +45] の範囲内にクリップされる"""
+        img = make_bone_image()
+        result = detect_bone_landmarks(img)
+        rot = result["angles"]["rotation"]
+        assert -45.0 <= rot <= 45.0
+
+    def test_rotation_label_matches_angle(self):
+        """rotation_label と rotation の符号が整合している"""
+        img = make_bone_image()
+        result = detect_bone_landmarks(img)
+        rot = result["angles"]["rotation"]
+        label = result["angles"].get("rotation_label", "")
+        if rot > 1.5:
+            assert "内旋" in label or "Internal" in label, (
+                f"Expected 内旋/Internal for rot={rot:.1f}°, got '{label}'"
+            )
+        elif rot < -1.5:
+            assert "外旋" in label or "External" in label, (
+                f"Expected 外旋/External for rot={rot:.1f}°, got '{label}'"
+            )
+        else:
+            assert "中立" in label or "Neutral" in label, (
+                f"Expected 中立/Neutral for rot={rot:.1f}°, got '{label}'"
+            )
+
+    def test_symmetric_bone_rotation_small(self):
+        """左右対称な骨構造で回旋角が ±20° 以内（粗い境界）"""
+        img = make_bone_image(512)
+        result = detect_bone_landmarks(img)
+        rot = result["angles"]["rotation"]
+        assert abs(rot) <= 20.0, f"Symmetric image gave large rotation: {rot}°"
+
+    def test_rotation_is_numeric(self):
+        """回旋角が数値（NaN / Inf でない）"""
+        img = make_bone_image()
+        result = detect_bone_landmarks(img)
+        rot = result["angles"]["rotation"]
+        assert math.isfinite(rot), f"rotation is not finite: {rot}"
+
+    def test_formula_a_slope_is_identity(self):
+        """Formula A キャリブレーション定数が恒等変換（EXP-003 未実施）"""
+        from inference import FORMULA_A_CALIB_SLOPE, FORMULA_A_CALIB_INTERCEPT
+        assert FORMULA_A_CALIB_SLOPE == pytest.approx(1.0)
+        assert FORMULA_A_CALIB_INTERCEPT == pytest.approx(0.0)
