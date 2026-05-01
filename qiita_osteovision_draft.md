@@ -311,15 +311,16 @@ rots = [-30, -15, -10, -5, 0, 5, 10, 15, 30]  # 9値、約5° 刻み
 ```python
 # main.py（ルーティング）
 
-@app.post("/api/predict")
-async def predict(file: UploadFile = File(...)):
-    """膝関節X線画像からキーポイントと臨床角度を推定"""
-    image = load_image(await file.read())
-    result = predict_angles(image)  # inference.py に委譲
-    return result
+@app.post("/api/analyze")
+async def analyze_knee(file: UploadFile = File(...)):
+    """膝関節X線画像（PNG/JPEG/DICOM）からキーポイントと臨床角度を推定"""
+    content = await file.read()
+    image_array = decode_image(content, file.filename)
+    landmarks = detect_with_yolo_pose(image_array)  # inference.py に委譲
+    return landmarks
 
 @app.post("/api/gradcam")
-async def gradcam(file: UploadFile = File(...)):
+async def gradcam_endpoint(file: UploadFile = File(...)):
     """Grad-CAM 可視化（モデルが何を見ているか）"""
     ...
 ```
