@@ -388,7 +388,7 @@ TDD（テスト駆動開発）で品質を担保しています。
 | `test_create_knee_phantom.py` | 9 | ファントム生成 |
 | `test_exp002e_formula_comparison.py` | 18 | `compute_formula_a`（arctan-shift 回旋角式） |
 
-**APIテスト（dicom-viewer-prototype-api/tests/ — 182件）**
+**APIテスト（dicom-viewer-prototype-api/tests/ — 197件）**
 
 | テストファイル | 件数 | 対象 |
 |---|---|---|

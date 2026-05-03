@@ -12,7 +12,7 @@
 - `dicom-viewer-prototype-api/inference.py`: YOLO 推論パイプラインを `asymmetry×20` から Formula A (arctan-shift) へ移行（EXP-002e 推奨式, commit: `781fe41`）
 - `OsteoSynth/validate_real_ct.py`: 同上、`FORMULA_A_CALIB_SLOPE/INTERCEPT` 定数追加（commit: `3fa219c`）
 - `OsteoSynth/yolo_pose_factory.py`: `rots` パラメータを 5値 → 9値（±5°, ±10° 追加）、訓練画像 720 → 1296枚（EXP-002f）
-- テスト総数: 332 → 338 passed / 0 skipped（API 182件 + root 156件）
+- テスト総数: 332 → 353 passed / 0 skipped（API 197件 + root 156件）
 
 ---
 
