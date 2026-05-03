@@ -30,7 +30,7 @@ ignorePublish: false
 |---|---|
 | YOLO Pose mAP50 (合成DRR) | **100% (1.000)** |
 | ファントムCT検出成功率 | **8/8（100%）** |
-| 回旋角キャリブレーション精度 | **LoA ±12.4°**（線形回帰、前手法比40%改善） |
+| 回旋角キャリブレーション精度 | **LoA ±12.4°**（旧式+線形回帰時）→ Formula A 移行済み、EXP-003 で再計測予定 |
 | 推論速度 | **13.7 ms/枚**（Mac mini M4 Pro MPS）/ 174 ms/枚（Intel CPU） |
 | 訓練データ | **患者データゼロ**（合成DRRのみ、633枚） |
 | テスト数 | **353 tests passed / 0 skipped** |
@@ -258,7 +258,7 @@ condyle_half_w = abs(lc_x - mc_x) / 2
 rotation = math.degrees(math.atan(net_shift / condyle_half_w))
 ```
 
-**本番適用済み（2026-04-30）**: `inference.py` に `compute_formula_a()` を実装し、YOLO 推論パイプラインを `asymmetry × 20` から Formula A（arctan-shift）へ移行しました。キャリブレーション係数は EXP-002c 由来の暫定値を継続使用しており、EXP-003（実患者 CT n≥20）で再キャリブレーション予定です。
+**本番適用済み（2026-04-30）**: `inference.py` に `compute_formula_a()` を実装し、YOLO 推論パイプラインを `asymmetry × 20` から Formula A（arctan-shift）へ移行しました。現在はキャリブレーション未適用（identity: slope=1.0, intercept=0.0）で、EXP-003（実患者 CT n≥20）で Formula A 用の回帰係数を決定予定です。
 
 ---
 
@@ -343,7 +343,7 @@ def detect_with_yolo_pose(image_array):
     tpa      = calc_tpa(medial_condyle, lateral_condyle, tibia_plateau)
     # Formula A（arctan-shift）— EXP-002e で arctan-shift が正しい符号方向と確認
     rotation = compute_formula_a(kpts)               # arctan(net_shift / condyle_half_width)
-    rotation = apply_rotation_calibration(rotation)  # 線形回帰補正（暫定 EXP-002c 係数）
+    rotation = apply_rotation_calibration(rotation)  # 現在 identity（EXP-003 で係数決定予定）
 
     return {
         "flexion": flexion,
@@ -503,7 +503,7 @@ cd /path/to/OsteoVision
 | 開発者 | 放射線技師（現役） |
 | 患者データ | **ゼロ**（合成DRR 633枚のみ） |
 | YOLO Pose mAP50 | **100%**（ファントムCT 8/8 全件成功） |
-| 回旋角 LoA | **±12.4°**（線形回帰キャリブレーション後）※Formula A（arctan-shift）本番適用済み、EXP-003 で再キャリブレーション予定 |
+| 回旋角 LoA | **±12.4°**（旧式+線形回帰時）→ Formula A（arctan-shift）移行済み、EXP-003 で再キャリブレーション予定 |
 | 推論速度 | **13.7 ms/枚**（M4 Pro MPS / 73.2 FPS）/ 174 ms/枚（Intel CPU） |
 | テスト数 | 353 passed / 0 skipped |
 
