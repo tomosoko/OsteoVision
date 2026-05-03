@@ -95,4 +95,4 @@ jobs:
       - name: Test summary
         run: |
           echo "✅ All tests passed"
-          echo "OsteoVision AI — mAP50: 99.8% (合成DRR)"
+          echo "OsteoVision AI — mAP50(P): 1.000 (EXP-002c, phantom CT 8/8)"

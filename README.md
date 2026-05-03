@@ -16,11 +16,11 @@ OsteoVision automatically measures anatomical angles from knee X-ray images and 
 
 | Feature | Detail |
 |---|---|
-| **Keypoint Detection** | YOLOv8-Pose · 4 anatomical landmarks · mAP50 = **99.8%** |
-| **Angle Measurement** | TPA · Flexion · Rotation — pure trigonometry |
+| **Keypoint Detection** | YOLOv8-Pose · 4 anatomical landmarks · mAP50 = **100% (1.000)** |
+| **Angle Measurement** | TPA · Flexion · Rotation (Formula A: arctan-shift) |
 | **Positioning QA** | Detects rotation errors · Gives correction instructions |
 | **Explainable AI** | Grad-CAM heatmaps (ResNet50) — *why* the AI decided |
-| **Validated** | Bland-Altman analysis framework · Clinical threshold checks |
+| **Phantom Validated** | 8/8 phantom CT DRRs detected · Bland-Altman analysis |
 
 ---
 
@@ -107,20 +107,20 @@ No patient data required. OsteoSynth generates anatomically correct synthetic DR
 
 - **3-axis simulation**: Flexion · Internal/External Rotation · Varus/Valgus
 - **Screw-home mechanism**: Tibial internal rotation during flexion (0.12°/deg)
-- **720 images** auto-generated with YOLO-format annotations
-- **Zero personal information**
+- **633 images** (EXP-002c) / **1296 images** (EXP-002f, expanded ±5°/±10° coverage)
+- **Zero personal information** — no ethics approval required
 
 ---
 
 ## Model Performance
 
-| Model | Training Data | mAP50 | Notes |
+| Model | Training Data | mAP50(P) | Notes |
 |---|---|---|---|
-| YOLOv8n-pose | 633 synthetic DRRs | **99.8%** | EXP-001 · Converged at epoch 10 |
-| YOLO11s-pose | 633 synthetic DRRs | — | EXP-002a · In Progress (train_exp002.py) |
+| YOLOv8n-pose (EXP-002c) | 633 synthetic DRRs | **100% (1.000)** | Anatomically correct landmarks · Phantom CT 8/8 |
+| YOLOv8n-pose (EXP-001) | 633 synthetic DRRs | 99.8% | Initial experiment · epoch 10 convergence |
 | ResNet50 | Synthetic DRRs | — | Angle regression + Grad-CAM XAI |
 
-> ⚠️ EXP-001 validated on synthetic data only. Real X-ray validation (EXP-002b) in progress — domain gap identified between synthetic and phantom CT DRRs.
+> ✅ EXP-002c closed the domain gap: 100% detection on phantom CT DRRs (8/8). Rotation estimation uses Formula A (arctan-shift), calibration pending EXP-003 (real patient CT, n≥20).
 
 ---
 
@@ -138,29 +138,33 @@ No patient data required. OsteoSynth generates anatomically correct synthetic DR
 ## Tests
 
 ```bash
-cd dicom-viewer-prototype-api
-pytest tests/ -v
-# 45 passed in 11s
+# Run all 353 tests
+python -m pytest tests/ dicom-viewer-prototype-api/tests/ -q
+# 353 passed, 0 skipped
 ```
 
-| Test Suite | Coverage |
-|---|---|
-| `test_angle_math.py` | TPA · Flexion · Rotation math · Clinical thresholds |
-| `test_api.py` | All API endpoints · Edge cases |
-| `test_yolo_inference.py` | YOLO load · Keypoint detection · Blank/tiny images |
+| Location | Tests | Coverage |
+|---|---|---|
+| `tests/` | 156 | DRR generation · Bland-Altman · Phantom · Formula A |
+| `dicom-viewer-prototype-api/tests/` | 197 | API endpoints · Inference · Classical CV · GradCAM · Edge cases |
+| **Total** | **353** | **0 skipped** |
 
 ---
 
 ## Experiments
 
-| ID | Description | Model | mAP50(P) |
-|---|---|---|---|
-| EXP-001 | Initial synthetic DRR training | YOLOv8n-pose | **99.8%** |
-| EXP-001b | Bland-Altman framework | — | — |
-| EXP-001c | M4 Pro benchmark (73.2 FPS) | YOLOv8n-pose | — |
-| EXP-002 | Phantom CT validation | YOLOv8n-pose | 0% (domain gap) |
-| EXP-002a | YOLO11s-pose + 512px comparison | YOLO11s-pose | In Progress |
-| EXP-002b | Domain gap fix (planned) | YOLO11s-pose | — |
+| ID | Description | Result |
+|---|---|---|
+| EXP-001 | Initial synthetic DRR training | mAP50 = 99.8% |
+| EXP-001b | Bland-Altman framework | ✅ Implemented |
+| EXP-001c | M4 Pro MPS benchmark | **13.7 ms/frame (73.2 FPS)** |
+| EXP-002a | YOLO11s-pose + 512px | mAP50 = 0.005 (domain gap) |
+| EXP-002b | Domain gap fix (augmentation) | mAP50 = 0.994 |
+| EXP-002c | Anatomically correct landmarks | **mAP50 = 1.000 · Phantom 8/8** |
+| EXP-002d | Linear regression calibration | LoA ±12.4° (40% improvement) |
+| EXP-002e | Formula comparison (3 methods) | Formula A (arctan-shift) selected |
+| EXP-002f | Mid-angle dataset expansion | 633→1296 images · Retraining pending |
+| EXP-003 | Real patient CT calibration | Planned (TCIA/OAI, n≥20) |
 
 See [EXPERIMENTS.md](EXPERIMENTS.md) for full details.
 
@@ -178,8 +182,9 @@ OsteoVision/
 │   ├── generate_gradcam_demo.py   # Grad-CAM visualization
 │   └── generate_yolo_overlay.py   # Keypoint overlay images
 ├── dicom-viewer-prototype-api/    # FastAPI backend
-│   ├── main.py                    # API (YOLO + ResNet + GradCAM + CV)
-│   ├── tests/                     # 45 pytest tests
+│   ├── main.py                    # API router (v2.2.0)
+│   ├── inference.py               # YOLO + Formula A + GradCAM + Classical CV
+│   ├── tests/                     # 197 pytest tests
 │   └── Dockerfile
 ├── dicom-viewer-prototype/        # Next.js frontend
 ├── bland_altman_analysis.py       # Clinical validation (Bland-Altman)
@@ -198,9 +203,9 @@ This project is built by a **Radiological Technologist (RT)** with the goal of:
 2. Providing real-time positioning feedback to improve image quality
 3. Demonstrating clinical AI development for medical device companies
 
-**Domain Challenge:** EXP-001 achieved 99.8% mAP50 on synthetic DRRs, but EXP-002 revealed a critical domain gap — 0% detection on real phantom CT DRRs. EXP-002a (YOLO11s-pose + 512px) and subsequent experiments aim to close this gap without requiring real patient data.
+**Domain Gap — Solved:** EXP-001 achieved 99.8% mAP50 on synthetic DRRs, but EXP-002a revealed a domain gap (0% detection on phantom CT). Through EXP-002b/c, anatomically correct landmarks and augmentation fully closed this gap — **EXP-002c achieves 100% detection on phantom CT DRRs (8/8)**. Current focus: rotation angle calibration with real patient data (EXP-003).
 
-**Tech Stack:** Python · YOLO11 · PyTorch · FastAPI · Next.js · OpenCV · Docker · Apple MPS
+**Tech Stack:** Python · YOLOv8-Pose · PyTorch · FastAPI · Next.js · OpenCV · Docker · Apple MPS
 
 ---
 
