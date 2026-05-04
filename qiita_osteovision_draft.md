@@ -466,19 +466,24 @@ uvicorn main:app --host 0.0.0.0 --port 8000
 curl -X POST http://localhost:8000/api/analyze \
   -F "file=@knee_xray.png" | python3 -m json.tool
 
-# レスポンス例
+# レスポンス例（主要フィールドのみ抜粋）
 # {
 #   "success": true,
 #   "landmarks": {
-#     "medial_condyle": {"x": 145, "y": 128, ...},
-#     "lateral_condyle": {"x": 112, "y": 127, ...},
-#     "femur_axis_top": {"x": 130, "y": 32, ...},
-#     "tibia_axis_bottom": {"x": 128, "y": 224, ...},
+#     "medial_condyle":  {"x": 145, "y": 128, "x_pct": 56.6, "y_pct": 50.0},
+#     "lateral_condyle": {"x": 112, "y": 127, "x_pct": 43.8, "y_pct": 49.6},
+#     "femur_axis_top":  {"x": 130, "y": 32,  "x_pct": 50.8, "y_pct": 12.5},
+#     "tibia_axis_bottom":{"x": 128, "y": 224, "x_pct": 50.0, "y_pct": 87.5},
 #     "qa": {
+#       "view_type": "AP",
+#       "score": 95,
 #       "status": "GOOD",
-#       "score": 0.85,
+#       "message": "YOLOv8-Pose: 高信頼度検出 (conf=0.85)",
+#       "color": "green",
+#       "symmetry_ratio": 1.0,
+#       "positioning_advice": "► ポジショニングは良好です。...",
 #       "inference_engine": "YOLOv8-Pose",
-#       "positioning_advice": "► ポジショニングは良好です。..."
+#       "keypoint_confidences": [0.91, 0.88, 0.85, 0.87]
 #     },
 #     "angles": {
 #       "TPA": 22.3,
