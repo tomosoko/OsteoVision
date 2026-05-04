@@ -1,33 +1,15 @@
 """
 テスト: 角度計算ロジック（ユニットテスト）
 
-main.pyの幾何学計算を既知の座標で検証する。
+inference.pyの幾何学計算を既知の座標で検証する。
 「既知の答えを入れて、既知の答えが出るか」を確認。
 """
 import math
 import pytest
 
-
-# ─── main.pyから抽出した計算ロジック（同一コード） ─────────────────────────
-def angle_deg(p1: dict, p2: dict) -> float:
-    """ベクトルp1→p2の水平からの角度（度）"""
-    return math.degrees(math.atan2(p2["y"] - p1["y"], p2["x"] - p1["x"]))
-
-
-def acute_angle_between_lines(a1: float, a2: float) -> float:
-    """2直線のなす鋭角（0〜90°）"""
-    diff = abs(a1 - a2) % 180
-    if diff > 90:
-        diff = 180 - diff
-    return diff
-
-
-def angle_between_vectors(a1: float, a2: float) -> float:
-    """2ベクトルの間の角度（0〜180°）"""
-    diff = abs(a1 - a2) % 360
-    if diff > 180:
-        diff = 360 - diff
-    return diff
+from inference import _angle_deg as angle_deg
+from inference import _acute_angle as acute_angle_between_lines
+from inference import _vector_angle as angle_between_vectors
 
 
 def calc_tpa(medial: dict, lateral: dict, condyle_mid: dict, tibia_plateau: dict) -> float:

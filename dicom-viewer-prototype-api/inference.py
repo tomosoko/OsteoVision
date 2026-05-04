@@ -209,6 +209,33 @@ class GradCAM:
         return cam
 
 
+# ─── Shared Geometry Helpers ────────────────────────────────────────────────
+def _angle_deg(p1: dict, p2: dict) -> float:
+    """Angle of vector p1->p2 from horizontal, in degrees."""
+    return math.degrees(math.atan2(p2["y"] - p1["y"], p2["x"] - p1["x"]))
+
+
+def _acute_angle(a1: float, a2: float) -> float:
+    """Acute angle between two line orientations (0-90)."""
+    diff = abs(a1 - a2) % 180
+    if diff > 90:
+        diff = 180 - diff
+    return diff
+
+
+def _vector_angle(a1: float, a2: float) -> float:
+    """Unsigned angle between two direction vectors (0-180)."""
+    diff = abs(a1 - a2) % 360
+    if diff > 180:
+        diff = 360 - diff
+    return diff
+
+
+def _pct(v: float, total: float) -> float:
+    """Convert pixel coordinate to percentage of total dimension."""
+    return round(v / total * 100, 2)
+
+
 def apply_gradcam_overlay(image_bgr: np.ndarray,
                            cam: np.ndarray,
                            alpha: float = 0.5) -> np.ndarray:
@@ -284,35 +311,18 @@ def detect_with_yolo_pose(image_array: np.ndarray) -> Optional[dict]:
 
         # ===== GEOMETRIC ANGLE CALCULATIONS (PURE TRIGONOMETRY) =====
 
-        def angle_deg(p1, p2):
-            """Angle of vector p1->p2 from horizontal, in degrees."""
-            return math.degrees(math.atan2(p2["y"] - p1["y"], p2["x"] - p1["x"]))
-
         # Femoral axis: femur_shaft -> condyle_mid
-        femoral_axis_angle = angle_deg(femur_shaft_pt, condyle_mid)
+        femoral_axis_angle = _angle_deg(femur_shaft_pt, condyle_mid)
         # Tibial axis: condyle_mid -> tibia_plateau
-        tibial_axis_angle = angle_deg(condyle_mid, tibia_plateau_pt)
-
-        def acute_angle_between_lines(a1, a2):
-            diff = abs(a1 - a2) % 180
-            if diff > 90:
-                diff = 180 - diff
-            return diff
-
-        def angle_between_vectors(a1, a2):
-            diff = abs(a1 - a2) % 360
-            if diff > 180:
-                diff = 360 - diff
-            return diff
+        tibial_axis_angle = _angle_deg(condyle_mid, tibia_plateau_pt)
 
         # 1. TPA (Tibial Plateau Angle)
-        plateau_angle = angle_deg(medial_condyle_pt, lateral_condyle_pt)
+        plateau_angle = _angle_deg(medial_condyle_pt, lateral_condyle_pt)
         tibial_perp = tibial_axis_angle + 90
-        tpa = acute_angle_between_lines(plateau_angle, tibial_perp)
-        tpa = round(tpa, 1)
+        tpa = round(_acute_angle(plateau_angle, tibial_perp), 1)
 
         # 2. Flexion (angle between femoral shaft axis and tibial shaft axis)
-        flexion = round(angle_between_vectors(femoral_axis_angle, tibial_axis_angle), 1)
+        flexion = round(_vector_angle(femoral_axis_angle, tibial_axis_angle), 1)
 
         # 3. Rotation (internal/external) based on condyle asymmetry
         condyle_dx = lateral_condyle_pt["x"] - medial_condyle_pt["x"]
@@ -366,9 +376,6 @@ def detect_with_yolo_pose(image_array: np.ndarray) -> Optional[dict]:
         else:
             positioning_advice = "► ポジショニングは良好です。現在の軸を維持してください。"
 
-        def pct(v, total):
-            return round(v / total * 100, 2)
-
         # Patella is not tracked by YOLO in current 4-keypoint config,
         # so we estimate it from surrounding anatomy
         patella_est = {
@@ -384,19 +391,19 @@ def detect_with_yolo_pose(image_array: np.ndarray) -> Optional[dict]:
 
         return {
             "femur_condyle":    {"x": int(condyle_mid["x"]),   "y": int(condyle_mid["y"]),
-                                 "x_pct": pct(condyle_mid["x"], w),  "y_pct": pct(condyle_mid["y"], h)},
+                                 "x_pct": _pct(condyle_mid["x"], w),  "y_pct": _pct(condyle_mid["y"], h)},
             "tibial_plateau":   {"x": int(tibia_plateau_pt["x"]), "y": int(tibia_plateau_pt["y"]),
-                                 "x_pct": pct(tibia_plateau_pt["x"], w), "y_pct": pct(tibia_plateau_pt["y"], h)},
+                                 "x_pct": _pct(tibia_plateau_pt["x"], w), "y_pct": _pct(tibia_plateau_pt["y"], h)},
             "patella":          {"x": int(patella_est["x"]),  "y": int(patella_est["y"]),
-                                 "x_pct": pct(patella_est["x"], w), "y_pct": pct(patella_est["y"], h)},
+                                 "x_pct": _pct(patella_est["x"], w), "y_pct": _pct(patella_est["y"], h)},
             "medial_condyle":   {"x": int(medial_condyle_pt["x"]),  "y": int(medial_condyle_pt["y"]),
-                                 "x_pct": pct(medial_condyle_pt["x"], w),  "y_pct": pct(medial_condyle_pt["y"], h)},
+                                 "x_pct": _pct(medial_condyle_pt["x"], w),  "y_pct": _pct(medial_condyle_pt["y"], h)},
             "lateral_condyle":  {"x": int(lateral_condyle_pt["x"]), "y": int(lateral_condyle_pt["y"]),
-                                 "x_pct": pct(lateral_condyle_pt["x"], w), "y_pct": pct(lateral_condyle_pt["y"], h)},
+                                 "x_pct": _pct(lateral_condyle_pt["x"], w), "y_pct": _pct(lateral_condyle_pt["y"], h)},
             "femur_axis_top":   {"x": int(femur_shaft_pt["x"]),  "y": int(femur_shaft_pt["y"]),
-                                 "x_pct": pct(femur_shaft_pt["x"], w), "y_pct": pct(femur_shaft_pt["y"], h)},
+                                 "x_pct": _pct(femur_shaft_pt["x"], w), "y_pct": _pct(femur_shaft_pt["y"], h)},
             "tibia_axis_bottom":{"x": int(tibia_axis_bottom_est["x"]), "y": int(tibia_axis_bottom_est["y"]),
-                                 "x_pct": pct(tibia_axis_bottom_est["x"], w), "y_pct": pct(tibia_axis_bottom_est["y"], h)},
+                                 "x_pct": _pct(tibia_axis_bottom_est["x"], w), "y_pct": _pct(tibia_axis_bottom_est["y"], h)},
             "qa": {
                 "view_type": view_type,
                 "score": qa_score,
@@ -658,55 +665,35 @@ def detect_bone_landmarks(image_array: np.ndarray) -> dict:
             positioning_advice = "► 正面像の撮影指示: 側面像のポジショニングは良好です。この軸を維持して正面像撮影に移行してください。"
 
 
-    def pct(v, total):
-        return round(v / total * 100, 2)
-
-    def angle_deg_vec(p_from, p_to):
-        dx = p_to["x"] - p_from["x"]
-        dy = p_to["y"] - p_from["y"]
-        return math.degrees(math.atan2(dy, dx))
-
     # Calculate exact geometric angles
-    tibial_axis_angle  = angle_deg_vec(tibia_axis_bottom, tp)
-    femoral_axis_angle = angle_deg_vec(femur_axis_top, fc)
-
-    def acute_angle_between_lines(a1, a2):
-        diff = abs(a1 - a2) % 180
-        if diff > 90:
-            diff = 180 - diff
-        return diff
-
-    def angle_between_vectors(a1, a2):
-        diff = abs(a1 - a2) % 360
-        if diff > 180:
-            diff = 360 - diff
-        return diff
+    tibial_axis_angle  = _angle_deg(tibia_axis_bottom, tp)
+    femoral_axis_angle = _angle_deg(femur_axis_top, fc)
 
     # TPA (Tibial Plateau Angle)
-    plateau_surface_angle = angle_deg_vec(medial_condyle, lateral_condyle)
+    plateau_surface_angle = _angle_deg(medial_condyle, lateral_condyle)
     tibial_shaft_perp = tibial_axis_angle + 90
-    tpa = round(acute_angle_between_lines(plateau_surface_angle, tibial_shaft_perp), 1)
+    tpa = round(_acute_angle(plateau_surface_angle, tibial_shaft_perp), 1)
 
     # Sanity check: if condyles collapsed to same point, plateau angle is meaningless
     if abs(medial_condyle["x"] - lateral_condyle["x"]) < 5 and abs(medial_condyle["y"] - lateral_condyle["y"]) < 5:
         tpa = 22.0
 
     # Flexion
-    flexion = round(angle_between_vectors(femoral_axis_angle, tibial_axis_angle), 1)
+    flexion = round(_vector_angle(femoral_axis_angle, tibial_axis_angle), 1)
 
 
     return {
-        "femur_condyle":    {"x": int(fc["x"]),  "y": int(fc["y"]),  "x_pct": pct(fc["x"], w),  "y_pct": pct(fc["y"], h)},
-        "tibial_plateau":   {"x": int(tp["x"]),  "y": int(tp["y"]),  "x_pct": pct(tp["x"], w),  "y_pct": pct(tp["y"], h)},
-        "patella":          {"x": int(pat["x"]), "y": int(pat["y"]), "x_pct": pct(pat["x"], w), "y_pct": pct(pat["y"], h)},
+        "femur_condyle":    {"x": int(fc["x"]),  "y": int(fc["y"]),  "x_pct": _pct(fc["x"], w),  "y_pct": _pct(fc["y"], h)},
+        "tibial_plateau":   {"x": int(tp["x"]),  "y": int(tp["y"]),  "x_pct": _pct(tp["x"], w),  "y_pct": _pct(tp["y"], h)},
+        "patella":          {"x": int(pat["x"]), "y": int(pat["y"]), "x_pct": _pct(pat["x"], w), "y_pct": _pct(pat["y"], h)},
         "medial_condyle":   {"x": int(medial_condyle["x"]),  "y": int(medial_condyle["y"]),
-                             "x_pct": pct(medial_condyle["x"], w),  "y_pct": pct(medial_condyle["y"], h)},
+                             "x_pct": _pct(medial_condyle["x"], w),  "y_pct": _pct(medial_condyle["y"], h)},
         "lateral_condyle":  {"x": int(lateral_condyle["x"]), "y": int(lateral_condyle["y"]),
-                             "x_pct": pct(lateral_condyle["x"], w), "y_pct": pct(lateral_condyle["y"], h)},
+                             "x_pct": _pct(lateral_condyle["x"], w), "y_pct": _pct(lateral_condyle["y"], h)},
         "femur_axis_top":   {"x": int(femur_axis_top["x"]), "y": int(femur_axis_top["y"]),
-                             "x_pct": pct(femur_axis_top["x"], w), "y_pct": pct(femur_axis_top["y"], h)},
+                             "x_pct": _pct(femur_axis_top["x"], w), "y_pct": _pct(femur_axis_top["y"], h)},
         "tibia_axis_bottom":{"x": int(tibia_axis_bottom["x"]), "y": int(tibia_axis_bottom["y"]),
-                             "x_pct": pct(tibia_axis_bottom["x"], w), "y_pct": pct(tibia_axis_bottom["y"], h)},
+                             "x_pct": _pct(tibia_axis_bottom["x"], w), "y_pct": _pct(tibia_axis_bottom["y"], h)},
         "qa": {
             "view_type": view_type,
             "score": qa_score,
