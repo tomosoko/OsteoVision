@@ -70,10 +70,11 @@ ignorePublish: false
 修正指示 + 角度レポート出力
 ```
 
-3段階フォールバック設計で、YOLOが失敗しても動作します：
-1. **YOLOv8-Pose**（主経路）
-2. **ResNet**（実験用サブ経路）
-3. **古典的CV**（輝度・エッジ解析フォールバック）
+2段階フォールバック設計で、YOLOが失敗しても動作します：
+1. **YOLOv8-Pose**（主経路 — `/api/analyze`）
+2. **古典的CV**（輝度・エッジ解析フォールバック — YOLOv8 検出失敗時に自動切替）
+
+※ **ResNet**（角度回帰 + Grad-CAM XAI）は `/api/gradcam` エンドポイントで独立稼働
 
 ---
 
@@ -315,9 +316,13 @@ rots = [-30, -15, -10, -5, 0, 5, 10, 15, 30]  # 9値、約5° 刻み
 async def analyze_knee(file: UploadFile = File(...)):
     """膝関節X線画像（PNG/JPEG/DICOM）からキーポイントと臨床角度を推定"""
     content = await file.read()
-    image_array = decode_image(content, file.filename)
-    landmarks = detect_with_yolo_pose(image_array)  # inference.py に委譲
-    return landmarks
+    # DICOM/PNG/JPEG を numpy配列に変換（省略）
+    image_array = decode_to_numpy(content, file.filename)
+    # YOLOv8-Pose → 失敗時は古典CVフォールバック
+    landmarks = detect_with_yolo_pose(image_array)
+    if landmarks is None:
+        landmarks = detect_bone_landmarks(image_array)
+    return {"success": True, "landmarks": landmarks}
 
 @app.post("/api/gradcam")
 async def gradcam_endpoint(file: UploadFile = File(...)):
@@ -346,12 +351,13 @@ def detect_with_yolo_pose(image_array):
     rotation = apply_rotation_calibration(rotation)  # 現在 identity（EXP-003 で係数決定予定）
 
     return {
-        "flexion": flexion,
-        "tpa": tpa,
-        "rotation": rotation,
-        "rotation_label": classify_rotation(rotation),
-        "qa_status": classify_qa(avg_conf),
-        "positioning_advice": generate_advice(rotation, flexion),
+        "medial_condyle":   {"x": int(medial_condyle[0]),  "y": int(medial_condyle[1]), ...},
+        "lateral_condyle":  {"x": int(lateral_condyle[0]), "y": int(lateral_condyle[1]), ...},
+        "femur_axis_top":   {"x": int(femur_shaft[0]),     "y": int(femur_shaft[1]), ...},
+        "tibia_axis_bottom":{"x": int(tibia_plateau[0]),   "y": int(tibia_plateau[1]), ...},
+        "qa": {"status": qa_status, "score": qa_score, "positioning_advice": positioning_advice, ...},
+        "angles": {"TPA": tpa, "flexion": flexion, "rotation": rotation_deg,
+                   "rotation_label": rotation_label + " [YOLOv8]"},
     }
 ```
 
@@ -462,14 +468,25 @@ curl -X POST http://localhost:8000/api/analyze \
 
 # レスポンス例
 # {
-#   "landmarks": { ... },
-#   "angles": {
-#     "TPA": 22.3,
-#     "flexion": 1.8,
-#     "rotation": -3.1,
-#     "rotation_label": "中立 (Neutral) [YOLOv8]"
-#   },
-#   "qa_status": "GOOD"
+#   "success": true,
+#   "landmarks": {
+#     "medial_condyle": {"x": 145, "y": 128, ...},
+#     "lateral_condyle": {"x": 112, "y": 127, ...},
+#     "femur_axis_top": {"x": 130, "y": 32, ...},
+#     "tibia_axis_bottom": {"x": 128, "y": 224, ...},
+#     "qa": {
+#       "status": "GOOD",
+#       "score": 0.85,
+#       "inference_engine": "YOLOv8-Pose",
+#       "positioning_advice": "► ポジショニングは良好です。..."
+#     },
+#     "angles": {
+#       "TPA": 22.3,
+#       "flexion": 1.8,
+#       "rotation": -3.1,
+#       "rotation_label": "中立 (Neutral) [YOLOv8]"
+#     }
+#   }
 # }
 ```
 
