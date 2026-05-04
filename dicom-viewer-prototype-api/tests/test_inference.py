@@ -358,7 +358,7 @@ class TestDeviceSetup:
 
 
 class TestApplyRotationCalibration:
-    """apply_rotation_calibration() — EXP-002c linear regression calibration."""
+    """apply_rotation_calibration() — defaults to Formula A identity; EXP-002c via explicit args."""
 
     def test_slope_constant_value(self):
         """ROTATION_CALIB_SLOPE is -0.8616 (EXP-002c linear regression, n=8)."""
@@ -368,18 +368,31 @@ class TestApplyRotationCalibration:
         """ROTATION_CALIB_INTERCEPT is -6.67 (EXP-002c linear regression, n=8)."""
         assert ROTATION_CALIB_INTERCEPT == -6.67
 
-    def test_zero_input_returns_intercept(self):
-        """0.0 → round(intercept, 1) = -6.7."""
-        assert apply_rotation_calibration(0.0) == round(-6.67, 1)
+    def test_default_is_identity(self):
+        """Default (no args) uses Formula A identity: output == input."""
+        assert apply_rotation_calibration(0.0) == 0.0
+        assert apply_rotation_calibration(5.0) == 5.0
+        assert apply_rotation_calibration(-12.0) == -12.0
 
-    def test_positive_input(self):
-        """Positive raw value: calibrated = slope×5 + intercept."""
-        result = apply_rotation_calibration(5.0)
+    def test_exp002c_zero_input(self):
+        """EXP-002c constants: 0.0 → round(intercept, 1) = -6.7."""
+        result = apply_rotation_calibration(
+            0.0, slope=ROTATION_CALIB_SLOPE, intercept=ROTATION_CALIB_INTERCEPT
+        )
+        assert result == round(-6.67, 1)
+
+    def test_exp002c_positive_input(self):
+        """EXP-002c: positive raw value: calibrated = slope×5 + intercept."""
+        result = apply_rotation_calibration(
+            5.0, slope=ROTATION_CALIB_SLOPE, intercept=ROTATION_CALIB_INTERCEPT
+        )
         assert result == round(-0.8616 * 5.0 + (-6.67), 1)
 
-    def test_negative_input(self):
-        """Negative raw value: calibrated = slope×(-12) + intercept."""
-        result = apply_rotation_calibration(-12.0)
+    def test_exp002c_negative_input(self):
+        """EXP-002c: negative raw value: calibrated = slope×(-12) + intercept."""
+        result = apply_rotation_calibration(
+            -12.0, slope=ROTATION_CALIB_SLOPE, intercept=ROTATION_CALIB_INTERCEPT
+        )
         assert result == round(-0.8616 * (-12.0) + (-6.67), 1)
 
     def test_custom_slope_intercept(self):
@@ -404,7 +417,12 @@ class TestApplyRotationCalibration:
             (-17.5, 0),
             (-9.4, 0),
         ]
-        errors = [abs(apply_rotation_calibration(raw) - gt) for raw, gt in cases]
+        errors = [
+            abs(apply_rotation_calibration(
+                raw, slope=ROTATION_CALIB_SLOPE, intercept=ROTATION_CALIB_INTERCEPT
+            ) - gt)
+            for raw, gt in cases
+        ]
         mean_error = sum(errors) / len(errors)
         assert mean_error < 10.0, f"Mean calibration error too large: {mean_error:.1f}°"
 

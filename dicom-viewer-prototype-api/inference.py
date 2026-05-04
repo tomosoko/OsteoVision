@@ -23,10 +23,10 @@ device = torch.device(
     else "cpu"
 )
 
-# --- Rotation Calibration (EXP-002c linear regression, n=8 phantom CT) ---
-# Fitted from: x = asymmetry×20 (raw), y = GT rotation (°)
-# numpy.polyfit result: slope=-0.8616, intercept=-6.67
-# RMSE improved: 11.4° (bias-only) → 6.4° (linear regression)
+# --- Rotation Calibration (EXP-002c, DEPRECATED) ---
+# Legacy constants for old asymmetry×20 formula. Superseded by Formula A (arctan-shift).
+# Kept for historical test coverage only — NOT used in production.
+# numpy.polyfit: x=asymmetry×20, y=GT rotation(°), slope=-0.8616, intercept=-6.67
 ROTATION_CALIB_SLOPE: float = -0.8616
 ROTATION_CALIB_INTERCEPT: float = -6.67
 
@@ -39,8 +39,8 @@ FORMULA_A_CALIB_INTERCEPT: float = 0.0
 
 def apply_rotation_calibration(
     rotation: float,
-    slope: float = ROTATION_CALIB_SLOPE,
-    intercept: float = ROTATION_CALIB_INTERCEPT,
+    slope: float = FORMULA_A_CALIB_SLOPE,
+    intercept: float = FORMULA_A_CALIB_INTERCEPT,
 ) -> float:
     """Apply linear regression calibration to raw rotation estimate.
 

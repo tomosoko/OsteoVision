@@ -166,7 +166,7 @@ class TestQcJudge:
 
 
 class TestRotationCalibration:
-    """apply_rotation_calibration() — EXP-002c 線形回帰校正テスト."""
+    """apply_rotation_calibration() — defaults to Formula A identity; EXP-002c via explicit args."""
 
     def test_slope_constant_value(self):
         """EXP-002c 線形回帰 slope 定数が保持されている."""
@@ -176,26 +176,40 @@ class TestRotationCalibration:
         """EXP-002c 線形回帰 intercept 定数が保持されている."""
         assert abs(ROTATION_CALIB_INTERCEPT - (-6.67)) < 1e-9
 
-    def test_zero_rotation_returns_intercept(self):
-        result = apply_rotation_calibration(0.0)
+    def test_default_is_identity(self):
+        """Default (no args) uses Formula A identity: output == input."""
+        assert abs(apply_rotation_calibration(0.0) - 0.0) < 0.01
+        assert abs(apply_rotation_calibration(5.0) - 5.0) < 0.01
+        assert abs(apply_rotation_calibration(-12.0) - -12.0) < 0.01
+
+    def test_exp002c_zero_rotation_returns_intercept(self):
+        result = apply_rotation_calibration(
+            0.0, slope=ROTATION_CALIB_SLOPE, intercept=ROTATION_CALIB_INTERCEPT
+        )
         assert abs(result - round(-6.67, 1)) < 0.01
 
-    def test_negative_raw_shifts_toward_zero(self):
+    def test_exp002c_negative_raw_shifts_toward_zero(self):
         # EXP-002c ep17実測値: AI=-12.3°(GT=0°) → 補正後≈+3.9°（GT=0に近づく）
         raw = -12.3
-        corrected = apply_rotation_calibration(raw)
+        corrected = apply_rotation_calibration(
+            raw, slope=ROTATION_CALIB_SLOPE, intercept=ROTATION_CALIB_INTERCEPT
+        )
         expected = round(-0.8616 * raw + (-6.67), 1)
         assert abs(corrected - expected) < 0.05
         assert abs(corrected) < abs(raw)  # GT=0に近づく
 
-    def test_phantom_gt0_corrected_near_zero(self):
+    def test_exp002c_phantom_gt0_corrected_near_zero(self):
         # EXP-002c: rx0ry0 → AI=-12.3 → 線形回帰補正後≈3.9 (GT=0 の±5°許容内)
-        corrected = apply_rotation_calibration(-12.3)
+        corrected = apply_rotation_calibration(
+            -12.3, slope=ROTATION_CALIB_SLOPE, intercept=ROTATION_CALIB_INTERCEPT
+        )
         assert abs(corrected) < 5.0
 
-    def test_phantom_gt5_corrected_near_gt(self):
+    def test_exp002c_phantom_gt5_corrected_near_gt(self):
         # EXP-002c: rx0ry5 → AI=-17.8 → 線形回帰補正後≈8.7 (GT=5 に対して誤差<7°)
-        corrected = apply_rotation_calibration(-17.8)
+        corrected = apply_rotation_calibration(
+            -17.8, slope=ROTATION_CALIB_SLOPE, intercept=ROTATION_CALIB_INTERCEPT
+        )
         assert abs(corrected - 5.0) < 7.0
 
     def test_custom_slope_intercept_override(self):
@@ -206,7 +220,7 @@ class TestRotationCalibration:
         result = apply_rotation_calibration(-12.345)
         assert round(result, 1) == result
 
-    def test_all_phantom_cases_reduce_absolute_error(self):
+    def test_exp002c_all_phantom_cases_reduce_absolute_error(self):
         """EXP-002c 全8症例で線形回帰校正後の誤差が未校正より小さい."""
         # (ai_raw, gt_rotation_y) — ep17 pre-calibration values
         cases = [
@@ -214,7 +228,12 @@ class TestRotationCalibration:
             (-13.7, -10), (-13.4, 15), (-13.8, 0), (-10.8, 0),
         ]
         raw_errors = [abs(ai - gt) for ai, gt in cases]
-        calib_errors = [abs(apply_rotation_calibration(ai) - gt) for ai, gt in cases]
+        calib_errors = [
+            abs(apply_rotation_calibration(
+                ai, slope=ROTATION_CALIB_SLOPE, intercept=ROTATION_CALIB_INTERCEPT
+            ) - gt)
+            for ai, gt in cases
+        ]
         mean_raw = sum(raw_errors) / len(raw_errors)
         mean_calib = sum(calib_errors) / len(calib_errors)
         assert mean_calib < mean_raw, (
@@ -234,12 +253,16 @@ class TestFormulaACalibConstants:
         assert abs(FORMULA_A_CALIB_INTERCEPT - 0.0) < 1e-9
 
     def test_formula_a_calibration_is_passthrough(self):
-        """アイデンティティ校正では入力値がそのまま返る."""
+        """アイデンティティ校正では入力値がそのまま返る（デフォルト引数でも同じ）."""
         for val in (-15.0, 0.0, 5.5, 30.0):
+            # Explicit args
             result = apply_rotation_calibration(
                 val, slope=FORMULA_A_CALIB_SLOPE, intercept=FORMULA_A_CALIB_INTERCEPT
             )
             assert abs(result - round(val, 1)) < 0.01, f"val={val} -> {result}"
+            # Default args (should be same as explicit Formula A)
+            result_default = apply_rotation_calibration(val)
+            assert abs(result_default - round(val, 1)) < 0.01, f"default val={val} -> {result_default}"
 
     def test_calc_angles_formula_a_symmetric_is_zero(self):
         """対称顆部 → Formula A net_shift=0 → rotation=0.0."""

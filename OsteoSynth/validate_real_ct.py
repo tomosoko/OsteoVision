@@ -27,11 +27,10 @@ VENV_SP = os.path.join(API_DIR, "venv312", "lib", "python3.12", "site-packages")
 if os.path.isdir(VENV_SP):
     sys.path.insert(0, VENV_SP)
 
-# ─── 回旋角校正定数（EXP-002c 線形回帰, n=8 ファントムCT） ─────────────
-# ※ 旧式 asymmetry×20 用。Formula A 移行後は参照のみ。
-# numpy.polyfit: x=asymmetry×20 (生推定値), y=GT回旋角(°)
-# slope=-0.8616, intercept=-6.67
-# RMSE改善: バイアスのみ 11.4° → 線形回帰 6.4°
+# ─── 回旋角校正定数（EXP-002c, DEPRECATED） ─────────────
+# 旧式 asymmetry×20 用。Formula A (arctan-shift) に移行済み。
+# 歴史的テストカバレッジのみに使用 — 本番では未使用。
+# numpy.polyfit: x=asymmetry×20, y=GT回旋角(°), slope=-0.8616, intercept=-6.67
 ROTATION_CALIB_SLOPE: float = -0.8616
 ROTATION_CALIB_INTERCEPT: float = -6.67
 
@@ -44,8 +43,8 @@ FORMULA_A_CALIB_INTERCEPT: float = 0.0
 
 def apply_rotation_calibration(
     rotation: float,
-    slope: float = ROTATION_CALIB_SLOPE,
-    intercept: float = ROTATION_CALIB_INTERCEPT,
+    slope: float = FORMULA_A_CALIB_SLOPE,
+    intercept: float = FORMULA_A_CALIB_INTERCEPT,
 ) -> float:
     """回旋角に線形回帰校正を適用する.
 
