@@ -58,7 +58,7 @@ ignorePublish: false
       ↓
   YOLOv8-Pose モデル（4キーポイント検出）
       ↓
-  femur_shaft / medial_condyle / lateral_condyle / tibia_plateau
+  femur_shaft / medial_condyle / lateral_condyle / tibial_plateau
       ↓
 三角関数で臨床角度を計算
   ・屈曲角（Flexion）
@@ -119,7 +119,7 @@ for params in rotation_matrix:
 kp0: femur_shaft      大腿骨骨幹部（上端）
 kp1: medial_condyle   内側顆（大腿骨内側）
 kp2: lateral_condyle  外側顆（大腿骨外側）
-kp3: tibia_plateau    脛骨高原（下端）
+kp3: tibial_plateau   脛骨高原（下端）
 ```
 
 この4点から屈曲角・回旋角・TPAを三角関数で計算します。
@@ -338,23 +338,24 @@ def detect_with_yolo_pose(image_array):
     results = yolo_model(image_array)
     kpts = results[0].keypoints.xy[0].cpu().numpy()  # (4, 2)
 
-    femur_shaft    = {"x": kpts[0][0], "y": kpts[0][1]}
-    medial_condyle = {"x": kpts[1][0], "y": kpts[1][1]}
-    lateral_condyle= {"x": kpts[2][0], "y": kpts[2][1]}
-    tibia_plateau  = {"x": kpts[3][0], "y": kpts[3][1]}
+    femur_shaft_pt    = {"x": kpts[0][0], "y": kpts[0][1]}
+    medial_condyle_pt = {"x": kpts[1][0], "y": kpts[1][1]}
+    lateral_condyle_pt= {"x": kpts[2][0], "y": kpts[2][1]}
+    tibia_plateau_pt  = {"x": kpts[3][0], "y": kpts[3][1]}
 
     # 三角関数で臨床角度計算
-    flexion  = calc_flexion(femur_shaft, condyle_mid, tibia_plateau)
-    tpa      = calc_tpa(medial_condyle, lateral_condyle, tibia_plateau)
+    flexion  = calc_flexion(femur_shaft_pt, condyle_mid, tibia_plateau_pt)
+    tpa      = calc_tpa(medial_condyle_pt, lateral_condyle_pt, tibia_plateau_pt)
     # Formula A（arctan-shift）— EXP-002e で arctan-shift が正しい符号方向と確認
     rotation = compute_formula_a(kpts)               # arctan(net_shift / condyle_half_width)
     rotation = apply_rotation_calibration(rotation)  # 現在 identity（EXP-003 で係数決定予定）
 
     return {
-        "medial_condyle":   {"x": int(medial_condyle[0]),  "y": int(medial_condyle[1]), ...},
-        "lateral_condyle":  {"x": int(lateral_condyle[0]), "y": int(lateral_condyle[1]), ...},
-        "femur_axis_top":   {"x": int(femur_shaft[0]),     "y": int(femur_shaft[1]), ...},
-        "tibia_axis_bottom":{"x": int(tibia_plateau[0]),   "y": int(tibia_plateau[1]), ...},
+        "tibial_plateau":   {"x": int(tibia_plateau_pt["x"]),   "y": int(tibia_plateau_pt["y"]), ...},
+        "medial_condyle":   {"x": int(medial_condyle_pt["x"]),  "y": int(medial_condyle_pt["y"]), ...},
+        "lateral_condyle":  {"x": int(lateral_condyle_pt["x"]), "y": int(lateral_condyle_pt["y"]), ...},
+        "femur_axis_top":   {"x": int(femur_shaft_pt["x"]),     "y": int(femur_shaft_pt["y"]), ...},
+        "tibia_axis_bottom":{"x": int(tibia_axis_bottom["x"]),  "y": int(tibia_axis_bottom["y"]), ...},
         "qa": {"status": qa_status, "score": qa_score, "positioning_advice": positioning_advice, ...},
         "angles": {"TPA": tpa, "flexion": flexion, "rotation": rotation_deg,
                    "rotation_label": rotation_label + " [YOLOv8]"},
@@ -470,6 +471,7 @@ curl -X POST http://localhost:8000/api/analyze \
 # {
 #   "success": true,
 #   "landmarks": {
+#     "tibial_plateau":  {"x": 128, "y": 180, "x_pct": 50.0, "y_pct": 70.3},
 #     "medial_condyle":  {"x": 145, "y": 128, "x_pct": 56.6, "y_pct": 50.0},
 #     "lateral_condyle": {"x": 112, "y": 127, "x_pct": 43.8, "y_pct": 49.6},
 #     "femur_axis_top":  {"x": 130, "y": 32,  "x_pct": 50.8, "y_pct": 12.5},
