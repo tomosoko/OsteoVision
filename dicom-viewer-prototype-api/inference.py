@@ -203,9 +203,11 @@ class GradCAM:
         cam = (weights * self.activations).sum(dim=1, keepdim=True)  # (1, 1, H, W)
         cam = torch.relu(cam).squeeze().cpu().numpy()
 
-        # 0〜1に正規化
+        # 0〜1に正規化（uniform heatmap → ゼロマップ）
         if cam.max() > cam.min():
             cam = (cam - cam.min()) / (cam.max() - cam.min())
+        else:
+            cam = np.zeros_like(cam)
         return cam
 
 

@@ -192,3 +192,23 @@ class TestGradCAMClass:
             cam = np.random.rand(*cam_size).astype(np.float32)
             overlay = apply_gradcam_overlay(img, cam)
             assert overlay.shape == (200, 300, 3)
+
+    def test_apply_gradcam_overlay_uniform_cam(self):
+        """uniform CAM（全要素同一値）でもオーバーフローしない"""
+        from main import apply_gradcam_overlay
+        img = np.full((100, 100, 3), 128, dtype=np.uint8)
+        # uniform heatmap: GradCAM.generate() は zeros を返すはず
+        cam = np.zeros((7, 7), dtype=np.float32)
+        overlay = apply_gradcam_overlay(img, cam, alpha=0.5)
+        assert overlay.shape == (100, 100, 3)
+        assert overlay.dtype == np.uint8
+
+    def test_apply_gradcam_overlay_cam_values_clamped(self):
+        """CAM値が[0,1]範囲外でもuint8変換が安全に行われる"""
+        from main import apply_gradcam_overlay
+        img = np.full((50, 50, 3), 100, dtype=np.uint8)
+        # 正常系: [0,1]範囲のCAM
+        cam_normal = np.linspace(0, 1, 49).reshape(7, 7).astype(np.float32)
+        overlay = apply_gradcam_overlay(img, cam_normal)
+        assert overlay.dtype == np.uint8
+        assert overlay.min() >= 0
