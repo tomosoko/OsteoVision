@@ -196,6 +196,19 @@ class TestQAScoring:
         result = detect_bone_landmarks(img)
         assert result["qa"]["view_type"] in ["AP", "LAT"]
 
+    def test_qa_has_inference_engine(self):
+        """QA辞書にinference_engineが含まれ、Classical CVと表示される"""
+        img = make_bone_image()
+        result = detect_bone_landmarks(img)
+        assert result["qa"]["inference_engine"] == "Classical CV"
+
+    def test_qa_has_keypoint_confidences(self):
+        """QA辞書にkeypoint_confidencesが含まれる（Classical CVでは空リスト）"""
+        img = make_bone_image()
+        result = detect_bone_landmarks(img)
+        assert "keypoint_confidences" in result["qa"]
+        assert isinstance(result["qa"]["keypoint_confidences"], list)
+
 
 # ─── フォールバック動作テスト ──────────────────────────────────────────
 

@@ -701,7 +701,9 @@ def detect_bone_landmarks(image_array: np.ndarray) -> dict:
             "message": qa_msg,
             "color": qa_color,
             "symmetry_ratio": round(symmetry_ratio, 2),
-            "positioning_advice": positioning_advice
+            "positioning_advice": positioning_advice,
+            "inference_engine": "Classical CV",
+            "keypoint_confidences": []
         },
         "angles": {
             "TPA":               tpa,
