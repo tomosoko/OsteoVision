@@ -197,3 +197,136 @@ class TestUploadEndpoint:
             files={"file": ("test.gif", b"GIF89a", "image/gif")}
         )
         assert r.status_code == 400
+
+
+# ─── /api/gradcam ──────────────────────────────────────────────────────────
+
+class TestGradCAMEndpoint:
+    """Grad-CAM XAI エンドポイントの統合テスト（モック使用で常に実行可能）"""
+
+    @staticmethod
+    def _mock_gradcam_deps():
+        """GradCAM/ResNetをモックして常にテスト実行可能にするコンテキストマネージャ"""
+        from unittest.mock import patch, MagicMock
+        import torch
+
+        mock_model = MagicMock()
+        mock_model.eval = MagicMock()
+        # ResNet予測値: [TPA, Flexion, Rotation]
+        mock_model.return_value = torch.tensor([[5.2, 12.3, -1.8]])
+
+        mock_engine = MagicMock()
+        # GradCAM.generate() → 7x7 の正規化ヒートマップ
+        mock_engine.generate.return_value = np.random.rand(7, 7).astype(np.float32)
+
+        return patch("main.gradcam_engine", mock_engine), \
+               patch("main.dl_model", mock_model)
+
+    def test_gradcam_unavailable_returns_503(self, client):
+        """ResNetモデル未ロード時 → 503 + engine_used='unavailable'"""
+        from unittest.mock import patch
+        img_bytes = make_test_image()
+        with patch("main.gradcam_engine", None), \
+             patch("main.dl_model", None):
+            r = client.post(
+                "/api/gradcam",
+                files={"file": ("test.png", img_bytes, "image/png")}
+            )
+        assert r.status_code == 503
+        data = r.json()
+        assert data["success"] is False
+        assert data["engine_used"] == "unavailable"
+        assert "error" in data
+
+    def test_gradcam_success_response_structure(self, client):
+        """モデルロード済み → レスポンスに必須フィールドが含まれる"""
+        img_bytes = make_test_image()
+        p1, p2 = self._mock_gradcam_deps()
+        with p1, p2:
+            r = client.post(
+                "/api/gradcam",
+                files={"file": ("test.png", img_bytes, "image/png")}
+            )
+        assert r.status_code == 200
+        data = r.json()
+        assert data["success"] is True
+        assert data["engine_used"] == "gradcam_resnet50"
+        for key in ["heatmap_overlay", "raw_heatmap", "predicted_angles", "image_size"]:
+            assert key in data, f"'{key}' がレスポンスにない"
+
+    def test_gradcam_overlay_is_base64_png(self, client):
+        """ヒートマップオーバーレイがbase64 PNGとして返される"""
+        img_bytes = make_test_image()
+        p1, p2 = self._mock_gradcam_deps()
+        with p1, p2:
+            r = client.post(
+                "/api/gradcam",
+                files={"file": ("test.png", img_bytes, "image/png")}
+            )
+        data = r.json()
+        assert data["heatmap_overlay"].startswith("data:image/png;base64,")
+        assert data["raw_heatmap"].startswith("data:image/png;base64,")
+
+    def test_gradcam_predicted_angles_are_numeric(self, client):
+        """predicted_anglesの各値が数値"""
+        img_bytes = make_test_image()
+        p1, p2 = self._mock_gradcam_deps()
+        with p1, p2:
+            r = client.post(
+                "/api/gradcam",
+                files={"file": ("test.png", img_bytes, "image/png")}
+            )
+        angles = r.json()["predicted_angles"]
+        for key in ["TPA", "Flexion", "Rotation"]:
+            assert key in angles, f"'{key}' が predicted_angles にない"
+            assert isinstance(angles[key], (int, float))
+
+    def test_gradcam_target_parameter(self, client):
+        """target パラメータ（tpa/flexion/rotation）が反映される"""
+        img_bytes = make_test_image()
+        p1, p2 = self._mock_gradcam_deps()
+        with p1, p2:
+            for target in ["all", "tpa", "flexion", "rotation"]:
+                r = client.post(
+                    f"/api/gradcam?target={target}",
+                    files={"file": ("test.png", img_bytes, "image/png")}
+                )
+                assert r.status_code == 200, f"target={target} failed: {r.text}"
+                assert r.json()["target"] == target
+
+    def test_gradcam_image_size_matches_input(self, client):
+        """レスポンスのimage_sizeが入力画像サイズと一致"""
+        img_bytes = make_test_image(size=128)
+        p1, p2 = self._mock_gradcam_deps()
+        with p1, p2:
+            r = client.post(
+                "/api/gradcam",
+                files={"file": ("test.png", img_bytes, "image/png")}
+            )
+        data = r.json()
+        assert data["image_size"]["width"] == 128
+        assert data["image_size"]["height"] == 128
+
+    def test_gradcam_invalid_image(self, client):
+        """不正な画像データ → 500エラー"""
+        p1, p2 = self._mock_gradcam_deps()
+        with p1, p2:
+            r = client.post(
+                "/api/gradcam",
+                files={"file": ("test.png", b"not-an-image", "image/png")}
+            )
+        assert r.status_code == 500
+
+    def test_gradcam_jpeg_input(self, client):
+        """JPEG入力も処理可能"""
+        img = np.zeros((256, 256, 3), dtype=np.uint8)
+        cv2.ellipse(img, (128, 128), (40, 60), 0, 0, 360, (200, 200, 200), -1)
+        _, buf = cv2.imencode(".jpg", img)
+        p1, p2 = self._mock_gradcam_deps()
+        with p1, p2:
+            r = client.post(
+                "/api/gradcam",
+                files={"file": ("test.jpg", buf.tobytes(), "image/jpeg")}
+            )
+        assert r.status_code == 200
+        assert r.json()["success"] is True

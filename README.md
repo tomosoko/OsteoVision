@@ -138,16 +138,16 @@ No patient data required. OsteoSynth generates anatomically correct synthetic DR
 ## Tests
 
 ```bash
-# Run all 359 tests
+# Run all 367 tests
 python -m pytest tests/ dicom-viewer-prototype-api/tests/ -q
-# 359 passed, 0 skipped
+# 367 passed, 0 skipped
 ```
 
 | Location | Tests | Coverage |
 |---|---|---|
 | `tests/` | 157 | DRR generation · Bland-Altman · Formula A |
-| `dicom-viewer-prototype-api/tests/` | 202 | API endpoints · Inference · Classical CV · GradCAM · Edge cases |
-| **Total** | **359** | **0 skipped** |
+| `dicom-viewer-prototype-api/tests/` | 211 | API endpoints · Inference · Classical CV · GradCAM · Edge cases |
+| **Total** | **367** | **0 skipped** |
 
 ---
 
@@ -184,7 +184,7 @@ OsteoVision/
 ├── dicom-viewer-prototype-api/    # FastAPI backend
 │   ├── main.py                    # API router (v2.2.0)
 │   ├── inference.py               # YOLO + Formula A + GradCAM + Classical CV
-│   ├── tests/                     # 202 pytest tests
+│   ├── tests/                     # 211 pytest tests
 │   └── Dockerfile
 ├── dicom-viewer-prototype/        # Next.js frontend
 ├── bland_altman_analysis.py       # Clinical validation (Bland-Altman)
