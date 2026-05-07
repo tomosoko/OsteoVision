@@ -146,7 +146,7 @@ python -m pytest tests/ dicom-viewer-prototype-api/tests/ -q
 | Location | Tests | Coverage |
 |---|---|---|
 | `tests/` | 157 | DRR generation · Bland-Altman · Formula A |
-| `dicom-viewer-prototype-api/tests/` | 211 | API endpoints · Inference · Classical CV · GradCAM · Edge cases |
+| `dicom-viewer-prototype-api/tests/` | 210 | API endpoints · Inference · Classical CV · GradCAM · Edge cases |
 | **Total** | **367** | **0 skipped** |
 
 ---
@@ -184,7 +184,7 @@ OsteoVision/
 ├── dicom-viewer-prototype-api/    # FastAPI backend
 │   ├── main.py                    # API router (v2.2.0)
 │   ├── inference.py               # YOLO + Formula A + GradCAM + Classical CV
-│   ├── tests/                     # 211 pytest tests
+│   ├── tests/                     # 210 pytest tests
 │   └── Dockerfile
 ├── dicom-viewer-prototype/        # Next.js frontend
 ├── bland_altman_analysis.py       # Clinical validation (Bland-Altman)

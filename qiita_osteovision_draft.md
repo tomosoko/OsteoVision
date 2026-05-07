@@ -394,13 +394,13 @@ TDD（テスト駆動開発）で品質を担保しています。
 | `test_drr_generator.py` | 15 | DRR生成（回転行列） |
 | `test_generate_yolo_overlay.py` | 7 | `compute_tpa_angle`（TPA角度計算） |
 
-**APIテスト（dicom-viewer-prototype-api/tests/ — 202件）**
+**APIテスト（dicom-viewer-prototype-api/tests/ — 210件）**
 
 | テストファイル | 件数 | 対象 |
 |---|---|---|
 | `test_inference.py` | 53 | YOLOv8-Pose推論・角度計算・GradCAM・Formula A |
 | `test_classical_cv.py` | 38 | 古典CV フォールバック（`detect_bone_landmarks`） |
-| `test_api.py` | 25 | FastAPIエンドポイント（`/api/analyze`・`/api/gradcam`） |
+| `test_api.py` | 24 | FastAPIエンドポイント（`/api/analyze`・`/api/gradcam`） |
 | `test_upload.py` | 22 | ファイルアップロード・バリデーション |
 | `test_edge_cases.py` | 26 | エッジケース（ゼロサイズ・破損ファイル・形式違反） |
 | `test_yolo_inference.py` | 10 | YOLO推論パイプライン（実DRR画像使用） |
