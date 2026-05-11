@@ -138,16 +138,16 @@ No patient data required. OsteoSynth generates anatomically correct synthetic DR
 ## Tests
 
 ```bash
-# Run all 412 tests
+# Run all 446 tests
 python -m pytest tests/ dicom-viewer-prototype-api/tests/ -q
-# 412 passed, 0 skipped
+# 446 passed, 0 skipped
 ```
 
 | Location | Tests | Coverage |
 |---|---|---|
-| `tests/` | 202 | DRR generation · Bland-Altman · Formula A · YOLO Pose Factory |
+| `tests/` | 236 | DRR generation · Bland-Altman · Formula A · YOLO Pose Factory |
 | `dicom-viewer-prototype-api/tests/` | 210 | API endpoints · Inference · Classical CV · GradCAM · Edge cases |
-| **Total** | **412** | **0 skipped** |
+| **Total** | **446** | **0 skipped** |
 
 ---
 
