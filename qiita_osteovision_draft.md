@@ -382,13 +382,15 @@ TDD（テスト駆動開発）で品質を担保しています。
 
 ### テスト構成
 
-**ルートレベル（tests/ — 157件）**
+**ルートレベル（tests/ — 236件）**
 
 | テストファイル | 件数 | 対象 |
 |---|---|---|
 | `test_validate_real_ct.py` | 44 | 角度計算・QC判定・回旋キャリブレーション・Formula A 校正定数 |
 | `test_yolo_pose_factory_exp002c.py` | 30 | `get_rotation_matrix`, `convert_to_yolov8_pose` |
 | `test_bland_altman.py` | 27 | Bland-Altman 一致性解析 |
+| `test_bland_altman_extended.py` | 34 | `load_training_metrics`, `print_report`, `plot_bland_altman`, `plot_training_curves`, `generate_markdown_report` |
+| `test_yolo_pose_factory.py` | 25 | `create_synthetic_bone_with_landmarks`, `project_3d_point_to_2d_orthographic` |
 | `test_exp002e_formula_comparison.py` | 18 | `compute_formula_a`（arctan-shift 回旋角式） |
 | `test_drr_multiview_generator.py` | 16 | `project_volume`, `process_drr_image` |
 | `test_drr_generator.py` | 35 | DRR生成（回転行列・投影・DICOM読込・パイプライン） |
