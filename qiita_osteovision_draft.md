@@ -395,6 +395,8 @@ TDD（テスト駆動開発）で品質を担保しています。
 | `test_drr_multiview_generator.py` | 16 | `project_volume`, `process_drr_image` |
 | `test_drr_generator.py` | 35 | DRR生成（回転行列・投影・DICOM読込・パイプライン） |
 | `test_generate_yolo_overlay.py` | 7 | `compute_tpa_angle`（TPA角度計算） |
+| `test_generate_yolo_overlay_extended.py` | 36 | `draw_overlay`, `add_info_panel`, `generate_synthetic_drr_for_overlay`, `run_yolo_inference`, `create_overlay_image` |
+| `test_generate_6dof_demo.py` | 44 | `rot_matrix`, `create_bones`, `project_volume`, `render_panel`, `draw_label`, `generate_6dof_demo` |
 
 **APIテスト（dicom-viewer-prototype-api/tests/ — 210件）**
 
